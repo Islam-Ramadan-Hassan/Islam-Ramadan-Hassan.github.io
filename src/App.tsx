@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import { cn } from './lib/utils';
 import { COMMANDS, RESPONSE_DATA, INITIAL_GREETING, type Message, type Command } from './constants';
-import photoSrc from './assets/photo-nobg.png';
+import { photoSrc } from './assets/photoData';
 
 const DynamicIcon = ({ name, className }: { name: string, className?: string }) => {
   const icons: Record<string, any> = { User, Code2, Briefcase, History, Mail, Monitor, Database, Camera, Gamepad2, Plane, Book, Award, BarChart3, PieChart, Brain, Globe };
