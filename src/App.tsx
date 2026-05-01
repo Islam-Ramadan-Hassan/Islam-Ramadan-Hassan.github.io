@@ -3,7 +3,7 @@ import { motion, AnimatePresence, useSpring, useMotionValue, useTransform } from
 import { 
   User, Code2, Briefcase, History, Mail, ArrowRight, Download, Github, Linkedin, Twitter, ExternalLink,
   MessageSquare, Monitor, Database, Star, Sun, Moon, Camera, Gamepad2, Plane, Languages, Book, Award,
-  Sparkles, Play, X, PlayCircle, BarChart3, PieChart, Brain, Globe, ChevronDown, ChevronUp, Quote, ChevronRight, ArrowUp
+  Sparkles, Play, X, PlayCircle, BarChart3, PieChart, Brain, Globe, ChevronDown, ChevronUp, Quote, ChevronRight, ArrowUp, ArrowUpRight, Menu
 } from 'lucide-react';
 import { cn } from './lib/utils';
 import { COMMANDS, RESPONSE_DATA, INITIAL_GREETING, type Message, type Command } from './constants';
@@ -62,7 +62,7 @@ const ChatBubble: React.FC<{msg: Message, darkMode: boolean}> = ({ msg, darkMode
 export default function App() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isTyping, setIsTyping] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const [expandedProject, setExpandedProject] = useState<string | null>(null);
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -70,6 +70,7 @@ export default function App() {
 
   // Chat State
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const chatScrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -216,26 +217,58 @@ export default function App() {
             <BarChart3 className="w-4 h-4" />
           </div>
           <div className="hidden sm:block">
-            <p className="font-display font-bold text-sm tracking-tight leading-none mb-1 text-current">ISLAM RAMADAN</p>
-            <p className="font-mono text-[9px] uppercase tracking-[0.2em] opacity-60 leading-none">BI Developer</p>
+            <p className="font-display font-black tracking-[0.15em] text-xs uppercase text-current">ISLAM RAMADAN</p>
           </div>
         </a>
 
-        <div className={cn("flex items-center p-1 rounded-full overflow-x-auto scrollbar-hide ml-2 sm:ml-4 sm:flex-none flex-1 max-w-full", darkMode ? "bg-white/5" : "bg-black/5")}>
-          <a href="#hero" className={cn("px-3 sm:px-4 py-2 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-widest transition-all whitespace-nowrap", darkMode ? "text-white/60 hover:text-white hover:bg-white/10 lg:hover:bg-white/5" : "text-black/60 hover:text-black hover:bg-white hover:shadow-sm")}>Home</a>
-          <a href="#about" className={cn("px-3 sm:px-4 py-2 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-widest transition-all whitespace-nowrap", darkMode ? "text-white/60 hover:text-white hover:bg-white/10 lg:hover:bg-white/5" : "text-black/60 hover:text-black hover:bg-white hover:shadow-sm")}>About</a>
-          <a href="#skills" className={cn("px-3 sm:px-4 py-2 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-widest transition-all whitespace-nowrap", darkMode ? "text-white/60 hover:text-white hover:bg-white/10 lg:hover:bg-white/5" : "text-black/60 hover:text-black hover:bg-white hover:shadow-sm")}>Skills</a>
-          <a href="#experience" className={cn("px-3 sm:px-4 py-2 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-widest transition-all whitespace-nowrap", darkMode ? "text-white/60 hover:text-white hover:bg-white/10 lg:hover:bg-white/5" : "text-black/60 hover:text-black hover:bg-white hover:shadow-sm")}>Experience</a>
-          <a href="#projects" className={cn("px-3 sm:px-4 py-2 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-widest transition-all whitespace-nowrap", darkMode ? "text-white/60 hover:text-white hover:bg-white/10 lg:hover:bg-white/5" : "text-black/60 hover:text-black hover:bg-white hover:shadow-sm")}>Projects</a>
-          <a href="#contact" className={cn("px-3 sm:px-4 py-2 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-widest transition-all whitespace-nowrap", darkMode ? "text-white/60 hover:text-white hover:bg-white/10 lg:hover:bg-white/5" : "text-black/60 hover:text-black hover:bg-white hover:shadow-sm")}>Contact</a>
+        <div className={cn("hidden lg:flex items-center p-1.5 rounded-full ml-4 flex-none gap-1", darkMode ? "bg-white/5 border border-white/10 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)]" : "bg-black/5 border border-black/5 shadow-[inset_0_0_20px_rgba(0,0,0,0.02)]")}>
+          {['Home', 'About', 'Skills', 'Experience', 'Projects', 'Contact'].map((item) => (
+            <a key={item} href={item === 'Home' ? '#hero' : `#${item.toLowerCase()}`} className={cn("px-5 py-2 flex-shrink-0 rounded-full text-[10px] font-black tracking-[0.15em] uppercase transition-all duration-300 relative group overflow-hidden flex items-center justify-center", darkMode ? "text-white/70 hover:text-white" : "text-zinc-600 hover:text-zinc-900")}>
+              <span className="relative z-10">{item}</span>
+              <div className={cn("absolute inset-0 rounded-full scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 blur-sm", darkMode ? "bg-white/20" : "bg-white/80 shadow-md")} />
+              <div className={cn("absolute inset-0 rounded-full scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300", darkMode ? "bg-white/10" : "bg-white")} />
+            </a>
+          ))}
         </div>
 
-        <div className="flex items-center gap-2 pr-1">
+        <div className="flex items-center gap-2 pr-1 ml-auto lg:ml-0">
           <button onClick={() => setDarkMode(!darkMode)} className={cn("w-10 h-10 rounded-full flex items-center justify-center transition-all", darkMode ? "bg-white/10 hover:bg-white/20 text-white" : "bg-white hover:bg-black/5 border border-black/5 text-black shadow-sm")}>
             {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
+          
+          {/* Mobile Menu Toggle */}
+          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className={cn("lg:hidden w-10 h-10 rounded-full flex items-center justify-center transition-all", darkMode ? "bg-white/10 hover:bg-white/20 text-white" : "bg-white hover:bg-black/5 border border-black/5 text-black shadow-sm")}>
+            {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+          </button>
         </div>
       </motion.nav>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className={cn("fixed inset-x-4 top-24 z-40 p-4 rounded-3xl border shadow-2xl backdrop-blur-3xl lg:hidden", darkMode ? "bg-zinc-950/90 border-white/10" : "bg-white/90 border-black/5")}
+          >
+            <div className="flex flex-col gap-2">
+              {['Home', 'About', 'Skills', 'Experience', 'Projects', 'Contact'].map((item) => (
+                <a 
+                  key={item} 
+                  href={item === 'Home' ? '#hero' : `#${item.toLowerCase()}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={cn("px-6 py-4 rounded-2xl text-xs font-black uppercase tracking-[0.15em] transition-all text-center relative overflow-hidden group", darkMode ? "text-white/70 hover:text-white" : "text-zinc-600 hover:text-zinc-900")}
+                >
+                  <span className="relative z-10">{item}</span>
+                  <div className={cn("absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300", darkMode ? "bg-white/5" : "bg-black/5")} />
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <main className="relative z-10 w-full">
         {/* Section 1: Landing */}
@@ -243,34 +276,71 @@ export default function App() {
           {/* Text Content */}
           <motion.div initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2, duration: 0.8 }} className="flex-1 w-full relative z-20 space-y-8 mt-10 lg:mt-0 text-center lg:text-left">
             <div className="relative inline-flex items-center gap-4">
-              <div className={cn("px-4 py-2 rounded-full border text-[11px] font-bold uppercase tracking-[0.2em] shadow-sm", darkMode ? "bg-white/10 border-white/10 text-white" : "bg-black/5 border-black/5 text-black")}>
+              <div className={cn("px-4 py-2 rounded-full border text-[11px] font-bold uppercase tracking-[0.2em] shadow-sm backdrop-blur-md transition-colors", darkMode ? "bg-white/5 border-white/10 text-white" : "bg-black/5 border-black/10 text-zinc-900")}>
                 <span className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                  <span className="relative flex w-2 h-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full w-2 h-2 bg-blue-500"></span>
+                  </span>
                   Available for new projects
                 </span>
               </div>
             </div>
             
-            <motion.h1 style={{ x: parallaxX, y: parallaxY }} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-display font-black tracking-tighter leading-[0.9] lg:leading-[0.85]">
-              <span className="block opacity-40 text-2xl lg:text-3xl mb-4 font-bold tracking-tight">I'm Islam,</span>
-              <span className="block h-[1.2em] overflow-hidden relative">
+            <motion.h1 style={{ x: parallaxX, y: parallaxY }} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-display font-black tracking-tighter leading-[1] lg:leading-[0.9]">
+              <span className={cn("block text-2xl lg:text-3xl mb-4 font-bold tracking-tight", darkMode ? "text-zinc-500" : "text-zinc-400")}>I'm Islam,</span>
+              <span className="block h-[1.3em] overflow-hidden relative">
                 <AnimatePresence mode="popLayout">
-                  <motion.span key={currentRoleIndex} initial={{ y: "100%" }} animate={{ y: "0%" }} exit={{ y: "-100%" }} transition={{ duration: 1.5, ease: "circOut" }} className="absolute inset-0 flex items-center justify-center lg:justify-start whitespace-nowrap bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-500 dark:from-blue-400 dark:to-indigo-300">
+                  <motion.span key={currentRoleIndex} initial={{ y: "100%", opacity: 0 }} animate={{ y: "0%", opacity: 1 }} exit={{ y: "-100%", opacity: 0 }} transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }} className="absolute inset-0 flex items-center justify-center lg:justify-start whitespace-nowrap bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-600 dark:from-blue-400 dark:via-indigo-300 dark:to-blue-400 bg-[length:200%_auto] animate-gradient">
                     {roles[currentRoleIndex]}
                   </motion.span>
                 </AnimatePresence>
               </span>
             </motion.h1>
 
-            <p className="max-w-xl mx-auto lg:mx-0 text-base sm:text-lg opacity-70 leading-relaxed font-medium">
-              Transforming complex datasets into actionable intelligence. I design robust data architectures, write advanced SQL, and build compelling stories through interactive dashboards.
-            </p>
+            <div className="space-y-8 max-w-xl mx-auto lg:mx-0">
+              <p className={cn("text-lg sm:text-xl font-medium leading-relaxed", darkMode ? "text-zinc-300/80" : "text-zinc-600")}>
+                Transforming complex datasets into <span className={cn("font-bold text-transparent bg-clip-text bg-gradient-to-r", darkMode ? "from-white to-white/70" : "from-black to-black/70")}>actionable intelligence</span>.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className={cn("group flex flex-col gap-4 p-5 rounded-3xl border transition-all duration-300 hover:scale-[1.03] hover:shadow-xl", darkMode ? "bg-white/[0.02] border-white/10 hover:bg-white/[0.05] hover:border-white/20 hover:shadow-black/50" : "bg-black/[0.02] border-black/5 hover:bg-white hover:border-black/10 hover:shadow-blue-900/5")}>
+                    <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:-translate-y-1", darkMode ? "bg-gradient-to-br from-white/10 to-white/5 text-white ring-1 ring-white/10" : "bg-white text-zinc-900 shadow-sm border border-black/5 ring-1 ring-black/5")}>
+                      <Database className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className={cn("font-bold text-sm tracking-tight", darkMode ? "text-zinc-100" : "text-zinc-900")}>Data Architecture</p>
+                      <p className={cn("text-xs font-medium mt-1.5 leading-relaxed", darkMode ? "text-zinc-400" : "text-zinc-500")}>Designing robust scalable structures</p>
+                    </div>
+                </div>
+                
+                <div className={cn("group flex flex-col gap-4 p-5 rounded-3xl border transition-all duration-300 hover:scale-[1.03] hover:shadow-xl", darkMode ? "bg-blue-500/5 border-blue-500/20 hover:bg-blue-500/10 hover:border-blue-500/30 hover:shadow-blue-900/20" : "bg-blue-50/50 border-blue-100 hover:bg-blue-50 hover:border-blue-200 hover:shadow-blue-900/5")}>
+                    <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:-translate-y-1", darkMode ? "bg-gradient-to-br from-blue-500/20 to-blue-500/5 text-blue-400 ring-1 ring-blue-500/20" : "bg-white text-blue-600 border border-blue-100 shadow-sm ring-1 ring-blue-500/10")}>
+                      <Code2 className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className={cn("font-bold text-sm tracking-tight", darkMode ? "text-blue-100" : "text-blue-900")}>Advanced SQL</p>
+                      <p className={cn("text-xs font-medium mt-1.5 leading-relaxed", darkMode ? "text-blue-300" : "text-blue-700/70")}>Writing complex optimal queries</p>
+                    </div>
+                </div>
 
-            <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start pt-4">
-              <a href="#projects" className="w-full sm:w-auto bg-blue-600 text-white px-8 py-4 rounded-[20px] font-bold text-[13px] uppercase tracking-widest shadow-[0_20px_40px_rgba(37,99,235,0.3)] hover:scale-105 hover:bg-blue-700 transition-all text-center flex items-center justify-center gap-3">
-                Explore Work <ArrowRight className="w-4 h-4" />
+                <div className={cn("group flex flex-col gap-4 p-5 rounded-3xl border transition-all duration-300 hover:scale-[1.03] hover:shadow-xl", darkMode ? "bg-indigo-500/5 border-indigo-500/20 hover:bg-indigo-500/10 hover:border-indigo-500/30 hover:shadow-indigo-900/20" : "bg-indigo-50/50 border-indigo-100 hover:bg-indigo-50 hover:border-indigo-200 hover:shadow-indigo-900/5")}>
+                    <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:-translate-y-1", darkMode ? "bg-gradient-to-br from-indigo-500/20 to-indigo-500/5 text-indigo-400 ring-1 ring-indigo-500/20" : "bg-white text-indigo-600 border border-indigo-100 shadow-sm ring-1 ring-indigo-500/10")}>
+                      <BarChart3 className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className={cn("font-bold text-sm tracking-tight", darkMode ? "text-indigo-100" : "text-indigo-900")}>Data Stories</p>
+                      <p className={cn("text-xs font-medium mt-1.5 leading-relaxed", darkMode ? "text-indigo-300" : "text-indigo-700/70")}>Building interactive dashboards</p>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start pt-6">
+              <a href="#projects" className="group relative w-full sm:w-auto bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-[13px] uppercase tracking-widest overflow-hidden shadow-[0_15px_30px_rgba(37,99,235,0.3)] hover:shadow-[0_20px_40px_rgba(37,99,235,0.4)] hover:-translate-y-0.5 transition-all duration-300 text-center flex items-center justify-center gap-3">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <span className="relative z-10 flex items-center gap-3">Explore Work <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" /></span>
               </a>
-              <a href="#about" className={cn("w-full sm:w-auto px-8 py-4 rounded-[20px] font-bold text-[13px] uppercase tracking-widest border transition-all text-center flex items-center justify-center gap-3", darkMode ? "border-white/10 hover:bg-white/10" : "border-black/5 hover:bg-black/5")}>
+              <a href="#about" className={cn("group w-full sm:w-auto px-8 py-4 rounded-full font-bold text-[13px] uppercase tracking-widest border transition-all duration-300 text-center flex items-center justify-center gap-3", darkMode ? "border-white/10 hover:bg-white/10 hover:border-white/20 text-white hover:text-white" : "border-zinc-200 hover:bg-zinc-50 hover:border-zinc-300 text-zinc-900")}>
                 View Profile
               </a>
             </div>
@@ -279,44 +349,44 @@ export default function App() {
           {/* Visual Content */}
           <div className="flex-1 relative w-full flex items-center justify-center min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] order-first lg:order-last">
             <motion.div style={{ x: parallaxXReverse, y: parallaxYReverse }} className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] bg-blue-500/10 rounded-full blur-[80px]" />
+              <div className={cn("w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] rounded-full blur-[100px] transition-colors duration-1000", darkMode ? "bg-blue-500/20" : "bg-blue-300/30")} />
             </motion.div>
             
             <motion.div 
               initial={{ scale: 0.9, opacity: 0 }} 
               animate={{ scale: 1, opacity: 1, y: [-5, 5, -5] }} 
               transition={{ 
-                scale: { delay: 0.4, duration: 1, ease: "easeOut" },
+                scale: { delay: 0.4, duration: 1, ease: [0.16, 1, 0.3, 1] },
                 opacity: { delay: 0.4, duration: 1, ease: "easeOut" },
                 y: { repeat: Infinity, duration: 6, ease: "easeInOut", delay: 0.5 }
               }} 
               className="relative z-10 mx-auto group pointer-events-none w-[280px] h-[340px] sm:w-[380px] sm:h-[440px] lg:w-[460px] lg:h-[520px] flex items-end justify-center"
             >
               {/* Outer Glow */}
-              <div className="absolute inset-0 lg:bottom-12 lg:-translate-x-1/2 lg:w-[120%] lg:left-[50%] h-[90%] my-auto bg-blue-500 rounded-t-full opacity-30 mix-blend-screen filter blur-3xl pointer-events-none" />
+              <div className="absolute inset-0 lg:bottom-12 lg:-translate-x-1/2 lg:w-[120%] lg:left-[50%] h-[90%] my-auto bg-blue-500 rounded-t-full opacity-20 mix-blend-screen filter blur-[80px] pointer-events-none transition-opacity duration-1000 group-hover:opacity-40" />
               
               {/* Background Arch Shape */}
-              <div className={cn("absolute inset-0 rounded-t-[1000px] rounded-b-[40px] overflow-hidden border shadow-2xl transition-all duration-700 pointer-events-none ring-1 ring-inset", darkMode ? "border-white/10 ring-white/10 shadow-[0_0_80px_-20px_rgba(59,130,246,0.25)] bg-zinc-900/60 backdrop-blur-3xl" : "border-blue-200/50 ring-white/80 shadow-[0_0_80px_-20px_rgba(59,130,246,0.25)] bg-white/40 backdrop-blur-3xl")}>
-                <div className={cn("absolute inset-0 bg-gradient-to-b opacity-80", darkMode ? "from-blue-500/20 via-zinc-900/40 to-zinc-950" : "from-blue-500/20 via-blue-50/40 to-transparent")} />
+              <div className={cn("absolute inset-0 rounded-t-[1000px] rounded-b-[40px] overflow-hidden border shadow-2xl transition-all duration-700 pointer-events-none ring-1 ring-inset backdrop-blur-3xl", darkMode ? "border-white/10 ring-white/10 shadow-[0_0_80px_-20px_rgba(59,130,246,0.3)] bg-zinc-900/60" : "border-blue-200/50 ring-white/80 shadow-[0_30px_100px_-20px_rgba(59,130,246,0.3)] bg-white/40")}>
+                <div className={cn("absolute inset-0 bg-gradient-to-b opacity-80", darkMode ? "from-blue-500/20 via-zinc-900/40 to-zinc-950" : "from-blue-400/20 via-blue-50/60 to-white/20")} />
                 
                 {/* Animated Orbs */}
                 <motion.div 
                   animate={{ 
                     scale: [1, 1.2, 1],
                     y: [0, -20, 0],
-                    opacity: [0.5, 0.8, 0.5]
+                    opacity: [0.4, 0.7, 0.4]
                   }}
                   transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-                  className="absolute -top-10 -left-10 w-2/3 h-2/3 bg-blue-500 rounded-full blur-[60px]"
+                  className="absolute -top-10 -left-10 w-2/3 h-2/3 bg-blue-400 rounded-full blur-[60px]"
                 />
                 <motion.div 
                   animate={{ 
                     scale: [1, 1.3, 1],
                     y: [0, 20, 0],
-                    opacity: [0.3, 0.6, 0.3]
+                    opacity: [0.2, 0.5, 0.2]
                   }}
                   transition={{ repeat: Infinity, duration: 8, ease: "easeInOut", delay: 1 }}
-                  className="absolute -bottom-10 -right-10 w-3/4 h-3/4 bg-indigo-500 rounded-full blur-[80px]"
+                  className="absolute -bottom-10 -right-10 w-3/4 h-3/4 bg-indigo-400 rounded-full blur-[80px]"
                 />
                 <div className="absolute inset-0 bg-grain opacity-20 mix-blend-overlay" />
               </div>
@@ -326,7 +396,7 @@ export default function App() {
                 <motion.img 
                    src={photoSrc} 
                    alt="Islam Ramadan" 
-                   className="w-full h-full object-bottom object-contain pointer-events-none filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.6)] contrast-[1.2] saturate-[1.15] brightness-[1.05] transition-transform duration-1000 group-hover:scale-[1.03] origin-bottom relative z-10"
+                   className="w-full h-full object-bottom object-contain pointer-events-none filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)] contrast-[1.1] saturate-[1.1] brightness-[1.1] transition-transform duration-1000 group-hover:scale-[1.05] ease-out origin-bottom relative z-10"
                  />
               </div>
             </motion.div>
@@ -336,23 +406,24 @@ export default function App() {
               initial={{ x: 40, opacity: 0 }} 
               animate={{ x: 0, opacity: 1, y: [-8, 8, -8] }} 
               transition={{ 
-                x: { delay: 0.6, duration: 0.8, ease: "easeOut" },
+                x: { delay: 0.6, duration: 0.8, ease: [0.16, 1, 0.3, 1] },
                 opacity: { delay: 0.6, duration: 0.8 },
                 y: { repeat: Infinity, duration: 5, ease: "easeInOut", delay: 0.8 }
               }} 
-              className="absolute -right-4 sm:-right-8 top-[35%] max-w-[200px] z-20 hidden md:block select-none"
+              className="absolute -right-4 sm:-right-8 top-[35%] max-w-[220px] z-20 hidden md:block select-none"
             >
-              <div className="p-4 rounded-2xl border border-white/10 bg-[#0A0D14]/90 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex items-center gap-4 text-white">
-                <div className="w-10 h-10 rounded-full bg-[#3B82F6] flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(59,130,246,0.6)]">
-                  <BarChart3 className="w-5 h-5 text-white" />
+              <div className={cn("p-4 rounded-[24px] border backdrop-blur-2xl shadow-xl flex items-center gap-4 transition-colors", darkMode ? "bg-[#0A0D14]/90 border-white/10 text-white shadow-[0_20px_40px_rgba(0,0,0,0.5)] ring-1 ring-inset ring-white/10" : "bg-white/90 border-white text-zinc-900 shadow-[0_20px_40px_rgba(0,0,0,0.1)] ring-1 ring-inset ring-black/5")}>
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(59,130,246,0.4)] ring-1 ring-white/20">
+                  <BarChart3 className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-[9px] font-black uppercase tracking-widest text-zinc-400">Analytics</p>
-                  <p className="text-xs font-bold leading-tight mt-0.5 whitespace-nowrap">Top Rated Specialist</p>
+                  <p className={cn("text-[9px] font-black uppercase tracking-widest", darkMode ? "text-blue-400" : "text-blue-600")}>Analytics</p>
+                  <p className="text-sm font-bold leading-tight mt-1 whitespace-nowrap">Top Rated Specialist</p>
                 </div>
               </div>
             </motion.div>
           </div>
+
           
           <motion.div 
             animate={{ y: [0, 8, 0] }} 
@@ -365,52 +436,87 @@ export default function App() {
         </section>
 
         {/* Section 2: About & Skills */}
-        <section id="about" className="py-24 px-6 sm:px-12 max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-start">
-          <div className="flex-1 space-y-8">
-            <h2 className="text-4xl sm:text-6xl font-display font-black tracking-tighter">THE <span className="text-blue-500">ENGINEER.</span></h2>
-            <p className="text-lg leading-relaxed opacity-80 max-w-xl">
-              {RESPONSE_DATA.about.text} {RESPONSE_DATA.about.details}
-            </p>
+        <section id="about" className="py-20 sm:py-32 px-6 sm:px-12 max-w-7xl mx-auto flex flex-col xl:flex-row gap-16 lg:gap-24 items-start">
+          <div className="flex-1 space-y-10 w-full">
+            <div>
+              <h2 className="text-4xl sm:text-6xl font-display font-black tracking-tighter mb-6">THE <span className="text-blue-500">ENGINEER.</span></h2>
+              <p className={cn("text-lg sm:text-xl leading-relaxed font-medium", darkMode ? "text-zinc-300" : "text-zinc-600")}>
+                {RESPONSE_DATA.about.text}
+              </p>
+              <p className={cn("text-base leading-relaxed mt-4", darkMode ? "text-zinc-400" : "text-zinc-500")}>
+                {RESPONSE_DATA.about.details}
+              </p>
+            </div>
+            
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className={cn("p-8 rounded-[20px] border transition-colors", darkMode ? "border-white/10" : "bg-white/50 border-black/5")}>
-                <h3 className="text-[10px] font-black uppercase tracking-widest opacity-50 mb-4">Education</h3>
-                <div className="space-y-4">
+              <div className={cn("group p-8 rounded-3xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl", darkMode ? "bg-white/[0.02] border-white/10 hover:bg-white/[0.04]" : "bg-black/[0.02] border-black/5 hover:bg-white")}>
+                <div className={cn("w-10 h-10 rounded-2xl flex items-center justify-center mb-6", darkMode ? "bg-white/10 text-white" : "bg-white border text-zinc-900 shadow-sm")}>
+                  <Book className="w-5 h-5" />
+                </div>
+                <h3 className="text-[10px] font-black uppercase tracking-widest opacity-50 mb-5">Education</h3>
+                <div className="space-y-5">
                   {RESPONSE_DATA.education.items.map((ed, i) => (
-                    <div key={i}><p className="font-bold text-sm tracking-tight">{ed.degree}</p><p className="text-xs opacity-70 mt-1">{ed.school}</p></div>
+                    <div key={i}>
+                      <p className={cn("font-bold text-sm tracking-tight", darkMode ? "text-zinc-100" : "text-zinc-900")}>{ed.degree}</p>
+                      <p className={cn("text-xs mt-1.5 font-medium", darkMode ? "text-zinc-400" : "text-zinc-500")}>{ed.school}</p>
+                    </div>
                   ))}
                 </div>
               </div>
-              <div className={cn("p-8 rounded-[20px] border transition-colors", darkMode ? "border-white/10" : "bg-white/50 border-black/5")}>
-                <h3 className="text-[10px] font-black uppercase tracking-widest opacity-50 mb-4">Languages & Awards</h3>
-                <div className="space-y-4">
+              <div className={cn("group p-8 rounded-3xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl", darkMode ? "bg-white/[0.02] border-white/10 hover:bg-white/[0.04]" : "bg-black/[0.02] border-black/5 hover:bg-white")}>
+                <div className={cn("w-10 h-10 rounded-2xl flex items-center justify-center mb-6", darkMode ? "bg-blue-500/20 text-blue-400" : "bg-white border border-blue-100 text-blue-600 shadow-sm")}>
+                  <Award className="w-5 h-5" />
+                </div>
+                <h3 className="text-[10px] font-black uppercase tracking-widest opacity-50 mb-5">Languages & Awards</h3>
+                <div className="space-y-5">
                   {RESPONSE_DATA.languages.items.map((l, i) => (
-                    <div key={i}><p className="font-bold text-sm tracking-tight">{l.name}</p><p className="text-xs opacity-70 mt-1">{l.level}</p></div>
+                    <div key={i} className="flex items-center justify-between">
+                      <p className={cn("font-bold text-sm tracking-tight", darkMode ? "text-zinc-100" : "text-zinc-900")}>{l.name}</p>
+                      <span className={cn("text-[10px] px-2 py-0.5 rounded-full font-bold uppercase", darkMode ? "bg-zinc-800 text-zinc-400" : "bg-zinc-100 text-zinc-500")}>{l.level}</span>
+                    </div>
                   ))}
-                  <div className="pt-4 border-t mt-4" style={{ borderColor: darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' }}>
-                     {RESPONSE_DATA.awards.items.slice(0, 2).map((a, i) => <p key={i} className="text-xs font-bold leading-tight mt-2 opacity-80">★ {a}</p>)}
+                  <div className="pt-5 border-t" style={{ borderColor: darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' }}>
+                     {RESPONSE_DATA.awards.items.slice(0, 2).map((a, i) => (
+                       <p key={i} className="text-xs font-bold leading-tight mt-3 first:mt-0 flex items-start gap-2">
+                         <Star className="w-3.5 h-3.5 mt-0.5 shrink-0 text-amber-500" fill="currentColor" />
+                         <span className={darkMode ? "text-zinc-300" : "text-zinc-700"}>{a}</span>
+                       </p>
+                     ))}
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div id="skills" className="flex-1 w-full space-y-8 scroll-mt-24">
-            <h3 className="text-2xl font-display font-black tracking-tight">TECH <span className="opacity-50">STACK</span></h3>
-            <div className="grid gap-4">
+          
+          <div id="skills" className="flex-1 w-full space-y-10 scroll-mt-32">
+            <div>
+               <h2 className="text-4xl sm:text-6xl font-display font-black tracking-tighter mb-4 text-center sm:text-left">TECH <span className="text-blue-500/50">STACK</span></h2>
+               <p className={cn("text-base font-medium text-center sm:text-left", darkMode ? "text-zinc-400" : "text-zinc-500")}>Core competencies and specialized tools.</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
               {RESPONSE_DATA.skills.sections.map((s, idx) => (
-                <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.1 }} viewport={{ once: true }} key={s.title} className={cn("p-6 rounded-[20px] border transition-all", darkMode ? "border-white/10 hover:bg-white/[0.02]" : "bg-white/50 border-black/5 hover:bg-white")}>
-                  <div className="flex items-center gap-3 mb-6">
-                    <DynamicIcon name={s.icon} className="w-5 h-5 text-blue-500" />
-                    <h4 className="font-bold tracking-tight">{s.title}</h4>
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.1 }} viewport={{ once: true }} key={s.title} className={cn("p-6 sm:p-8 rounded-3xl border transition-all duration-300 hover:shadow-lg", darkMode ? "border-white/10 bg-zinc-900/40 hover:bg-zinc-900/80" : "bg-white/60 border-black/5 hover:bg-white")}>
+                  <div className="flex items-center gap-3 mb-8">
+                    <div className={cn("p-2 rounded-xl", darkMode ? "bg-white/5" : "bg-blue-50")}>
+                      <DynamicIcon name={s.icon} className="w-5 h-5 text-blue-500" />
+                    </div>
+                    <h4 className={cn("font-bold tracking-tight text-sm", darkMode ? "text-zinc-100" : "text-zinc-900")}>{s.title}</h4>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-5">
                     {s.items.map(i => (
-                      <div key={i.name}>
+                      <div key={i.name} className="group">
                         <div className="flex justify-between items-center mb-2">
-                          <span className="text-xs font-bold">{i.name}</span>
-                          <span className="text-[10px] font-mono opacity-40">{i.rating}/5</span>
+                          <span className={cn("text-xs font-bold transition-colors", darkMode ? "text-zinc-300 group-hover:text-white" : "text-zinc-600 group-hover:text-black")}>{i.name}</span>
+                          <span className={cn("text-[10px] font-mono", darkMode ? "text-zinc-500" : "text-zinc-400")}>{i.rating}.0</span>
                         </div>
-                        <div className="flex gap-1 h-1">
-                          {[1,2,3,4,5].map(st => <div key={st} className={cn("flex-1 rounded-[2px]", st <= i.rating ? "bg-blue-500" : (darkMode ? "bg-white/10" : "bg-black/5"))} />)}
+                        <div className={cn("flex gap-1 h-1.5 overflow-hidden rounded-full", darkMode ? "bg-white/5" : "bg-black/5")}>
+                          <motion.div 
+                            initial={{ width: 0 }} 
+                            whileInView={{ width: `${(i.rating / 5) * 100}%` }} 
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, delay: 0.2 + idx * 0.1, ease: "easeOut" }}
+                            className="h-full bg-gradient-to-r from-blue-500 to-blue-400 rounded-full" 
+                          />
                         </div>
                       </div>
                     ))}
@@ -422,28 +528,35 @@ export default function App() {
         </section>
 
         {/* Section 3: Experience */}
-        <section id="experience" className="py-24 px-6 sm:px-12 max-w-5xl mx-auto">
+        <section id="experience" className="py-20 sm:py-32 px-6 sm:px-12 max-w-5xl mx-auto">
           <div className="text-center mb-20 space-y-4">
-            <h2 className="text-4xl sm:text-6xl font-display font-black tracking-tighter">CAREER <span className="text-blue-500 opacity-50">PATH</span></h2>
-            <p className="opacity-70 text-sm">A technical overview of my professional timeline.</p>
+            <h2 className="text-4xl sm:text-6xl font-display font-black tracking-tighter">CAREER <span className="text-blue-500/50">PATH</span></h2>
+            <p className={cn("text-base font-medium", darkMode ? "text-zinc-400" : "text-zinc-500")}>A technical overview of my professional timeline.</p>
           </div>
-          <div className="flex flex-col border-t" style={{ borderColor: darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }}>
+          <div className="relative border-l-2 ml-3 md:ml-6 space-y-12 pb-12" style={{ borderColor: darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }}>
             {RESPONSE_DATA.experience.map((exp, i) => (
               <motion.div 
-                initial={{ opacity: 0, y: 10 }} 
-                whileInView={{ opacity: 1, y: 0 }} 
+                initial={{ opacity: 0, x: -20 }} 
+                whileInView={{ opacity: 1, x: 0 }} 
                 viewport={{ once: true }} 
-                transition={{ delay: i * 0.1, duration: 0.5 }} 
+                transition={{ delay: i * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }} 
                 key={i} 
-                className={cn("group flex flex-col md:flex-row gap-4 md:gap-12 py-10 border-b transition-colors duration-300", darkMode ? "border-white/10 hover:bg-white/[0.02]" : "border-black/10 hover:bg-black/[0.02]")}
+                className="relative pl-8 md:pl-16 group"
               >
-                <div className="shrink-0 w-full md:w-1/4 pt-1">
-                  <p className="font-mono text-[11px] opacity-50 uppercase tracking-widest">{exp.period}</p>
-                  <p className="font-bold text-sm tracking-tight mt-1 text-blue-500">{exp.company}</p>
+                {/* Timeline Dot */}
+                <div className={cn("absolute left-0 -translate-x-[17px] sm:-translate-x-[21px] top-1 w-8 h-8 sm:w-10 sm:h-10 rounded-full border-[4px] sm:border-[6px] flex items-center justify-center transition-colors duration-300", darkMode ? "bg-zinc-950 border-zinc-900 group-hover:border-blue-500/30" : "bg-white border-zinc-50 group-hover:border-blue-100")}>
+                  <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-blue-500 transition-transform duration-300 group-hover:scale-[1.5]" />
                 </div>
-                <div className="flex-1 space-y-3">
-                  <h3 className="text-2xl font-bold tracking-tight">{exp.role}</h3>
-                  <p className="text-sm opacity-70 leading-relaxed font-medium">{exp.description}</p>
+                
+                <div className={cn("flex flex-col md:flex-row gap-6 md:gap-12 p-6 sm:p-8 rounded-3xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl", darkMode ? "border-white/10 bg-white/[0.02] hover:bg-white/[0.04]" : "border-black/5 bg-black/[0.02] hover:bg-white hover:border-black/10")}>
+                   <div className="shrink-0 w-full md:w-1/3">
+                     <span className={cn("inline-block px-3 py-1.5 text-[10px] uppercase font-bold tracking-widest rounded-full mb-4 shadow-sm", darkMode ? "bg-blue-500/10 text-blue-400 ring-1 ring-blue-500/20" : "bg-blue-50 text-blue-600 ring-1 ring-blue-100")}>{exp.period}</span>
+                     <p className={cn("font-bold text-lg tracking-tight", darkMode ? "text-zinc-100" : "text-zinc-900")}>{exp.company}</p>
+                   </div>
+                   <div className="flex-1 space-y-4 pt-1">
+                     <h3 className="text-2xl font-bold tracking-tight text-blue-500">{exp.role}</h3>
+                     <p className={cn("text-sm sm:text-base leading-relaxed font-medium", darkMode ? "text-zinc-400" : "text-zinc-600")}>{exp.description}</p>
+                   </div>
                 </div>
               </motion.div>
             ))}
@@ -451,31 +564,31 @@ export default function App() {
         </section>
 
         {/* Section 4: Projects */}
-        <section id="projects" className="py-24 px-6 sm:px-12 max-w-7xl mx-auto">
+        <section id="projects" className="py-20 sm:py-32 px-6 sm:px-12 max-w-7xl mx-auto">
           <div className="flex items-center flex-col text-center mb-20 gap-4">
-              <h2 className="text-4xl sm:text-6xl font-display font-black tracking-tighter">CASE <span className="text-blue-500 opacity-50">STUDIES</span></h2>
-              <p className="opacity-70 text-sm max-w-lg">Interactive data models, robust architectures, and analytical deep dives.</p>
+              <h2 className="text-4xl sm:text-6xl font-display font-black tracking-tighter">CASE <span className="text-blue-500/50">STUDIES</span></h2>
+              <p className={cn("text-base font-medium max-w-lg", darkMode ? "text-zinc-400" : "text-zinc-500")}>Interactive data models, robust architectures, and analytical deep dives.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10">
             {RESPONSE_DATA.projects.map((proj, i) => (
               <motion.div 
                 initial={{ opacity: 0, y: 20 }} 
                 whileInView={{ opacity: 1, y: 0 }} 
                 viewport={{ once: true }} 
-                transition={{ delay: i * 0.1, duration: 0.6 }} 
+                transition={{ delay: i * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }} 
                 key={proj.title} 
                 layout 
                 onClick={() => setExpandedProject(expandedProject === proj.title ? null : proj.title)} 
                 className={cn(
-                  "group cursor-pointer p-8 sm:p-12 relative overflow-hidden transition-all duration-500 rounded-[24px] border hover:scale-[1.03] hover:-translate-y-2 hover:shadow-2xl", 
-                  darkMode ? "border-white/10 hover:bg-white/[0.04] hover:border-blue-500/70 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)]" : "border-black/10 hover:bg-white bg-white/50 hover:border-blue-500/60 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)]"
+                  "group cursor-pointer p-6 sm:p-10 relative overflow-hidden transition-all duration-500 rounded-[32px] border hover:-translate-y-2 hover:shadow-2xl", 
+                  darkMode ? "border-white/10 bg-white/[0.02] hover:bg-white/[0.04] hover:border-blue-500/50 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)]" : "border-black/5 bg-black/[0.02] hover:bg-white hover:border-blue-500/30 hover:shadow-[0_20px_40px_rgba(59,130,246,0.15)]"
                 )}
               >
                 <div className="flex flex-col h-full gap-8 relative z-10">
                   <div className="space-y-5">
                     <div className="flex justify-between items-start gap-4">
-                      <h3 className="text-3xl font-bold tracking-tight">{proj.title}</h3>
+                      <h3 className={cn("text-3xl font-bold tracking-tight", darkMode ? "text-zinc-100" : "text-zinc-900")}>{proj.title}</h3>
                       {proj.videoUrl && (
                         <button onClick={(e) => { e.stopPropagation(); setSelectedVideo(proj.videoUrl); }} className="w-12 h-12 shrink-0 rounded-full border border-blue-500 text-blue-500 flex items-center justify-center hover:bg-blue-500 hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
                           <Play className="w-5 h-5 fill-current ml-0.5" />
@@ -483,7 +596,7 @@ export default function App() {
                       )}
                     </div>
                     {proj.metrics && <span className={cn("inline-block px-3 py-1 text-[10px] uppercase font-bold tracking-widest text-blue-500 rounded-full", darkMode ? "bg-blue-500/10" : "bg-blue-50")}>{proj.metrics}</span>}
-                    <p className="text-sm opacity-80 leading-relaxed font-medium">{proj.description}</p>
+                    <p className={cn("text-sm leading-relaxed font-medium", darkMode ? "text-zinc-400" : "text-zinc-600")}>{proj.description}</p>
                   </div>
 
                   <AnimatePresence>
@@ -497,11 +610,11 @@ export default function App() {
                         <div className="grid grid-cols-1 gap-6 pt-4 border-t" style={{ borderColor: darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }}>
                           <div>
                             <p className="text-[10px] uppercase font-bold text-rose-500 mb-2 tracking-widest">Challenge</p>
-                            <p className="text-xs opacity-70 leading-relaxed font-medium">{proj.deepDive.challenges}</p>
+                            <p className={cn("text-xs leading-relaxed font-medium", darkMode ? "text-zinc-400" : "text-zinc-600")}>{proj.deepDive.challenges}</p>
                           </div>
                           <div>
                             <p className="text-[10px] uppercase font-bold text-emerald-500 mb-2 tracking-widest">Solution</p>
-                            <p className="text-xs opacity-70 leading-relaxed font-medium">{proj.deepDive.solutions}</p>
+                            <p className={cn("text-xs leading-relaxed font-medium", darkMode ? "text-zinc-400" : "text-zinc-600")}>{proj.deepDive.solutions}</p>
                           </div>
                         </div>
                       </motion.div>
@@ -524,20 +637,30 @@ export default function App() {
           </div>
         </section>
 
-        {/* Footer */}
-        <footer id="contact" className={cn("py-16 md:py-24 border-t text-center space-y-8 backdrop-blur-3xl mt-12 transition-colors", darkMode ? "bg-black/40 border-white/5" : "bg-white/60 border-black/5 text-zinc-900")}>
-          <div className="max-w-xl mx-auto space-y-6">
-            <h2 className="text-4xl font-display font-black tracking-tighter">LET'S CONNECT</h2>
-            <div className={cn("p-6 rounded-3xl border transition-colors inline-block", darkMode ? "bg-white/5 border-white/10" : "bg-white border-black/5 shadow-xl")}>
-              <p className="font-bold text-xl sm:text-2xl select-all">{RESPONSE_DATA.contact.email}</p>
-              <p className="text-[10px] uppercase font-black tracking-[0.3em] opacity-40 mt-2">Available for Opportunities</p>
+        {/* Section 5: Contact / Footer */}
+        <footer id="contact" className={cn("py-16 sm:py-24 border-t mt-12 transition-colors", darkMode ? "border-white/10 bg-black/20" : "border-black/5 bg-zinc-50/50")}>
+          <div className="max-w-5xl mx-auto px-6 sm:px-12 flex flex-col items-center text-center">
+            <div className={cn("p-10 sm:p-20 w-full rounded-[40px] border relative overflow-hidden shadow-2xl transition-all duration-500 mb-16", darkMode ? "bg-gradient-to-b from-white/10 to-transparent border-white/10" : "bg-gradient-to-b from-blue-50 to-transparent border-black/5")}>
+               <div className="absolute inset-0 bg-grid-white/[0.02]" />
+               <div className={cn("absolute inset-x-0 -top-px h-px w-3/4 mx-auto", darkMode ? "bg-gradient-to-r from-transparent via-white/30 to-transparent" : "bg-gradient-to-r from-transparent via-black/10 to-transparent")} />
+               
+               <h2 className="text-5xl sm:text-7xl font-display font-black tracking-tighter mb-6 relative z-10 leading-[1.1]">LET'S WORK <br className="hidden sm:block"/><span className="text-blue-500 flex items-center justify-center gap-4 mt-2">TOGETHER <ArrowUpRight className="w-10 h-10 sm:w-16 sm:h-16 text-blue-500" strokeWidth={3} /></span></h2>
+               
+               <p className={cn("max-w-md mx-auto mb-10 relative z-10 text-base sm:text-lg font-medium leading-relaxed", darkMode ? "text-zinc-300" : "text-zinc-600")}>Currently accepting new freelance opportunities. Let's build something exceptional.</p>
+               
+               <a href={`mailto:${RESPONSE_DATA.contact.email}`} className="relative z-10 px-8 py-5 bg-blue-500 text-white rounded-full font-bold tracking-widest text-sm uppercase hover:bg-blue-600 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(59,130,246,0.3)] transition-all duration-300 flex items-center justify-center gap-3 mx-auto w-max group">
+                 <Mail className="w-5 h-5 transition-transform group-hover:scale-110" /> GET IN TOUCH
+               </a>
             </div>
-            <div className="flex justify-center gap-4 mt-8">
-              <a href={RESPONSE_DATA.contact.socials[0].link} target="_blank" className={cn("w-14 h-14 rounded-full border flex items-center justify-center hover:scale-110 transition-all", darkMode ? "border-white/20 hover:bg-white hover:text-black text-white" : "border-black/10 hover:bg-black hover:text-white text-zinc-900 bg-white shadow-md")}><Linkedin className="w-5 h-5" /></a>
-              <a href="#" className={cn("w-14 h-14 rounded-full border flex items-center justify-center hover:scale-110 transition-all", darkMode ? "border-white/20 hover:bg-white hover:text-black text-white" : "border-black/10 hover:bg-black hover:text-white text-zinc-900 bg-white shadow-md")}><Github className="w-5 h-5" /></a>
+
+            <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6 pt-12 border-t" style={{ borderColor: darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }}>
+              <p className={cn("text-xs sm:text-sm font-bold tracking-tight uppercase", darkMode ? "text-zinc-500" : "text-zinc-400")}>© {new Date().getFullYear()} ISLAM RAMADAN. All rights reserved.</p>
+              <div className="flex justify-center gap-8">
+                <a href={RESPONSE_DATA.contact.socials[0].link} target="_blank" rel="noopener noreferrer" className={cn("transition-colors uppercase tracking-widest text-[10px] font-bold", darkMode ? "text-zinc-400 hover:text-white" : "text-zinc-500 hover:text-black")}>LinkedIn</a>
+                <a href={RESPONSE_DATA.contact.socials[1].link} target="_blank" rel="noopener noreferrer" className={cn("transition-colors uppercase tracking-widest text-[10px] font-bold", darkMode ? "text-zinc-400 hover:text-white" : "text-zinc-500 hover:text-black")}>GitHub</a>
+              </div>
             </div>
           </div>
-          <p className="text-[9px] uppercase tracking-widest font-black opacity-30">© 2026 Islam Ramadan. Crafted in AI Studio.</p>
         </footer>
       </main>
 
