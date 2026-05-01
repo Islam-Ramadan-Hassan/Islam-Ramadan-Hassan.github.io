@@ -326,7 +326,7 @@ export default function App() {
                 <motion.img 
                    src={photoSrc} 
                    alt="Islam Ramadan" 
-                   className="w-[95%] h-[95%] object-bottom object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.6)] contrast-[1.2] saturate-[1.15] brightness-[1.05] transition-transform duration-1000 group-hover:scale-[1.03] origin-bottom relative z-10"
+                   className="w-full h-full object-bottom object-contain pointer-events-none filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.6)] contrast-[1.2] saturate-[1.15] brightness-[1.05] transition-transform duration-1000 group-hover:scale-[1.03] origin-bottom relative z-10"
                  />
               </div>
             </motion.div>
