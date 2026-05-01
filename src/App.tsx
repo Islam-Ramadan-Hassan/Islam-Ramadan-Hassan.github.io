@@ -7,7 +7,6 @@ import {
 } from 'lucide-react';
 import { cn } from './lib/utils';
 import { COMMANDS, RESPONSE_DATA, INITIAL_GREETING, type Message, type Command } from './constants';
-import photoSrc from '../public/photo-nobg.png';
 
 const DynamicIcon = ({ name, className }: { name: string, className?: string }) => {
   const icons: Record<string, any> = { User, Code2, Briefcase, History, Mail, Monitor, Database, Camera, Gamepad2, Plane, Book, Award, BarChart3, PieChart, Brain, Globe };
@@ -324,7 +323,7 @@ export default function App() {
                 {/* Photo Container */}
               <div className="relative z-10 flex items-end justify-center overflow-hidden rounded-t-[1000px] rounded-b-[40px] w-full h-full p-2 sm:p-4 pt-12">
                 <motion.img 
-                   src={photoSrc} 
+                   src="./photo-nobg.png" 
                    alt="Islam Ramadan" 
                    className="w-[95%] h-[95%] object-bottom object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.6)] contrast-[1.2] saturate-[1.15] brightness-[1.05] transition-transform duration-1000 group-hover:scale-[1.03] origin-bottom relative z-10"
                  />
