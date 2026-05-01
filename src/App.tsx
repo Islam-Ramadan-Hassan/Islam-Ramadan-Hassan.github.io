@@ -39,19 +39,18 @@ const StreamingText = ({ text }: { text: string }) => {
 const ChatBubble: React.FC<{msg: Message, darkMode: boolean}> = ({ msg, darkMode }) => {
   return (
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} role="article" className={cn("flex w-full group mb-4", msg.sender === 'user' ? "justify-end" : "justify-start")}>
-      <div className={cn("max-w-[90%] relative", msg.sender === 'user' ? "text-right" : "text-left")}>
-        <div className="flex items-center gap-2 mb-1 px-1">
-          {msg.sender === 'ai' && <span className={cn("text-[9px] font-black uppercase tracking-[0.2em] opacity-40", darkMode ? "text-white" : "text-black")}>Assistant Core</span>}
-          <span className={cn("text-[8px] font-mono opacity-30")}>{msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-          {msg.sender === 'user' && <span className={cn("text-[9px] font-black uppercase tracking-[0.2em] opacity-40", darkMode ? "text-white" : "text-black")}>Inquiry</span>}
+      <div className={cn("max-w-[85%] relative", msg.sender === 'user' ? "text-right" : "text-left")}>
+        <div className={cn("flex items-center gap-2 mb-1.5 px-1", msg.sender === 'user' ? "justify-end" : "justify-start")}>
+          <span className={cn("text-[10px] font-medium opacity-50")}>
+            {msg.sender === 'ai' ? 'AI Assistant' : 'You'} • {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+          </span>
         </div>
-        <div className={cn("rounded-[24px] px-5 py-4 transition-all duration-500 relative overflow-hidden", 
+        <div className={cn("rounded-2xl px-4 py-3 transition-colors duration-300 relative overflow-hidden", 
             msg.sender === 'user' 
-              ? (darkMode ? "bg-white text-black shadow-xl" : "bg-zinc-900 text-white shadow-xl")
-              : (darkMode ? "bg-zinc-900/80 text-zinc-100 border border-white/10 backdrop-blur-3xl" : "bg-white/90 text-zinc-900 border border-black/5 shadow-sm backdrop-blur-3xl")
+              ? (darkMode ? "bg-blue-600 text-white shadow-md shadow-blue-900/20" : "bg-blue-600 text-white shadow-sm shadow-blue-500/10")
+              : (darkMode ? "bg-zinc-800/80 text-zinc-100 border border-white/5 backdrop-blur-xl" : "bg-white text-zinc-900 border border-black/5 shadow-sm backdrop-blur-xl")
           )}>
-          {msg.sender === 'ai' && <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />}
-          {msg.text && <p className={cn("leading-relaxed text-[14px] font-medium tracking-tight", darkMode && msg.sender === 'ai' ? "text-zinc-300" : "")}>{msg.sender === 'ai' ? <StreamingText text={msg.text} /> : msg.text}</p>}
+          {msg.text && <p className={cn("leading-relaxed text-[15px]", darkMode && msg.sender === 'ai' ? "text-zinc-200" : "")}>{msg.sender === 'ai' ? <StreamingText text={msg.text} /> : msg.text}</p>}
           {msg.content && <div className="mt-3 text-sm">{msg.content}</div>}
         </div>
       </div>
@@ -71,6 +70,7 @@ export default function App() {
   // Chat State
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
   const chatScrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -133,6 +133,7 @@ export default function App() {
   }, []);
 
   const handleCommand = async (command: Command | {id: string, label: string}) => {
+    setIsMenuOpen(false);
     const userMsg: Message = { id: Date.now().toString(), sender: 'user', text: command.label, timestamp: new Date() };
     setMessages(prev => [...prev, userMsg]);
     setIsTyping(true);
@@ -184,6 +185,7 @@ export default function App() {
 
   const submitQuery = () => {
     if (!inputRef.current?.value.trim()) return;
+    setIsMenuOpen(false);
     const val = inputRef.current.value.trim().toLowerCase();
     const mapMatch = [...COMMANDS].find(c => c.label.toLowerCase().includes(val) || c.id === val);
     handleCommand(mapMatch || { id: 'unknown', label: inputRef.current.value });
@@ -573,18 +575,21 @@ export default function App() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10">
             {RESPONSE_DATA.projects.map((proj, i) => (
               <motion.div 
-                initial={{ opacity: 0, y: 20 }} 
-                whileInView={{ opacity: 1, y: 0 }} 
-                viewport={{ once: true }} 
-                transition={{ delay: i * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }} 
+                initial={{ opacity: 0, y: 30, scale: 0.95 }} 
+                whileInView={{ opacity: 1, y: 0, scale: 1 }} 
+                whileHover={{ scale: 1.03, zIndex: 20 }}
+                viewport={{ once: true, margin: "-50px" }} 
+                transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }} 
                 key={proj.title} 
-                layout 
+                layout="position"
                 onClick={() => setExpandedProject(expandedProject === proj.title ? null : proj.title)} 
                 className={cn(
-                  "group cursor-pointer p-6 sm:p-10 relative overflow-hidden transition-all duration-500 rounded-[32px] border hover:-translate-y-2 hover:shadow-2xl", 
-                  darkMode ? "border-white/10 bg-white/[0.02] hover:bg-white/[0.04] hover:border-blue-500/50 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)]" : "border-black/5 bg-black/[0.02] hover:bg-white hover:border-blue-500/30 hover:shadow-[0_20px_40px_rgba(59,130,246,0.15)]"
+                  "group cursor-pointer p-6 sm:p-10 relative overflow-hidden transition-colors duration-500 rounded-[32px] border", 
+                  darkMode ? "border-white/10 bg-white/[0.02] hover:bg-zinc-900/80 hover:border-blue-500/50 hover:shadow-[0_0_80px_rgba(59,130,246,0.25)]" : "border-black/5 bg-black/[0.02] hover:bg-white hover:border-blue-500/40 hover:shadow-[0_20px_80px_rgba(59,130,246,0.2)]"
                 )}
               >
+                <div className={cn("absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none", darkMode ? "bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.15),transparent_50%)]" : "bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.08),transparent_50%)]")} />
+                
                 <div className="flex flex-col h-full gap-8 relative z-10">
                   <div className="space-y-5">
                     <div className="flex justify-between items-start gap-4">
@@ -602,10 +607,11 @@ export default function App() {
                   <AnimatePresence>
                     {expandedProject === proj.title && proj.deepDive && (
                       <motion.div 
-                        initial={{ opacity: 0, height: 0 }} 
-                        animate={{ opacity: 1, height: 'auto' }} 
-                        exit={{ opacity: 0, height: 0 }} 
-                        className="space-y-6 overflow-hidden"
+                        initial={{ opacity: 0, height: 0, marginTop: 0 }} 
+                        animate={{ opacity: 1, height: 'auto', marginTop: 24 }} 
+                        exit={{ opacity: 0, height: 0, marginTop: 0 }} 
+                        transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                        className="overflow-hidden"
                       >
                         <div className="grid grid-cols-1 gap-6 pt-4 border-t" style={{ borderColor: darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }}>
                           <div>
@@ -690,15 +696,15 @@ export default function App() {
               darkMode ? "bg-zinc-950/80 border-white/10" : "bg-white/80 border-white/60 shadow-xl"
             )}
           >
-            <div className={cn("px-6 py-5 border-b flex items-center gap-4", darkMode ? "bg-white/5 border-white/10" : "bg-black/5 border-black/5")}>
-              <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center shrink-0">
-                <BarChart3 className="w-5 h-5 text-white" />
+            <div className={cn("px-5 py-4 border-b flex items-center gap-4", darkMode ? "bg-zinc-900/50 border-white/10" : "bg-white/50 border-black/5")}>
+              <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center shrink-0 shadow-sm shadow-blue-500/20">
+                <Sparkles className="w-4 h-4 text-white" />
               </div>
               <div className="flex-1">
-                <p className="font-bold text-sm tracking-tight text-current">ISLAM.AI</p>
-                <div className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"/><p className={cn("text-[9px] uppercase tracking-widest font-black", darkMode ? "text-zinc-500" : "text-zinc-500")}>Assistant Active</p></div>
+                <p className={cn("font-semibold text-sm tracking-tight text-current", darkMode ? "text-zinc-100" : "text-zinc-900")}>AI Assistant</p>
+                <div className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"/><p className={cn("text-xs font-medium", darkMode ? "text-zinc-400" : "text-zinc-500")}>Online</p></div>
               </div>
-              <button onClick={() => setIsChatOpen(false)} className={cn("w-8 h-8 rounded-full flex items-center justify-center border transition-all", darkMode ? "border-white/10 text-white/50 hover:text-white" : "border-black/5 text-black/50 hover:bg-black/5")}><ChevronDown className="w-4 h-4"/></button>
+              <button onClick={() => setIsChatOpen(false)} className={cn("w-8 h-8 rounded-full flex items-center justify-center transition-all hover:scale-105 active:scale-95", darkMode ? "text-white/50 hover:text-white hover:bg-white/10" : "text-black/50 hover:text-black hover:bg-black/5")}><ChevronDown className="w-5 h-5"/></button>
             </div>
 
             <div ref={chatScrollRef} className="flex-1 overflow-y-auto p-5 scroll-smooth scrollbar-hide">
@@ -713,16 +719,37 @@ export default function App() {
             </div>
 
             <div className={cn("p-4 border-t", darkMode ? "bg-zinc-950 border-white/10" : "bg-white border-black/5")}>
-              <div className="flex gap-2 overflow-x-auto pb-3 scrollbar-hide snap-x">
-                {COMMANDS.map(cmd => (
-                  <button key={cmd.id} onClick={() => handleCommand(cmd as Command)} className={cn("shrink-0 snap-start px-4 py-2 rounded-[16px] border text-[10px] uppercase font-black tracking-widest flex items-center gap-1.5 hover:scale-105 transition-all outline-none focus:ring-2 focus:ring-blue-500/50", darkMode ? "bg-zinc-900 border-white/10 hover:bg-white/10 text-white/80 hover:text-white shadow-sm" : "bg-zinc-100 border-transparent hover:bg-zinc-200 text-zinc-600 hover:text-zinc-900 shadow-sm")}>
-                    <DynamicIcon name={cmd.icon!} className="w-3" /> {cmd.label}
-                  </button>
-                ))}
-              </div>
-              <div className="relative mt-2">
-                <input ref={inputRef} onKeyDown={e => e.key === 'Enter' && submitQuery()} type="text" placeholder="Ask about my experience..." className={cn("w-full pl-5 pr-12 py-3.5 rounded-[20px] text-sm focus:outline-none transition-all font-medium border border-transparent shadow-inner", darkMode ? "bg-zinc-900 text-white placeholder:text-zinc-600 focus:bg-zinc-800 focus:border-white/10" : "bg-zinc-100/80 text-zinc-900 placeholder:text-zinc-500 focus:bg-white focus:border-black/5 focus:shadow-md")} />
-                <button onClick={submitQuery} className="absolute right-2 top-2 p-1.5 rounded-[14px] bg-blue-600 text-white hover:bg-blue-700 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"><ArrowRight className="w-4 h-4" /></button>
+              <AnimatePresence>
+                {isMenuOpen && (
+                  <motion.div 
+                    initial={{ opacity: 0, height: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, height: 'auto', scale: 1 }}
+                    exit={{ opacity: 0, height: 0, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                    className="flex flex-col gap-2 pb-3 origin-bottom overflow-hidden"
+                  >
+                    {COMMANDS.map(cmd => (
+                      <button key={cmd.id} onClick={() => handleCommand(cmd as Command)} className={cn("w-full px-4 py-2.5 rounded-xl border text-[13px] font-medium flex items-center justify-between transition-all outline-none focus:ring-2 focus:ring-blue-500/50 group", darkMode ? "bg-zinc-800/30 border-white/5 hover:bg-zinc-800/80 text-zinc-300 hover:text-white shadow-sm" : "bg-zinc-50 border-black/5 hover:bg-white text-zinc-700 hover:text-zinc-900 shadow-sm hover:shadow-md")}>
+                        <div className="flex items-center gap-3">
+                          <div className={cn("p-1.5 rounded-lg transition-colors", darkMode ? "bg-white/5 group-hover:bg-blue-500/20 group-hover:text-blue-400" : "bg-black/5 group-hover:bg-blue-50 group-hover:text-blue-600")}><DynamicIcon name={cmd.icon!} className="w-4 h-4" /></div>
+                          {cmd.label}
+                        </div>
+                        <ArrowUpRight className={cn("w-3.5 h-3.5 opacity-0 -translate-x-2 transition-all", darkMode ? "group-hover:opacity-50 group-hover:translate-x-0 group-hover:text-blue-400" : "group-hover:opacity-50 group-hover:translate-x-0 group-hover:text-blue-600")} />
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <div className="relative flex items-center">
+                <button 
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  className={cn("absolute left-2 p-2 rounded-full transition-colors flex items-center justify-center", darkMode ? "text-zinc-400 hover:text-white hover:bg-white/10" : "text-zinc-500 hover:text-zinc-900 hover:bg-black/5")}
+                >
+                  <Plus className={cn("w-5 h-5 transition-transform duration-300", isMenuOpen ? "rotate-45" : "rotate-0")} />
+                </button>
+                <input ref={inputRef} onKeyDown={e => e.key === 'Enter' && submitQuery()} type="text" placeholder="Ask me something..." className={cn("w-full pl-12 pr-14 py-3.5 rounded-full text-[15px] focus:outline-none transition-all border shadow-sm", darkMode ? "bg-zinc-800/50 border-white/10 text-white placeholder:text-zinc-500 focus:bg-zinc-800 focus:border-blue-500/50" : "bg-zinc-50 border-black/10 text-zinc-900 placeholder:text-zinc-400 focus:bg-white focus:border-blue-500/50 focus:shadow-md")} />
+                <button onClick={submitQuery} className="absolute right-2 p-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"><ArrowUp className="w-4 h-4" /></button>
               </div>
             </div>
           </motion.div>

@@ -15,14 +15,14 @@ export interface Message {
   typing?: boolean;
 }
 
-export const INITIAL_GREETING = "Hello. I am the Islam.AI Interface—a specialized intelligence terminal designed to provide deep insight into Islam's professional data landscape. How shall we begin our inquiry?";
+export const INITIAL_GREETING = "Hi there! I'm Islam's AI assistant. I can help you easily explore his portfolio, skills, and experience. What would you like to know?";
 
 export const COMMANDS: Command[] = [
-  { id: 'about', label: 'Access Biography', icon: 'User' },
-  { id: 'skills', label: 'Query Tech Stack', icon: 'Code2' },
-  { id: 'projects', label: 'Inspect Artifacts', icon: 'BarChart3' },
-  { id: 'experience', label: 'Timeline Audit', icon: 'History' },
-  { id: 'contact', label: 'Initialize Contact', icon: 'Mail' },
+  { id: 'about', label: 'About Islam', icon: 'User' },
+  { id: 'skills', label: 'Skills & Tools', icon: 'Code2' },
+  { id: 'projects', label: 'View Projects', icon: 'BarChart3' },
+  { id: 'experience', label: 'Experience', icon: 'History' },
+  { id: 'contact', label: 'Contact Him', icon: 'Mail' },
 ];
 
 export const RESPONSE_DATA = {
@@ -111,12 +111,6 @@ export const RESPONSE_DATA = {
     }
   ],
   experience: [
-    {
-      role: "Data Analyst Trainee",
-      company: "Digilians - الرواد الرقميون",
-      period: "Dec 2025 - Present",
-      description: "Designing relational database schemas, authoring advanced SQL queries, and building interactive dashboards for decision-making."
-    },
     {
       role: "AI & Data Analytics Training",
       company: "Digilians Initiative",
