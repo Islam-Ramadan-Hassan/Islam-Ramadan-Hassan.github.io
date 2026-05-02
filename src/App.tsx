@@ -8,6 +8,10 @@ import {
 import { cn } from './lib/utils';
 import { COMMANDS, RESPONSE_DATA, INITIAL_GREETING, type Message, type Command } from './constants';
 import { photoSrc } from './assets/photoData';
+import StarfieldCanvas from './components/StarfieldCanvas';
+import { AuroraBackground } from './components/AuroraBackground';
+import { GithubRepos } from './components/GithubRepos';
+import { InteractiveProjectCard } from './components/InteractiveProjectCard';
 
 const DynamicIcon = ({ name, className }: { name: string, className?: string }) => {
   const icons: Record<string, any> = { User, Code2, Briefcase, History, Mail, Monitor, Database, Camera, Gamepad2, Plane, Book, Award, BarChart3, PieChart, Brain, Globe };
@@ -286,11 +290,11 @@ export default function App() {
               </div>
             </div>
             
-            <motion.h1 style={{ x: parallaxX, y: parallaxY }} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-display font-black tracking-tighter leading-[1] lg:leading-[0.9]">
-              <span className={cn("block text-2xl lg:text-3xl mb-4 font-bold tracking-tight", darkMode ? "text-zinc-500" : "text-zinc-400")}>I'm Islam,</span>
-              <span className="block h-[1.3em] overflow-hidden relative">
+            <motion.h1 style={{ x: parallaxX, y: parallaxY }} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-display font-light tracking-tight leading-[1.1] lg:leading-[1]">
+              <span className={cn("block text-2xl lg:text-3xl mb-4 font-semibold tracking-tight", darkMode ? "text-zinc-500" : "text-zinc-400")}>I'm Islam,</span>
+              <span className="block h-[1.3em] overflow-hidden relative font-semibold">
                 <AnimatePresence mode="popLayout">
-                  <motion.span key={currentRoleIndex} initial={{ y: "100%", opacity: 0 }} animate={{ y: "0%", opacity: 1 }} exit={{ y: "-100%", opacity: 0 }} transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }} className="absolute inset-0 flex items-center justify-center lg:justify-start whitespace-nowrap bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-600 dark:from-blue-400 dark:via-indigo-300 dark:to-blue-400 bg-[length:200%_auto] animate-gradient">
+                  <motion.span key={currentRoleIndex} initial={{ y: "100%", opacity: 0 }} animate={{ y: "0%", opacity: 1 }} exit={{ y: "-100%", opacity: 0 }} transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }} className="absolute inset-0 flex items-center justify-center lg:justify-start whitespace-nowrap bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-600 dark:from-blue-400 dark:via-indigo-300 dark:to-blue-400 bg-[length:200%_auto] animate-gradient tracking-tighter">
                     {roles[currentRoleIndex]}
                   </motion.span>
                 </AnimatePresence>
@@ -298,37 +302,37 @@ export default function App() {
             </motion.h1>
 
             <div className="space-y-8 max-w-xl mx-auto lg:mx-0">
-              <p className={cn("text-lg sm:text-xl font-medium leading-relaxed", darkMode ? "text-zinc-300/80" : "text-zinc-600")}>
-                Transforming complex datasets into <span className={cn("font-bold text-transparent bg-clip-text bg-gradient-to-r", darkMode ? "from-white to-white/70" : "from-black to-black/70")}>actionable intelligence</span>.
+              <p className={cn("text-lg sm:text-xl font-light leading-relaxed", darkMode ? "text-zinc-300/90" : "text-zinc-600")}>
+                Transforming complex datasets into <span className={cn("font-medium text-transparent bg-clip-text bg-gradient-to-r", darkMode ? "from-white to-white/70" : "from-black to-black/70")}>actionable intelligence</span>.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className={cn("group flex flex-col gap-4 p-5 rounded-3xl border transition-all duration-300 hover:scale-[1.03] hover:shadow-xl", darkMode ? "bg-white/[0.02] border-white/10 hover:bg-white/[0.05] hover:border-white/20 hover:shadow-black/50" : "bg-black/[0.02] border-black/5 hover:bg-white hover:border-black/10 hover:shadow-blue-900/5")}>
-                    <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:-translate-y-1", darkMode ? "bg-gradient-to-br from-white/10 to-white/5 text-white ring-1 ring-white/10" : "bg-white text-zinc-900 shadow-sm border border-black/5 ring-1 ring-black/5")}>
-                      <Database className="w-5 h-5" />
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div className={cn("group flex flex-col gap-5 p-6 rounded-[32px] border transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl backdrop-blur-md", darkMode ? "bg-white/[0.02] border-white/10 hover:bg-white/[0.05] hover:border-white/20 hover:shadow-[0_20px_40px_rgba(0,0,0,0.5)]" : "bg-white border-black/5 hover:border-black/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)]")}>
+                    <div className={cn("w-12 h-12 rounded-[20px] flex items-center justify-center shrink-0 transition-transform duration-500 group-hover:scale-110", darkMode ? "bg-white/5 text-white ring-1 ring-white/10" : "bg-black/5 text-zinc-900 ring-1 ring-black/5")}>
+                      <Database className="w-5 h-5 opacity-80" />
                     </div>
                     <div>
-                      <p className={cn("font-bold text-sm tracking-tight", darkMode ? "text-zinc-100" : "text-zinc-900")}>Data Architecture</p>
-                      <p className={cn("text-xs font-medium mt-1.5 leading-relaxed", darkMode ? "text-zinc-400" : "text-zinc-500")}>Designing robust scalable structures</p>
+                      <p className={cn("font-semibold text-sm tracking-tight", darkMode ? "text-zinc-100" : "text-zinc-900")}>Data Architecture</p>
+                      <p className={cn("text-xs font-light mt-2 leading-relaxed opacity-80", darkMode ? "text-zinc-400" : "text-zinc-500")}>Designing robust scalable structures</p>
                     </div>
                 </div>
                 
-                <div className={cn("group flex flex-col gap-4 p-5 rounded-3xl border transition-all duration-300 hover:scale-[1.03] hover:shadow-xl", darkMode ? "bg-blue-500/5 border-blue-500/20 hover:bg-blue-500/10 hover:border-blue-500/30 hover:shadow-blue-900/20" : "bg-blue-50/50 border-blue-100 hover:bg-blue-50 hover:border-blue-200 hover:shadow-blue-900/5")}>
-                    <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:-translate-y-1", darkMode ? "bg-gradient-to-br from-blue-500/20 to-blue-500/5 text-blue-400 ring-1 ring-blue-500/20" : "bg-white text-blue-600 border border-blue-100 shadow-sm ring-1 ring-blue-500/10")}>
-                      <Code2 className="w-5 h-5" />
+                <div className={cn("group flex flex-col gap-5 p-6 rounded-[32px] border transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl backdrop-blur-md", darkMode ? "bg-blue-500/5 border-blue-500/20 hover:bg-blue-500/10 hover:border-blue-500/30 hover:shadow-[0_20px_40px_rgba(59,130,246,0.2)]" : "bg-blue-50/50 border-blue-100 hover:bg-blue-50 hover:border-blue-200 hover:shadow-[0_20px_40px_rgba(59,130,246,0.1)]")}>
+                    <div className={cn("w-12 h-12 rounded-[20px] flex items-center justify-center shrink-0 transition-transform duration-500 group-hover:scale-110", darkMode ? "bg-blue-500/10 text-blue-400 ring-1 ring-blue-500/20" : "bg-blue-100/50 text-blue-600 ring-1 ring-blue-200")}>
+                      <Code2 className="w-5 h-5 opacity-80" />
                     </div>
                     <div>
-                      <p className={cn("font-bold text-sm tracking-tight", darkMode ? "text-blue-100" : "text-blue-900")}>Advanced SQL</p>
-                      <p className={cn("text-xs font-medium mt-1.5 leading-relaxed", darkMode ? "text-blue-300" : "text-blue-700/70")}>Writing complex optimal queries</p>
+                      <p className={cn("font-semibold text-sm tracking-tight", darkMode ? "text-blue-100" : "text-blue-900")}>Advanced SQL</p>
+                      <p className={cn("text-xs font-light mt-2 leading-relaxed opacity-80", darkMode ? "text-blue-300" : "text-blue-700/70")}>Writing complex optimal queries</p>
                     </div>
                 </div>
 
-                <div className={cn("group flex flex-col gap-4 p-5 rounded-3xl border transition-all duration-300 hover:scale-[1.03] hover:shadow-xl", darkMode ? "bg-indigo-500/5 border-indigo-500/20 hover:bg-indigo-500/10 hover:border-indigo-500/30 hover:shadow-indigo-900/20" : "bg-indigo-50/50 border-indigo-100 hover:bg-indigo-50 hover:border-indigo-200 hover:shadow-indigo-900/5")}>
-                    <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:-translate-y-1", darkMode ? "bg-gradient-to-br from-indigo-500/20 to-indigo-500/5 text-indigo-400 ring-1 ring-indigo-500/20" : "bg-white text-indigo-600 border border-indigo-100 shadow-sm ring-1 ring-indigo-500/10")}>
-                      <BarChart3 className="w-5 h-5" />
+                <div className={cn("group flex flex-col gap-5 p-6 rounded-[32px] border transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl backdrop-blur-md", darkMode ? "bg-indigo-500/5 border-indigo-500/20 hover:bg-indigo-500/10 hover:border-indigo-500/30 hover:shadow-[0_20px_40px_rgba(99,102,241,0.2)]" : "bg-indigo-50/50 border-indigo-100 hover:bg-indigo-50 hover:border-indigo-200 hover:shadow-[0_20px_40px_rgba(99,102,241,0.1)]")}>
+                    <div className={cn("w-12 h-12 rounded-[20px] flex items-center justify-center shrink-0 transition-transform duration-500 group-hover:scale-110", darkMode ? "bg-indigo-500/10 text-indigo-400 ring-1 ring-indigo-500/20" : "bg-indigo-100/50 text-indigo-600 ring-1 ring-indigo-200")}>
+                      <BarChart3 className="w-5 h-5 opacity-80" />
                     </div>
                     <div>
-                      <p className={cn("font-bold text-sm tracking-tight", darkMode ? "text-indigo-100" : "text-indigo-900")}>Data Stories</p>
-                      <p className={cn("text-xs font-medium mt-1.5 leading-relaxed", darkMode ? "text-indigo-300" : "text-indigo-700/70")}>Building interactive dashboards</p>
+                      <p className={cn("font-semibold text-sm tracking-tight", darkMode ? "text-indigo-100" : "text-indigo-900")}>Data Stories</p>
+                      <p className={cn("text-xs font-light mt-2 leading-relaxed opacity-80", darkMode ? "text-indigo-300" : "text-indigo-700/70")}>Building interactive dashboards</p>
                     </div>
                 </div>
               </div>
@@ -434,91 +438,290 @@ export default function App() {
           </motion.div>
         </section>
 
-        {/* Section 2: About & Skills */}
-        <section id="about" className="py-20 sm:py-32 px-6 sm:px-12 max-w-7xl mx-auto flex flex-col xl:flex-row gap-16 lg:gap-24 items-start">
-          <div className="flex-1 space-y-10 w-full">
-            <div>
-              <h2 className="text-4xl sm:text-6xl font-display font-black tracking-tighter mb-6">THE <span className="text-blue-500">ENGINEER.</span></h2>
-              <p className={cn("text-lg sm:text-xl leading-relaxed font-medium", darkMode ? "text-zinc-300" : "text-zinc-600")}>
-                {RESPONSE_DATA.about.text}
-              </p>
-              <p className={cn("text-base leading-relaxed mt-4", darkMode ? "text-zinc-400" : "text-zinc-500")}>
-                {RESPONSE_DATA.about.details}
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className={cn("group p-8 rounded-3xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl", darkMode ? "bg-white/[0.02] border-white/10 hover:bg-white/[0.04]" : "bg-black/[0.02] border-black/5 hover:bg-white")}>
-                <div className={cn("w-10 h-10 rounded-2xl flex items-center justify-center mb-6", darkMode ? "bg-white/10 text-white" : "bg-white border text-zinc-900 shadow-sm")}>
-                  <Book className="w-5 h-5" />
+        {/* Section 2: About */}
+        <section id="about" className="relative py-24 sm:py-32 px-6 sm:px-12 overflow-hidden border-y" style={{ borderColor: darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' }}>
+          <StarfieldCanvas />
+          <div className="relative z-20 max-w-7xl mx-auto">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="mb-12 sm:mb-16"
+            >
+               <h2 className="text-4xl sm:text-6xl font-display font-light tracking-tight opacity-90">About <span className="text-blue-500 font-semibold tracking-tighter">Me.</span></h2>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 max-w-6xl mx-auto">
+              
+              {/* Main Bio Card */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95, y: 20 }} 
+                whileInView={{ opacity: 1, scale: 1, y: 0 }} 
+                viewport={{ once: true, margin: "-50px" }} 
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} 
+                className={cn("md:col-span-7 lg:col-span-7 group relative p-8 rounded-[32px] sm:rounded-[40px] border transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)] overflow-hidden flex flex-col justify-center", darkMode ? "bg-zinc-950/60 border-white/10 hover:bg-zinc-900/80 hover:border-blue-500/40 backdrop-blur-xl" : "bg-white/80 border-black/5 hover:bg-white hover:border-blue-500/30 backdrop-blur-xl")}
+              >
+                <div className={cn("absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none", darkMode ? "bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.15),transparent_50%)]" : "bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.1),transparent_50%)]")} />
+                <div className="relative z-10 transition-transform duration-500 group-hover:translate-x-2">
+                  <h3 className="text-3xl sm:text-4xl font-display font-light tracking-tight mb-4 opacity-90 flex items-center gap-3">
+                    The <span className="text-blue-500 font-semibold tracking-tighter">Engineer.</span>
+                    <Sparkles className="w-6 h-6 text-blue-500 opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-4 group-hover:translate-x-0" />
+                  </h3>
+                  <p className={cn("text-base sm:text-lg leading-relaxed font-light mb-5 transition-colors duration-300", darkMode ? "text-zinc-300 group-hover:text-zinc-100" : "text-zinc-600 group-hover:text-zinc-900")}>
+                    {RESPONSE_DATA.about.text}
+                  </p>
+                  <div className={cn("w-10 h-[2px] rounded-full mb-5 transition-all duration-500 group-hover:w-20", darkMode ? "bg-white/20 group-hover:bg-blue-500" : "bg-black/10 group-hover:bg-blue-500")} />
+                  <p className={cn("text-sm leading-relaxed font-light transition-colors duration-300", darkMode ? "text-zinc-500 group-hover:text-zinc-400" : "text-zinc-500 group-hover:text-zinc-700")}>
+                    {RESPONSE_DATA.about.details}
+                  </p>
                 </div>
-                <h3 className="text-[10px] font-black uppercase tracking-widest opacity-50 mb-5">Education</h3>
-                <div className="space-y-5">
-                  {RESPONSE_DATA.education.items.map((ed, i) => (
-                    <div key={i}>
-                      <p className={cn("font-bold text-sm tracking-tight", darkMode ? "text-zinc-100" : "text-zinc-900")}>{ed.degree}</p>
-                      <p className={cn("text-xs mt-1.5 font-medium", darkMode ? "text-zinc-400" : "text-zinc-500")}>{ed.school}</p>
+              </motion.div>
+
+              {/* Quick Info Card */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95, y: 20 }} 
+                whileInView={{ opacity: 1, scale: 1, y: 0 }} 
+                viewport={{ once: true, margin: "-50px" }} 
+                transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }} 
+                className={cn("md:col-span-5 lg:col-span-5 group relative p-8 rounded-[32px] sm:rounded-[40px] border transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)] overflow-hidden flex flex-col justify-between items-center text-center", darkMode ? "bg-zinc-950/60 border-white/10 hover:bg-zinc-900/80 hover:border-purple-500/40 backdrop-blur-xl" : "bg-white/80 border-black/5 hover:bg-white hover:border-purple-500/30 backdrop-blur-xl")}
+              >
+                <div className={cn("absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none", darkMode ? "bg-[radial-gradient(circle_at_bottom_left,rgba(168,85,247,0.15),transparent_50%)]" : "bg-[radial-gradient(circle_at_bottom_left,rgba(168,85,247,0.1),transparent_50%)]")} />
+                <div className="relative z-10 w-full flex flex-col items-center">
+                  <div className={cn("w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full overflow-hidden mb-5 ring-4 ring-offset-4 transition-all duration-500 group-hover:scale-110", darkMode ? "ring-white/10 ring-offset-zinc-950 group-hover:ring-purple-500/40" : "ring-black/5 ring-offset-white group-hover:ring-purple-500/30")}>
+                    <img src={photoSrc} alt="Islam" className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" />
+                  </div>
+                  <h4 className={cn("font-semibold tracking-[0.2em] uppercase text-[10px] sm:text-xs mb-1", darkMode ? "text-purple-400" : "text-purple-600")}>Based In</h4>
+                  <p className={cn("text-lg sm:text-xl font-semibold tracking-tight mb-6", darkMode ? "text-zinc-100" : "text-zinc-900")}>Cairo, Egypt</p>
+                  
+                  <div className="flex justify-center gap-3 w-full">
+                    <a href={RESPONSE_DATA.contact.socials[0].link} target="_blank" rel="noopener noreferrer" className={cn("flex-1 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 hover:-translate-y-1", darkMode ? "bg-white/5 hover:bg-purple-500/20 text-zinc-400 hover:text-purple-400 ring-1 ring-white/10 hover:ring-purple-500/50" : "bg-black/5 hover:bg-purple-50 text-zinc-600 hover:text-purple-600 ring-1 ring-black/5 hover:ring-purple-200")}>
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                    <a href={`mailto:${RESPONSE_DATA.contact.email}`} className={cn("flex-1 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 hover:-translate-y-1", darkMode ? "bg-white/5 hover:bg-purple-500/20 text-zinc-400 hover:text-purple-400 ring-1 ring-white/10 hover:ring-purple-500/50" : "bg-black/5 hover:bg-purple-50 text-zinc-600 hover:text-purple-600 ring-1 ring-black/5 hover:ring-purple-200")}>
+                      <Mail className="w-5 h-5" />
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Education Card */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95, y: 20 }} 
+                whileInView={{ opacity: 1, scale: 1, y: 0 }} 
+                viewport={{ once: true, margin: "-50px" }} 
+                transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className={cn("md:col-span-6 group relative p-8 rounded-[32px] sm:rounded-[40px] border transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)] overflow-hidden", darkMode ? "bg-zinc-950/60 border-white/10 hover:bg-zinc-900/80 hover:border-emerald-500/40 backdrop-blur-xl" : "bg-white/80 border-black/5 hover:bg-white hover:border-emerald-500/30 backdrop-blur-xl")}
+              >
+                <div className={cn("absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none", darkMode ? "bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.15),transparent_50%)]" : "bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.1),transparent_50%)]")} />
+                <div className="relative z-10">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className={cn("flex items-center justify-center w-12 h-12 rounded-2xl shadow-inner transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110", darkMode ? "bg-white/5 text-white ring-1 ring-white/10 group-hover:bg-emerald-500/20 group-hover:text-emerald-400 group-hover:ring-emerald-500/40" : "bg-black/5 text-zinc-900 ring-1 ring-black/5 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:ring-emerald-200")}>
+                      <Book className="w-5 h-5 opacity-80" />
                     </div>
-                  ))}
-                </div>
-              </div>
-              <div className={cn("group p-8 rounded-3xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl", darkMode ? "bg-white/[0.02] border-white/10 hover:bg-white/[0.04]" : "bg-black/[0.02] border-black/5 hover:bg-white")}>
-                <div className={cn("w-10 h-10 rounded-2xl flex items-center justify-center mb-6", darkMode ? "bg-blue-500/20 text-blue-400" : "bg-white border border-blue-100 text-blue-600 shadow-sm")}>
-                  <Award className="w-5 h-5" />
-                </div>
-                <h3 className="text-[10px] font-black uppercase tracking-widest opacity-50 mb-5">Languages & Awards</h3>
-                <div className="space-y-5">
-                  {RESPONSE_DATA.languages.items.map((l, i) => (
-                    <div key={i} className="flex items-center justify-between">
-                      <p className={cn("font-bold text-sm tracking-tight", darkMode ? "text-zinc-100" : "text-zinc-900")}>{l.name}</p>
-                      <span className={cn("text-[10px] px-2 py-0.5 rounded-full font-bold uppercase", darkMode ? "bg-zinc-800 text-zinc-400" : "bg-zinc-100 text-zinc-500")}>{l.level}</span>
+                    <div className="transition-transform duration-500 group-hover:translate-x-1">
+                      <h3 className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] opacity-50">Background</h3>
+                      <h4 className={cn("text-lg sm:text-xl font-semibold tracking-tight", darkMode ? "text-zinc-100" : "text-zinc-900")}>Education</h4>
                     </div>
-                  ))}
-                  <div className="pt-5 border-t" style={{ borderColor: darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' }}>
-                     {RESPONSE_DATA.awards.items.slice(0, 2).map((a, i) => (
-                       <p key={i} className="text-xs font-bold leading-tight mt-3 first:mt-0 flex items-start gap-2">
-                         <Star className="w-3.5 h-3.5 mt-0.5 shrink-0 text-amber-500" fill="currentColor" />
-                         <span className={darkMode ? "text-zinc-300" : "text-zinc-700"}>{a}</span>
+                  </div>
+                  <div className="space-y-4">
+                    {RESPONSE_DATA.education.items.map((ed, i) => (
+                      <div key={i} className="group/item relative p-4 rounded-2xl transition-colors duration-300 hover:bg-black/5 dark:hover:bg-white/5 border border-transparent hover:border-black/5 dark:hover:border-white/5">
+                        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 bg-emerald-500 rounded-r-md transition-all duration-300 group-hover/item:h-3/4 opacity-0 group-hover/item:opacity-100" />
+                        <p className={cn("font-medium text-sm sm:text-base tracking-tight transition-colors", darkMode ? "text-zinc-200 group-hover/item:text-emerald-400" : "text-zinc-800 group-hover/item:text-emerald-600")}>{ed.degree}</p>
+                        <p className={cn("text-xs sm:text-sm mt-1 font-light transition-colors", darkMode ? "text-zinc-500 group-hover/item:text-zinc-400" : "text-zinc-500 group-hover/item:text-zinc-600")}>{ed.school}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Languages & Awards Card */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95, y: 20 }} 
+                whileInView={{ opacity: 1, scale: 1, y: 0 }} 
+                viewport={{ once: true, margin: "-50px" }} 
+                transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className={cn("md:col-span-6 group relative p-8 rounded-[32px] sm:rounded-[40px] border transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)] overflow-hidden", darkMode ? "bg-zinc-950/60 border-white/10 hover:bg-zinc-900/80 hover:border-amber-500/40 backdrop-blur-xl" : "bg-white/80 border-black/5 hover:bg-white hover:border-amber-500/30 backdrop-blur-xl")}
+              >
+                <div className={cn("absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none", darkMode ? "bg-[radial-gradient(circle_at_bottom_right,rgba(245,158,11,0.15),transparent_50%)]" : "bg-[radial-gradient(circle_at_bottom_right,rgba(245,158,11,0.1),transparent_50%)]")} />
+                <div className="relative z-10 h-full flex flex-col">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className={cn("flex items-center justify-center w-12 h-12 rounded-2xl shadow-inner transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110", darkMode ? "bg-white/5 text-white ring-1 ring-white/10 group-hover:bg-amber-500/20 group-hover:text-amber-400 group-hover:ring-amber-500/40" : "bg-black/5 text-zinc-900 ring-1 ring-black/5 group-hover:bg-amber-50 group-hover:text-amber-600 group-hover:ring-amber-200")}>
+                      <Award className="w-5 h-5 opacity-80" />
+                    </div>
+                    <div className="transition-transform duration-500 group-hover:translate-x-1">
+                      <h3 className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] opacity-50">Accolades</h3>
+                      <h4 className={cn("text-lg sm:text-xl font-semibold tracking-tight", darkMode ? "text-zinc-100" : "text-zinc-900")}>Languages & Awards</h4>
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-3 mb-5 flex-1">
+                    {RESPONSE_DATA.languages.items.map((l, i) => (
+                      <div key={i} className={cn("p-3 sm:p-4 rounded-2xl border transition-all duration-300 flex flex-col justify-center", darkMode ? "bg-white/[0.02] border-white/5 group-hover:border-amber-500/20 group-hover:bg-amber-500/5" : "bg-black/[0.02] border-black/5 group-hover:border-amber-500/20 group-hover:bg-amber-50/50")}>
+                        <p className={cn("font-medium text-xs sm:text-sm tracking-tight mb-1", darkMode ? "text-zinc-200" : "text-zinc-800")}>{l.name}</p>
+                        <span className={cn("text-[10px] font-semibold uppercase tracking-wider", darkMode ? "text-amber-400" : "text-amber-600")}>{l.level}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="pt-4 border-t transition-colors duration-500" style={{ borderColor: darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' }}>
+                     {RESPONSE_DATA.awards.items.slice(0, 1).map((a, i) => (
+                       <p key={i} className="text-xs sm:text-sm font-light leading-relaxed flex items-start gap-3 group/award">
+                         <Star className="w-4 h-4 mt-0.5 shrink-0 transition-transform duration-500 group-hover/award:rotate-[72deg] group-hover:text-amber-500 text-amber-500/70" fill="currentColor" />
+                         <span className={cn("transition-colors duration-300", darkMode ? "text-zinc-400 group-hover/award:text-zinc-200" : "text-zinc-600 group-hover/award:text-zinc-800")}>{a}</span>
                        </p>
                      ))}
                   </div>
+
                 </div>
-              </div>
+              </motion.div>
+
             </div>
           </div>
+        </section>
+
+        {/* Section 2.5: Skills */}
+        <section id="skills" className="relative py-24 sm:py-32 px-6 sm:px-12 overflow-hidden scroll-mt-24">
+          <div className="spline-container absolute top-0 left-0 w-full h-full -z-10">
+            <div className={cn("absolute inset-0 z-10", darkMode ? "bg-zinc-950/70 backdrop-blur-[1px]" : "bg-white/80 backdrop-blur-[1px]")} />
+            <iframe
+              src="https://my.spline.design/aidatamodelinteraction-mdTL3FktFVHgDvFr5TKtnYDV" 
+              frameBorder="0" width="100%" height="100%" id="aura-spline"
+            ></iframe>
+          </div>
           
-          <div id="skills" className="flex-1 w-full space-y-10 scroll-mt-32">
-            <div>
-               <h2 className="text-4xl sm:text-6xl font-display font-black tracking-tighter mb-4 text-center sm:text-left">TECH <span className="text-blue-500/50">STACK</span></h2>
-               <p className={cn("text-base font-medium text-center sm:text-left", darkMode ? "text-zinc-400" : "text-zinc-500")}>Core competencies and specialized tools.</p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
-              {RESPONSE_DATA.skills.sections.map((s, idx) => (
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.1 }} viewport={{ once: true }} key={s.title} className={cn("p-6 sm:p-8 rounded-3xl border transition-all duration-300 hover:shadow-lg", darkMode ? "border-white/10 bg-zinc-900/40 hover:bg-zinc-900/80" : "bg-white/60 border-black/5 hover:bg-white")}>
-                  <div className="flex items-center gap-3 mb-8">
-                    <div className={cn("p-2 rounded-xl", darkMode ? "bg-white/5" : "bg-blue-50")}>
-                      <DynamicIcon name={s.icon} className="w-5 h-5 text-blue-500" />
-                    </div>
-                    <h4 className={cn("font-bold tracking-tight text-sm", darkMode ? "text-zinc-100" : "text-zinc-900")}>{s.title}</h4>
+          <div className="relative z-20 max-w-7xl mx-auto">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="text-center mb-16 sm:mb-24"
+            >
+               <h2 className="text-4xl sm:text-6xl font-display font-light tracking-tight mb-4 opacity-90 text-white">Tech <span className="text-blue-500 font-semibold tracking-tighter">Stack.</span></h2>
+               <p className={cn("text-lg sm:text-xl font-light max-w-2xl mx-auto", darkMode ? "text-zinc-400" : "text-zinc-700 font-medium")}>Core competencies and specialized tools driving technical excellence.</p>
+            </motion.div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {RESPONSE_DATA.skills.sections.map((s, idx) => (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95, y: 30 }} 
+                whileInView={{ opacity: 1, scale: 1, y: 0 }} 
+                transition={{ delay: idx * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }} 
+                viewport={{ once: true, margin: "-50px" }} 
+                key={s.title} 
+                className={cn("p-8 sm:p-10 rounded-[32px] sm:rounded-[40px] border transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)] relative overflow-hidden group backdrop-blur-xl", darkMode ? "border-white/10 bg-zinc-900/50 hover:bg-zinc-800/80 hover:border-blue-500/40" : "bg-white/80 border-black/5 hover:bg-white hover:border-blue-500/30")}
+              >
+                <div className={cn("absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none", darkMode ? "bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.15),transparent_50%)]" : "bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.1),transparent_50%)]")} />
+                
+                <div className="flex items-center gap-5 mb-10 relative z-10 transition-transform duration-500 group-hover:scale-[1.02] origin-left">
+                  <div className={cn("flex items-center justify-center w-14 h-14 rounded-[20px] transition-all duration-500 shadow-inner group-hover:rotate-6", darkMode ? "bg-white/5 text-white group-hover:bg-blue-500/10 group-hover:text-blue-400 ring-1 ring-white/10 group-hover:ring-blue-500/30" : "bg-black/5 text-zinc-900 group-hover:bg-blue-50 group-hover:text-blue-600 ring-1 ring-black/5 group-hover:ring-blue-200")}>
+                    <DynamicIcon name={s.icon} className="w-7 h-7" />
                   </div>
-                  <div className="flex flex-col gap-5">
-                    {s.items.map(i => (
-                      <div key={i.name} className="group">
-                        <div className="flex justify-between items-center mb-2">
-                          <span className={cn("text-xs font-bold transition-colors", darkMode ? "text-zinc-300 group-hover:text-white" : "text-zinc-600 group-hover:text-black")}>{i.name}</span>
-                          <span className={cn("text-[10px] font-mono", darkMode ? "text-zinc-500" : "text-zinc-400")}>{i.rating}.0</span>
-                        </div>
-                        <div className={cn("flex gap-1 h-1.5 overflow-hidden rounded-full", darkMode ? "bg-white/5" : "bg-black/5")}>
-                          <motion.div 
-                            initial={{ width: 0 }} 
-                            whileInView={{ width: `${(i.rating / 5) * 100}%` }} 
-                            viewport={{ once: true }}
-                            transition={{ duration: 1, delay: 0.2 + idx * 0.1, ease: "easeOut" }}
-                            className="h-full bg-gradient-to-r from-blue-500 to-blue-400 rounded-full" 
-                          />
+                  <h4 className={cn("font-semibold tracking-tight text-2xl transition-colors duration-300", darkMode ? "text-zinc-100 group-hover:text-white" : "text-zinc-900 group-hover:text-black")}>{s.title}</h4>
+                </div>
+                
+                <div className="grid grid-cols-1 gap-7 relative z-10">
+                  {s.items.map((i, itemIdx) => (
+                    <div key={i.name} className="group/item cursor-default">
+                      <div className="flex justify-between items-center mb-3">
+                        <span className={cn("text-base font-medium transition-all duration-300 group-hover/item:translate-x-1", darkMode ? "text-zinc-300 group-hover/item:text-white" : "text-zinc-600 group-hover/item:text-black")}>{i.name}</span>
+                        <div className="flex gap-1">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <Star 
+                              key={star} 
+                              className={cn("w-3 h-3 transition-colors duration-300", 
+                                star <= i.rating 
+                                  ? (darkMode ? "text-blue-400 fill-blue-400" : "text-blue-500 fill-blue-500") 
+                                  : (darkMode ? "text-white/10 fill-white/10 group-hover/item:text-white/20" : "text-black/10 fill-black/10 group-hover/item:text-black/20")
+                              )} 
+                            />
+                          ))}
                         </div>
                       </div>
-                    ))}
+                      <div className={cn("flex gap-1 h-1.5 overflow-hidden rounded-full shadow-inner", darkMode ? "bg-white/5" : "bg-black/5")}>
+                        <motion.div 
+                          initial={{ width: 0 }} 
+                          whileInView={{ width: `${(i.rating / 5) * 100}%` }} 
+                          viewport={{ once: true }}
+                          transition={{ duration: 1.2, delay: 0.3 + (idx * 0.1) + (itemIdx * 0.05), ease: [0.16, 1, 0.3, 1] }}
+                          className={cn("h-full rounded-full transition-all duration-500 shadow-sm relative overflow-hidden", darkMode ? "bg-zinc-600 group-hover/item:bg-blue-500" : "bg-zinc-300 group-hover/item:bg-blue-500")} 
+                        >
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/item:animate-[shimmer_1s_infinite]" />
+                        </motion.div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          </div>
+        </section>
+
+        {/* Section 3: Experience */}
+        <section id="experience" className="relative py-24 sm:py-32 px-6 sm:px-12 overflow-hidden border-y" style={{ borderColor: darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' }}>
+          <div className="spline-container absolute top-0 left-0 w-full h-full -z-10">
+            <div className={cn("absolute inset-0 z-10 transition-colors duration-1000", darkMode ? "bg-zinc-950/70 backdrop-blur-[2px]" : "bg-white/80 backdrop-blur-[2px]")} />
+            <iframe
+              src="https://my.spline.design/spaceparticlesanimation-UGnU6SB7nUK6sFI6N5WzasEx" 
+              frameBorder="0" width="100%" height="100%" id="aura-spline"
+            ></iframe>
+          </div>
+
+          <div className="max-w-5xl mx-auto relative z-20">
+            <div className="text-center mb-16 sm:mb-24 space-y-4">
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className={cn("text-4xl sm:text-6xl font-display font-light tracking-tight opacity-90 text-white", !darkMode && "text-zinc-900")}
+              >
+                Career <span className="text-blue-500 font-semibold tracking-tighter">Path.</span>
+              </motion.h2>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className={cn("text-lg sm:text-xl font-light", darkMode ? "text-zinc-400" : "text-zinc-700 font-medium")}
+              >
+                A timeline of professional milestones.
+              </motion.p>
+            </div>
+            
+            <div className="relative space-y-6 lg:space-y-8 pl-4 sm:pl-8 md:pl-0">
+              {/* Timeline Line */}
+              <div className={cn("absolute left-[20px] sm:left-[36px] md:left-[240px] top-4 bottom-4 w-px hidden md:block", darkMode ? "bg-gradient-to-b from-transparent via-white/10 to-transparent" : "bg-gradient-to-b from-transparent via-black/10 to-transparent")} />
+              
+              {RESPONSE_DATA.experience.map((exp, i) => (
+                <motion.div 
+                  initial={{ opacity: 0, y: 30, scale: 0.98 }} 
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }} 
+                  viewport={{ once: true, margin: "-50px" }} 
+                  transition={{ delay: i * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }} 
+                  key={i} 
+                  className={cn("group relative p-8 sm:p-10 lg:p-12 rounded-[32px] sm:rounded-[40px] border transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)] overflow-hidden backdrop-blur-xl", darkMode ? "border-white/10 bg-zinc-950/60 hover:bg-zinc-900/80 hover:border-blue-500/40" : "border-black/5 bg-white/80 hover:bg-white hover:border-blue-500/30")}
+                >
+                  <div className={cn("absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[100px] opacity-0 group-hover:opacity-30 transition-opacity duration-1000 pointer-events-none -mr-[250px] -mt-[250px]", darkMode ? "bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.3),transparent_70%)]" : "bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.2),transparent_70%)]")} />
+                  
+                  <div className="flex flex-col md:flex-row gap-8 relative z-10 w-full">
+                     <div className="shrink-0 md:w-56 pt-1 flex flex-col md:pr-10 relative">
+                       {/* Timeline Node */}
+                       <div className={cn("absolute right-[-41px] top-4 w-4 h-4 rounded-full border-2 hidden md:block transition-all duration-500 group-hover:scale-150 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] z-20", darkMode ? "bg-zinc-900 border-blue-500 group-hover:bg-blue-500" : "bg-white border-blue-500 group-hover:bg-blue-500")} />
+                       
+                       <span className={cn("inline-flex w-max px-3 py-1.5 text-xs font-semibold tracking-wider uppercase rounded-full shadow-inner mb-4 transition-all duration-500 group-hover:scale-105 origin-left", darkMode ? "bg-blue-500/10 text-blue-400 ring-1 ring-blue-500/20 group-hover:bg-blue-500/20 group-hover:ring-blue-500/40" : "bg-blue-50 text-blue-600 ring-1 ring-blue-100 group-hover:bg-blue-100 group-hover:ring-blue-200")}>{exp.period}</span>
+                       <p className={cn("font-medium text-lg tracking-tight mb-1 transition-colors", darkMode ? "text-zinc-200 group-hover:text-white" : "text-zinc-800 group-hover:text-black")}>{exp.company}</p>
+                     </div>
+                     <div className="flex-1 space-y-4 md:pl-2">
+                       <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight text-blue-500 group-hover:text-blue-400 transition-colors flex items-center gap-3">
+                         {exp.role}
+                         <ArrowUpRight className="w-5 h-5 opacity-0 -translate-x-4 translate-y-4 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500" />
+                       </h3>
+                       <p className={cn("text-base sm:text-lg leading-relaxed font-light transition-colors duration-300", darkMode ? "text-zinc-400 group-hover:text-zinc-300" : "text-zinc-500 group-hover:text-zinc-700")}>{exp.description}</p>
+                     </div>
                   </div>
                 </motion.div>
               ))}
@@ -526,143 +729,88 @@ export default function App() {
           </div>
         </section>
 
-        {/* Section 3: Experience */}
-        <section id="experience" className="py-20 sm:py-32 px-6 sm:px-12 max-w-5xl mx-auto">
-          <div className="text-center mb-20 space-y-4">
-            <h2 className="text-4xl sm:text-6xl font-display font-black tracking-tighter">CAREER <span className="text-blue-500/50">PATH</span></h2>
-            <p className={cn("text-base font-medium", darkMode ? "text-zinc-400" : "text-zinc-500")}>A technical overview of my professional timeline.</p>
-          </div>
-          <div className="relative border-l-2 ml-3 md:ml-6 space-y-12 pb-12" style={{ borderColor: darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }}>
-            {RESPONSE_DATA.experience.map((exp, i) => (
-              <motion.div 
-                initial={{ opacity: 0, x: -20 }} 
-                whileInView={{ opacity: 1, x: 0 }} 
-                viewport={{ once: true }} 
-                transition={{ delay: i * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }} 
-                key={i} 
-                className="relative pl-8 md:pl-16 group"
-              >
-                {/* Timeline Dot */}
-                <div className={cn("absolute left-0 -translate-x-[17px] sm:-translate-x-[21px] top-1 w-8 h-8 sm:w-10 sm:h-10 rounded-full border-[4px] sm:border-[6px] flex items-center justify-center transition-colors duration-300", darkMode ? "bg-zinc-950 border-zinc-900 group-hover:border-blue-500/30" : "bg-white border-zinc-50 group-hover:border-blue-100")}>
-                  <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-blue-500 transition-transform duration-300 group-hover:scale-[1.5]" />
-                </div>
-                
-                <div className={cn("flex flex-col md:flex-row gap-6 md:gap-12 p-6 sm:p-8 rounded-3xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl", darkMode ? "border-white/10 bg-white/[0.02] hover:bg-white/[0.04]" : "border-black/5 bg-black/[0.02] hover:bg-white hover:border-black/10")}>
-                   <div className="shrink-0 w-full md:w-1/3">
-                     <span className={cn("inline-block px-3 py-1.5 text-[10px] uppercase font-bold tracking-widest rounded-full mb-4 shadow-sm", darkMode ? "bg-blue-500/10 text-blue-400 ring-1 ring-blue-500/20" : "bg-blue-50 text-blue-600 ring-1 ring-blue-100")}>{exp.period}</span>
-                     <p className={cn("font-bold text-lg tracking-tight", darkMode ? "text-zinc-100" : "text-zinc-900")}>{exp.company}</p>
-                   </div>
-                   <div className="flex-1 space-y-4 pt-1">
-                     <h3 className="text-2xl font-bold tracking-tight text-blue-500">{exp.role}</h3>
-                     <p className={cn("text-sm sm:text-base leading-relaxed font-medium", darkMode ? "text-zinc-400" : "text-zinc-600")}>{exp.description}</p>
-                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
         {/* Section 4: Projects */}
-        <section id="projects" className="py-20 sm:py-32 px-6 sm:px-12 max-w-7xl mx-auto">
-          <div className="flex items-center flex-col text-center mb-20 gap-4">
-              <h2 className="text-4xl sm:text-6xl font-display font-black tracking-tighter">CASE <span className="text-blue-500/50">STUDIES</span></h2>
-              <p className={cn("text-base font-medium max-w-lg", darkMode ? "text-zinc-400" : "text-zinc-500")}>Interactive data models, robust architectures, and analytical deep dives.</p>
-          </div>
+      <section id="projects" className="relative py-24 sm:py-32 overflow-hidden border-y" style={{ borderColor: darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' }}>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.05),transparent_50%)] pointer-events-none" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10">
-            {RESPONSE_DATA.projects.map((proj, i) => (
-              <motion.div 
-                initial={{ opacity: 0, y: 30, scale: 0.95 }} 
-                whileInView={{ opacity: 1, y: 0, scale: 1 }} 
-                whileHover={{ scale: 1.03, zIndex: 20 }}
-                viewport={{ once: true, margin: "-50px" }} 
-                transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }} 
-                key={proj.title} 
-                layout="position"
-                onClick={() => setExpandedProject(expandedProject === proj.title ? null : proj.title)} 
-                className={cn(
-                  "group cursor-pointer p-6 sm:p-10 relative overflow-hidden transition-colors duration-500 rounded-[32px] border", 
-                  darkMode ? "border-white/10 bg-white/[0.02] hover:bg-zinc-900/80 hover:border-blue-500/50 hover:shadow-[0_0_80px_rgba(59,130,246,0.25)]" : "border-black/5 bg-black/[0.02] hover:bg-white hover:border-blue-500/40 hover:shadow-[0_20px_80px_rgba(59,130,246,0.2)]"
-                )}
-              >
-                <div className={cn("absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none", darkMode ? "bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.15),transparent_50%)]" : "bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.08),transparent_50%)]")} />
-                
-                <div className="flex flex-col h-full gap-8 relative z-10">
-                  <div className="space-y-5">
-                    <div className="flex justify-between items-start gap-4">
-                      <h3 className={cn("text-3xl font-bold tracking-tight", darkMode ? "text-zinc-100" : "text-zinc-900")}>{proj.title}</h3>
-                      {proj.videoUrl && (
-                        <button onClick={(e) => { e.stopPropagation(); setSelectedVideo(proj.videoUrl); }} className="w-12 h-12 shrink-0 rounded-full border border-blue-500 text-blue-500 flex items-center justify-center hover:bg-blue-500 hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
-                          <Play className="w-5 h-5 fill-current ml-0.5" />
-                        </button>
-                      )}
-                    </div>
-                    {proj.metrics && <span className={cn("inline-block px-3 py-1 text-[10px] uppercase font-bold tracking-widest text-blue-500 rounded-full", darkMode ? "bg-blue-500/10" : "bg-blue-50")}>{proj.metrics}</span>}
-                    <p className={cn("text-sm leading-relaxed font-medium", darkMode ? "text-zinc-400" : "text-zinc-600")}>{proj.description}</p>
-                  </div>
+        <div className="relative z-10 px-6 sm:px-12 max-w-7xl mx-auto">
+            <div className="flex items-center flex-col text-center mb-16 sm:mb-24 gap-4">
+                <motion.h2 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                  className={cn("text-4xl sm:text-6xl font-display font-light tracking-tight opacity-90 text-white", !darkMode && "text-zinc-900")}
+                >
+                  Case <span className="text-blue-500 font-semibold tracking-tighter">Studies.</span>
+                </motion.h2>
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                  className={cn("text-lg sm:text-xl font-light max-w-2xl mx-auto", darkMode ? "text-zinc-400" : "text-zinc-700 font-medium")}
+                >
+                  Interactive data models, robust architectures, and analytical deep dives.
+                </motion.p>
+            </div>
 
-                  <AnimatePresence>
-                    {expandedProject === proj.title && proj.deepDive && (
-                      <motion.div 
-                        initial={{ opacity: 0, height: 0, marginTop: 0 }} 
-                        animate={{ opacity: 1, height: 'auto', marginTop: 24 }} 
-                        exit={{ opacity: 0, height: 0, marginTop: 0 }} 
-                        transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                        className="overflow-hidden"
-                      >
-                        <div className="grid grid-cols-1 gap-6 pt-4 border-t" style={{ borderColor: darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }}>
-                          <div>
-                            <p className="text-[10px] uppercase font-bold text-rose-500 mb-2 tracking-widest">Challenge</p>
-                            <p className={cn("text-xs leading-relaxed font-medium", darkMode ? "text-zinc-400" : "text-zinc-600")}>{proj.deepDive.challenges}</p>
-                          </div>
-                          <div>
-                            <p className="text-[10px] uppercase font-bold text-emerald-500 mb-2 tracking-widest">Solution</p>
-                            <p className={cn("text-xs leading-relaxed font-medium", darkMode ? "text-zinc-400" : "text-zinc-600")}>{proj.deepDive.solutions}</p>
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10">
+              {RESPONSE_DATA.projects.map((proj, i) => (
+                <InteractiveProjectCard 
+                  key={proj.title} 
+                  proj={proj} 
+                  darkMode={darkMode} 
+                  onPlay={proj.videoUrl ? () => setSelectedVideo(proj.videoUrl) : undefined} 
+                />
+              ))}
+            </div>
+          
+          <GithubRepos darkMode={darkMode} username="Islam-Ramadan-Hassan" />
+        </div>
+      </section>
 
-                  <div className="mt-auto pt-6 border-t flex items-center justify-between" style={{ borderColor: darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' }}>
-                    <div className="flex flex-wrap gap-x-4 gap-y-2">
-                      {proj.tech.split(', ').map(t => (
-                        <span key={t} className="text-[10px] font-mono opacity-50">{t}</span>
-                      ))}
-                    </div>
-                    <div className={cn("w-8 h-8 rounded-full border flex items-center justify-center transition-all opacity-50", darkMode ? "border-white/20 group-hover:bg-white text-zinc-500 group-hover:text-black group-hover:opacity-100" : "border-black/20 group-hover:bg-zinc-900 text-zinc-500 group-hover:text-white group-hover:opacity-100")}>
-                      {expandedProject === proj.title ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* Section 5: Contact / Footer */}
-        <footer id="contact" className={cn("py-16 sm:py-24 border-t mt-12 transition-colors", darkMode ? "border-white/10 bg-black/20" : "border-black/5 bg-zinc-50/50")}>
-          <div className="max-w-5xl mx-auto px-6 sm:px-12 flex flex-col items-center text-center">
-            <div className={cn("p-10 sm:p-20 w-full rounded-[40px] border relative overflow-hidden shadow-2xl transition-all duration-500 mb-16", darkMode ? "bg-gradient-to-b from-white/10 to-transparent border-white/10" : "bg-gradient-to-b from-blue-50 to-transparent border-black/5")}>
+      {/* Section 5: Contact / Footer */}
+        <footer id="contact" className={cn("py-20 sm:py-32 border-t mt-12 transition-colors relative overflow-hidden", darkMode ? "border-white/10 bg-black/20" : "border-black/5 bg-zinc-50/50")}>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(59,130,246,0.15),transparent_50%)] pointer-events-none" />
+          
+          <div className="max-w-5xl mx-auto px-6 sm:px-12 flex flex-col items-center text-center relative z-10">
+            <motion.div 
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className={cn("p-12 sm:p-24 w-full rounded-[40px] sm:rounded-[60px] border relative overflow-hidden shadow-2xl transition-all duration-500 mb-20 backdrop-blur-xl", darkMode ? "bg-gradient-to-b from-white/10 to-transparent border-white/10" : "bg-gradient-to-b from-blue-50/50 to-transparent border-black/5")}
+            >
                <div className="absolute inset-0 bg-grid-white/[0.02]" />
                <div className={cn("absolute inset-x-0 -top-px h-px w-3/4 mx-auto", darkMode ? "bg-gradient-to-r from-transparent via-white/30 to-transparent" : "bg-gradient-to-r from-transparent via-black/10 to-transparent")} />
                
-               <h2 className="text-5xl sm:text-7xl font-display font-black tracking-tighter mb-6 relative z-10 leading-[1.1]">LET'S WORK <br className="hidden sm:block"/><span className="text-blue-500 flex items-center justify-center gap-4 mt-2">TOGETHER <ArrowUpRight className="w-10 h-10 sm:w-16 sm:h-16 text-blue-500" strokeWidth={3} /></span></h2>
+               <h2 className="text-5xl sm:text-7xl lg:text-8xl font-display font-light tracking-tight mb-8 relative z-10 leading-[1.1] opacity-90">
+                 LET'S WORK <br className="hidden sm:block"/><span className="text-blue-500 font-semibold tracking-tighter flex items-center justify-center gap-4 mt-2">TOGETHER <ArrowUpRight className="w-10 h-10 sm:w-16 sm:h-16 text-blue-500/80" strokeWidth={2.5} /></span>
+               </h2>
                
-               <p className={cn("max-w-md mx-auto mb-10 relative z-10 text-base sm:text-lg font-medium leading-relaxed", darkMode ? "text-zinc-300" : "text-zinc-600")}>Currently accepting new freelance opportunities. Let's build something exceptional.</p>
+               <p className={cn("max-w-md mx-auto mb-12 relative z-10 text-lg sm:text-xl font-light leading-relaxed", darkMode ? "text-zinc-300" : "text-zinc-600")}>
+                 Currently accepting new freelance opportunities. Let's build something exceptional.
+               </p>
                
-               <a href={`mailto:${RESPONSE_DATA.contact.email}`} className="relative z-10 px-8 py-5 bg-blue-500 text-white rounded-full font-bold tracking-widest text-sm uppercase hover:bg-blue-600 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(59,130,246,0.3)] transition-all duration-300 flex items-center justify-center gap-3 mx-auto w-max group">
-                 <Mail className="w-5 h-5 transition-transform group-hover:scale-110" /> GET IN TOUCH
+               <a href={`mailto:${RESPONSE_DATA.contact.email}`} className="relative z-10 px-10 py-5 bg-blue-600 text-white rounded-full font-semibold tracking-widest text-sm uppercase hover:bg-blue-500 hover:-translate-y-1 shadow-lg hover:shadow-[0_20px_40px_rgba(59,130,246,0.4)] transition-all duration-500 flex items-center justify-center gap-3 mx-auto w-max group ring-1 ring-white/20 hover:ring-white/40">
+                 <Mail className="w-5 h-5 transition-transform group-hover:scale-110 duration-500" /> GET IN TOUCH
                </a>
-            </div>
+            </motion.div>
 
-            <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6 pt-12 border-t" style={{ borderColor: darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }}>
-              <p className={cn("text-xs sm:text-sm font-bold tracking-tight uppercase", darkMode ? "text-zinc-500" : "text-zinc-400")}>© {new Date().getFullYear()} ISLAM RAMADAN. All rights reserved.</p>
-              <div className="flex justify-center gap-8">
-                <a href={RESPONSE_DATA.contact.socials[0].link} target="_blank" rel="noopener noreferrer" className={cn("transition-colors uppercase tracking-widest text-[10px] font-bold", darkMode ? "text-zinc-400 hover:text-white" : "text-zinc-500 hover:text-black")}>LinkedIn</a>
-                <a href={RESPONSE_DATA.contact.socials[1].link} target="_blank" rel="noopener noreferrer" className={cn("transition-colors uppercase tracking-widest text-[10px] font-bold", darkMode ? "text-zinc-400 hover:text-white" : "text-zinc-500 hover:text-black")}>GitHub</a>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 1 }}
+              className="w-full flex flex-col md:flex-row items-center justify-between gap-6 pt-12 border-t" style={{ borderColor: darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }}
+            >
+              <p className={cn("text-xs sm:text-sm font-medium tracking-widest uppercase opacity-70", darkMode ? "text-zinc-400" : "text-zinc-500")}>© {new Date().getFullYear()} ISLAM RAMADAN. All rights reserved.</p>
+              <div className="flex justify-center gap-10">
+                <a href={RESPONSE_DATA.contact.socials[0].link} target="_blank" rel="noopener noreferrer" className={cn("transition-colors uppercase tracking-[0.2em] text-[11px] font-semibold", darkMode ? "text-zinc-400 hover:text-white" : "text-zinc-500 hover:text-black")}>LinkedIn</a>
+                <a href={RESPONSE_DATA.contact.socials[1].link} target="_blank" rel="noopener noreferrer" className={cn("transition-colors uppercase tracking-[0.2em] text-[11px] font-semibold", darkMode ? "text-zinc-400 hover:text-white" : "text-zinc-500 hover:text-black")}>GitHub</a>
               </div>
-            </div>
+            </motion.div>
           </div>
         </footer>
       </main>
@@ -743,8 +891,12 @@ export default function App() {
         {selectedVideo && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[100] flex items-center justify-center p-4 backdrop-blur-xl bg-black/60" onClick={() => setSelectedVideo(null)}>
             <motion.div initial={{ scale: 0.95, y: 20, opacity: 0 }} animate={{ scale: 1, y: 0, opacity: 1 }} exit={{ scale: 0.95, y: 20, opacity: 0 }} transition={{ type: "spring", damping: 30, stiffness: 300 }} className={cn("w-full max-w-5xl rounded-[32px] overflow-hidden border shadow-2xl relative", darkMode ? "bg-zinc-950 border-white/10" : "bg-zinc-900 border-white/20")} onClick={e => e.stopPropagation()}>
-              <div className="flex justify-end p-6 absolute top-0 right-0 z-10"><button onClick={() => setSelectedVideo(null)} className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white"><X className="w-5 h-5"/></button></div>
-              <video src={selectedVideo} controls autoPlay className="w-full aspect-video object-contain bg-black" />
+              <div className="flex justify-end p-6 absolute top-0 right-0 z-10 pointer-events-none"><button onClick={() => setSelectedVideo(null)} className="w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md flex items-center justify-center text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white pointer-events-auto"><X className="w-5 h-5"/></button></div>
+              {selectedVideo.includes("drive.google.com") ? (
+                <iframe src={selectedVideo} className="w-full aspect-video border-0 bg-black" allow="autoplay; encrypted-media" allowFullScreen />
+              ) : (
+                <video src={selectedVideo} controls autoPlay className="w-full aspect-video object-contain bg-black" />
+              )}
             </motion.div>
           </motion.div>
         )}

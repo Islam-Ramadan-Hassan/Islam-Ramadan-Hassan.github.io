@@ -80,7 +80,7 @@ export const RESPONSE_DATA = {
         solutions: "Implemented complex DAX measures for real-time currency conversion and created a robust data cleaning pipeline using Power Query."
       },
       link: "#",
-      videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
+      videoUrl: "https://drive.google.com/file/d/1RYRDwBG5cpxdq4VxefyVjIfxTXHasUaZ/preview"
     },
     {
       title: "Sales & Profitability Analysis",
@@ -94,7 +94,7 @@ export const RESPONSE_DATA = {
         solutions: "Used advanced pivot table grouping and conditional formatting heatmaps to isolate high-discount transactions as the primary profit drain."
       },
       link: "#",
-      videoUrl: "https://www.w3schools.com/html/movie.mp4"
+      videoUrl: "https://drive.google.com/file/d/10lU1HE4wVV_CiGhR8Cbrzi_4302T3AIQ/preview"
     },
     {
       title: "Pizza Sales Insights",
@@ -107,7 +107,8 @@ export const RESPONSE_DATA = {
         challenges: "Syncing inventory tracking with varied pricing models and high-frequency transaction data.",
         solutions: "Engineered a Power Pivot data model that connected sales records directly with inventory logs for real-time stock-out warnings."
       },
-      link: "#"
+      link: "#",
+      videoUrl: "https://drive.google.com/file/d/1fbn_bU2sB047agig-hiIndhZP0KI2Hni/preview"
     }
   ],
   experience: [
@@ -123,7 +124,7 @@ export const RESPONSE_DATA = {
     email: "islamramadanh@gmail.com",
     socials: [
       { platform: "LinkedIn", link: "https://linkedin.com/in/islam-ramadan-hassan" },
-      { platform: "GitHub", link: "#" },
+      { platform: "GitHub", link: "https://github.com/Islam-Ramadan-Hassan" },
       { platform: "Location", link: "Cairo, Egypt" }
     ]
   },
