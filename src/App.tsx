@@ -70,7 +70,6 @@ export default function App() {
   // Chat State
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
   const chatScrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -133,7 +132,6 @@ export default function App() {
   }, []);
 
   const handleCommand = async (command: Command | {id: string, label: string}) => {
-    setIsMenuOpen(false);
     const userMsg: Message = { id: Date.now().toString(), sender: 'user', text: command.label, timestamp: new Date() };
     setMessages(prev => [...prev, userMsg]);
     setIsTyping(true);
@@ -185,7 +183,6 @@ export default function App() {
 
   const submitQuery = () => {
     if (!inputRef.current?.value.trim()) return;
-    setIsMenuOpen(false);
     const val = inputRef.current.value.trim().toLowerCase();
     const mapMatch = [...COMMANDS].find(c => c.label.toLowerCase().includes(val) || c.id === val);
     handleCommand(mapMatch || { id: 'unknown', label: inputRef.current.value });
@@ -719,36 +716,21 @@ export default function App() {
             </div>
 
             <div className={cn("p-4 border-t", darkMode ? "bg-zinc-950 border-white/10" : "bg-white border-black/5")}>
-              <AnimatePresence>
-                {isMenuOpen && (
-                  <motion.div 
-                    initial={{ opacity: 0, height: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, height: 'auto', scale: 1 }}
-                    exit={{ opacity: 0, height: 0, scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
-                    className="flex flex-col gap-2 pb-3 origin-bottom overflow-hidden"
-                  >
-                    {COMMANDS.map(cmd => (
-                      <button key={cmd.id} onClick={() => handleCommand(cmd as Command)} className={cn("w-full px-4 py-2.5 rounded-xl border text-[13px] font-medium flex items-center justify-between transition-all outline-none focus:ring-2 focus:ring-blue-500/50 group", darkMode ? "bg-zinc-800/30 border-white/5 hover:bg-zinc-800/80 text-zinc-300 hover:text-white shadow-sm" : "bg-zinc-50 border-black/5 hover:bg-white text-zinc-700 hover:text-zinc-900 shadow-sm hover:shadow-md")}>
-                        <div className="flex items-center gap-3">
-                          <div className={cn("p-1.5 rounded-lg transition-colors", darkMode ? "bg-white/5 group-hover:bg-blue-500/20 group-hover:text-blue-400" : "bg-black/5 group-hover:bg-blue-50 group-hover:text-blue-600")}><DynamicIcon name={cmd.icon!} className="w-4 h-4" /></div>
-                          {cmd.label}
-                        </div>
-                        <ArrowUpRight className={cn("w-3.5 h-3.5 opacity-0 -translate-x-2 transition-all", darkMode ? "group-hover:opacity-50 group-hover:translate-x-0 group-hover:text-blue-400" : "group-hover:opacity-50 group-hover:translate-x-0 group-hover:text-blue-600")} />
-                      </button>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
+              {messages.length === 1 && (
+                <div className="flex flex-col gap-2 pb-3">
+                  {COMMANDS.map(cmd => (
+                    <button key={cmd.id} onClick={() => handleCommand(cmd as Command)} className={cn("w-full px-4 py-2.5 rounded-xl border text-[13px] font-medium flex items-center justify-between transition-all outline-none focus:ring-2 focus:ring-blue-500/50 group", darkMode ? "bg-zinc-800/30 border-white/5 hover:bg-zinc-800/80 text-zinc-300 hover:text-white shadow-sm" : "bg-zinc-50 border-black/5 hover:bg-white text-zinc-700 hover:text-zinc-900 shadow-sm hover:shadow-md")}>
+                      <div className="flex items-center gap-3">
+                        <div className={cn("p-1.5 rounded-lg transition-colors", darkMode ? "bg-white/5 group-hover:bg-blue-500/20 group-hover:text-blue-400" : "bg-black/5 group-hover:bg-blue-50 group-hover:text-blue-600")}><DynamicIcon name={cmd.icon!} className="w-4 h-4" /></div>
+                        {cmd.label}
+                      </div>
+                      <ArrowUpRight className={cn("w-3.5 h-3.5 opacity-0 -translate-x-2 transition-all", darkMode ? "group-hover:opacity-50 group-hover:translate-x-0 group-hover:text-blue-400" : "group-hover:opacity-50 group-hover:translate-x-0 group-hover:text-blue-600")} />
+                    </button>
+                  ))}
+                </div>
+              )}
               <div className="relative flex items-center">
-                <button 
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className={cn("absolute left-2 p-2 rounded-full transition-colors flex items-center justify-center", darkMode ? "text-zinc-400 hover:text-white hover:bg-white/10" : "text-zinc-500 hover:text-zinc-900 hover:bg-black/5")}
-                >
-                  <Plus className={cn("w-5 h-5 transition-transform duration-300", isMenuOpen ? "rotate-45" : "rotate-0")} />
-                </button>
-                <input ref={inputRef} onKeyDown={e => e.key === 'Enter' && submitQuery()} type="text" placeholder="Ask me something..." className={cn("w-full pl-12 pr-14 py-3.5 rounded-full text-[15px] focus:outline-none transition-all border shadow-sm", darkMode ? "bg-zinc-800/50 border-white/10 text-white placeholder:text-zinc-500 focus:bg-zinc-800 focus:border-blue-500/50" : "bg-zinc-50 border-black/10 text-zinc-900 placeholder:text-zinc-400 focus:bg-white focus:border-blue-500/50 focus:shadow-md")} />
+                <input ref={inputRef} onKeyDown={e => e.key === 'Enter' && submitQuery()} type="text" placeholder="Ask me something..." className={cn("w-full pl-5 pr-14 py-3.5 rounded-full text-[15px] focus:outline-none transition-all border shadow-sm", darkMode ? "bg-zinc-800/50 border-white/10 text-white placeholder:text-zinc-500 focus:bg-zinc-800 focus:border-blue-500/50" : "bg-zinc-50 border-black/10 text-zinc-900 placeholder:text-zinc-400 focus:bg-white focus:border-blue-500/50 focus:shadow-md")} />
                 <button onClick={submitQuery} className="absolute right-2 p-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"><ArrowUp className="w-4 h-4" /></button>
               </div>
             </div>
