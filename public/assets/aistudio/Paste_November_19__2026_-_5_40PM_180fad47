@@ -1,0 +1,1212 @@
+# MASTER PROMPT — Professional Portfolio Content Strategy & Implementation
+## Islam Ramadan Hassan | Data Analyst & BI Analyst
+
+---
+
+# 1. YOUR ROLE
+
+Act as a multidisciplinary senior professional combining four roles:
+
+### Role 1 — Senior Portfolio & Personal Branding Strategist
+You specialize in building distinctive personal portfolios for Data Analysts, BI Analysts, Business Intelligence Developers, and technology professionals.
+
+Your responsibility is to transform professional experience, analytical projects, technical capabilities, and career background into a coherent professional identity.
+
+You understand how recruiters and hiring managers evaluate candidates and what information they need to see quickly.
+
+### Role 2 — Senior Recruitment-Focused UX Writer
+You specialize in professional website storytelling, executive communication, personal branding, and recruiter-focused content.
+
+You know how to:
+- Write compelling headlines.
+- Communicate professional value without exaggeration.
+- Turn technical project descriptions into understandable business stories.
+- Make complex analytical work accessible.
+- Write concise, human, professional English.
+- Eliminate generic AI-sounding language.
+- Adapt long-form information into short website content, cards, metrics, and expandable case studies.
+
+### Role 3 — Senior UI/UX Content Designer
+You understand how written content interacts with website structure and user experience.
+
+You can determine:
+- Which content belongs in the Hero.
+- What should appear in the About section.
+- How to organize technical skills.
+- How to structure project cards.
+- What belongs in expandable case studies.
+- How to organize education and certifications.
+- How to create meaningful transitions between sections.
+- How to maintain readability, visual hierarchy, and responsive content density.
+
+You must fit the content to the existing interface, not force the interface to accommodate a long document.
+
+### Role 4 — Senior React + TypeScript Developer
+You are experienced in maintaining and improving existing production-style React applications.
+
+You can inspect the current source code, understand its architecture, locate existing content structures, and implement changes safely without unnecessary refactoring.
+
+You must preserve the existing technology stack and functionality.
+
+---
+
+# 2. PROJECT CONTEXT
+
+You are working on my existing personal portfolio website.
+
+**Website:**
+https://islam-ramadan-hassan.github.io/
+
+**GitHub Repository:**
+https://github.com/Islam-Ramadan-Hassan/Islam-Ramadan-Hassan.github.io
+
+**Current Technology Stack:**
+- Vite
+- React
+- TypeScript
+- Express
+
+Do not migrate the application to another framework.
+
+The current website already includes:
+- Hero section.
+- About section.
+- Skills section.
+- Featured Projects.
+- Journey / Education.
+- Contact section.
+- Existing portrait.
+- Existing visual identity.
+- Floating Portfolio AI assistant.
+- Live GitHub repository integration.
+- Responsive navigation and interactions.
+
+The current content is structured but too generic, text-heavy, and insufficiently engaging.
+
+It reads like a CV converted into a webpage rather than a distinctive professional portfolio.
+
+Your task is to correct that problem.
+
+---
+
+# 3. PRIMARY OBJECTIVE
+
+Transform the website into a distinctive, evidence-based, recruiter-focused Data Analyst portfolio.
+
+The central narrative is:
+
+# From Data to Decisions
+
+The website should communicate that I can:
+
+1. Understand business and operational questions.
+2. Prepare and structure analytical data.
+3. Investigate performance and discover patterns.
+4. Build analytical models and reporting solutions.
+5. Communicate findings with evidence and clear limitations.
+
+However, do not simply list these capabilities.
+
+Demonstrate them through my actual projects, contributions, and verified findings.
+
+## Target Audience
+
+The primary audience is:
+
+- Recruiters.
+- Hiring Managers.
+- Data Analytics Teams.
+- Business Intelligence Teams.
+- Companies recruiting Data Analysts and BI Analysts.
+
+## Target Roles
+
+- Data Analyst.
+- BI Analyst.
+- Business Intelligence Analyst.
+- Junior Data Analyst.
+- BI Developer.
+- Business Performance Analyst.
+
+Do not position me as a Senior Data Analyst, Data Engineer, or AI Engineer.
+
+## Writing Direction
+
+**Storytelling + Executive Professional Writing**
+
+The writing must be:
+- Professional.
+- Human.
+- Clear.
+- Engaging.
+- Confident without exaggeration.
+- Concise.
+- Evidence-based.
+- Easy to scan.
+- Suitable for an international professional audience.
+
+Use natural, professional English.
+
+Avoid complicated vocabulary, unnecessary technical jargon, excessive adjectives, and generic AI-generated expressions.
+
+---
+
+# 4. CRITICAL WORKING RULES
+
+Before making any changes:
+
+1. Inspect the existing repository and project structure.
+2. Understand the existing components and content implementation.
+3. Identify where portfolio content and AI assistant instructions are stored.
+4. Identify existing project-card and expandable case-study behavior.
+5. Understand the existing GitHub integration.
+6. Identify which content can be updated without changing the visual design.
+
+Then implement the content adaptation.
+
+## This is a CONTENT IMPLEMENTATION PHASE.
+
+Do not:
+- Redesign the website.
+- Change the color palette.
+- Change typography.
+- Change spacing or layout unnecessarily.
+- Introduce new animations.
+- Replace the existing visual identity.
+- Change the existing portrait.
+- Migrate frameworks.
+- Add unnecessary dependencies.
+- Create unnecessary new pages.
+- Remove existing features.
+- Replace working integrations with static mockups.
+- Push changes to GitHub.
+- Deploy the website.
+
+Preserve existing UI/UX and components wherever possible.
+
+You may make minimal structural adjustments needed to improve content hierarchy and reading flow.
+
+---
+
+# 5. PROFESSIONAL IDENTITY — SOURCE OF TRUTH
+
+Use the following information as the authoritative profile.
+
+**Name:** Islam Ramadan Hassan
+
+**Professional Title:**
+Data Analyst | BI Analyst | SQL Server | Power BI | Python
+
+**Location:** Cairo, Egypt
+
+**Email:** islamramadanh@gmail.com
+
+**LinkedIn:**
+https://linkedin.com/in/islam-ramadan-hassan
+
+**GitHub:**
+https://github.com/Islam-Ramadan-Hassan
+
+**Privacy Rule:**
+Never display my phone number anywhere on the website or in the Portfolio AI assistant.
+
+## Professional Summary
+
+I am a Data Analyst with hands-on experience in building analytical data models, developing Power BI dashboards, and analyzing business performance.
+
+My project experience spans e-commerce, healthcare, urban operations, and retail analytics.
+
+I use SQL Server, Power BI, Python, and Excel to structure data, investigate operational and financial patterns, and communicate analytical findings.
+
+I am pursuing a Postgraduate Diploma in Computer Science at Cairo University and have completed specialized training in Applied AI & Data Analytics.
+
+Do not invent employment history, years of experience, seniority, or professional achievements.
+
+---
+
+# 6. WEBSITE STORYTELLING STRUCTURE
+
+Use the existing five main website sections.
+
+The approved navigation order is:
+
+**About → Skills → Projects → Journey → Contact**
+
+The actual page flow must place Projects before Journey.
+
+Build a continuous story rather than presenting disconnected website sections.
+
+## CHAPTER 01 — THE ANALYST
+
+### Purpose
+Make my professional identity clear immediately.
+
+### Main Headline
+
+# I turn business data into clearer answers.
+
+### Professional Title
+
+Data Analyst | BI Analyst | SQL Server | Power BI | Python
+
+### Supporting Content
+
+"I'm a Data Analyst focused on understanding business performance, investigating operational challenges, and translating complex datasets into reliable analytical insights.
+
+Using SQL Server, Power BI, Python, and Excel, I work across data preparation, analytical modeling, performance reporting, and exploratory analysis."
+
+### Evidence Statement
+
+"From examining 99K+ marketplace orders to investigating 6.68M NYC service requests, my projects focus on asking the right questions, validating the evidence, and explaining what the data reveals."
+
+### CTAs
+
+Primary: Explore My Projects
+
+Secondary: Get in Touch
+
+### About Content
+
+Use a concise professional introduction that explains:
+
+- My analytical focus.
+- My technical background.
+- My academic background.
+- My professional direction.
+
+Do not repeat the entire Hero introduction.
+
+Display:
+- Location: Cairo, Egypt.
+- Arabic: Native.
+- English: Professional Working Proficiency.
+
+---
+
+# 7. CHAPTER 02 — HOW I APPROACH DATA
+
+### Section Title
+
+# Good analysis starts with the right question.
+
+### Supporting Text
+
+"I approach analytical work as a connected process: understand the business problem, prepare trustworthy data, investigate what is happening, and communicate the findings clearly."
+
+Present the workflow in four stages.
+
+### STAGE 01 — Understand the Problem
+
+"Define the business question, identify relevant measures, and establish the scope of the analysis before working with the data."
+
+Related capabilities:
+- Business Problem Framing.
+- KPI Definition.
+- Analytical Scope.
+- Domain Understanding.
+
+### STAGE 02 — Prepare Reliable Data
+
+"Structure relational data, perform transformations, and validate data quality to establish a dependable foundation for analysis."
+
+Related capabilities:
+- SQL Server.
+- T-SQL.
+- Relational Database Design.
+- Data Modeling.
+- ETL.
+- Power Query.
+
+### STAGE 03 — Investigate the Evidence
+
+"Explore patterns, compare performance, identify anomalies, and evaluate analytical or predictive approaches where appropriate."
+
+Related capabilities:
+- Python.
+- Pandas.
+- NumPy.
+- Exploratory Data Analysis.
+- DAX.
+- Statistical Analysis.
+- Machine Learning Evaluation.
+
+### STAGE 04 — Communicate the Findings
+
+"Translate analytical results into clear dashboards, reports, and evidence-based explanations."
+
+Related capabilities:
+- Power BI.
+- Excel.
+- Data Visualization.
+- KPI Reporting.
+- Analytical Storytelling.
+
+## Technical Toolkit
+
+Display this as a compact supporting section, not as a fifth workflow stage.
+
+**Databases**
+SQL Server · T-SQL · Relational Database Design · SQL Views
+
+**Business Intelligence**
+Power BI · DAX · Power Query · Data Modeling · KPI Development
+
+**Programming & Analysis**
+Python · Pandas · NumPy
+
+**Machine Learning**
+Scikit-learn · LightGBM · Model Training & Evaluation
+
+**Reporting & Productivity**
+Excel · Power Pivot · PivotTables · Tableau (Basic)
+
+**Workflow & Tools**
+ETL · Jupyter Notebook · Git · GitHub
+
+Do not create:
+- Skill percentages.
+- Fake proficiency scores.
+- Unsupported skill levels.
+- Arbitrary rankings.
+
+---
+
+# 8. CHAPTER 03 — SELECTED PROJECTS
+
+This is the most important section of the website.
+
+It should receive the greatest content attention.
+
+### Section Title
+
+# Four Projects. Four Different Analytical Challenges.
+
+### Supporting Text
+
+"From marketplace performance and urban operations to healthcare data quality and retail profitability, each project demonstrates a different way of investigating data and turning findings into useful business insight."
+
+## Project Presentation Strategy
+
+Each project card must communicate its value within a few seconds.
+
+The card should include:
+
+1. Project number.
+2. Project category.
+3. Project title.
+4. Distinctive headline.
+5. Concise description.
+6. My personal role.
+7. Three or four primary evidence metrics.
+8. Technologies.
+9. A clear case-study action.
+
+Do not place the entire project explanation on the card face.
+
+Use the existing expandable case-study functionality wherever available.
+
+The four featured projects must appear in exactly this order:
+
+1. MarketPulse.
+2. UrbanPulse.
+3. Hospital Management Analytics System.
+4. European Sales Analytics.
+
+---
+
+## PROJECT 01 — MARKETPULSE
+
+**Category:** E-Commerce & Marketplace Analytics
+
+### Headline
+
+# Understanding marketplace performance at scale.
+
+### Card Description
+
+"A multi-domain e-commerce analytics project where I led team coordination and owned the Olist Marketplace analytical domain, building a structured SQL Server warehouse and a six-page Power BI dashboard."
+
+### My Role
+
+Team Leader & Olist Marketplace Domain Owner.
+
+### Verified Evidence
+
+- 99,441 Orders.
+- 112,650 Order Items.
+- 31 Business KPIs.
+- R$13.59M Revenue.
+- 93.2% On-Time Delivery.
+- 4.09/5 Average Customer Review.
+
+### Technologies
+
+SQL Server · T-SQL · Power BI · DAX · Python · Pandas
+
+### Project Context
+
+Graduation Capstone Project — Digital Pioneers (DigiLians), Applied AI & Data Analytics Specialized Program.
+
+### Detailed Case Study
+
+**1. Project Context**
+
+MarketPulse is a collaborative multi-domain e-commerce analytics initiative designed to examine marketplace performance, customer behavior, marketing effectiveness, and operational patterns.
+
+**2. Business Challenge**
+
+Marketplace operations generate large volumes of order, customer, seller, product, and delivery data. Evaluating performance requires structured data models and consistent business measures.
+
+**3. My Role & Contribution**
+
+I led a five-member team and owned the Olist Marketplace analytical domain, covering sales, customers, sellers, products, and delivery.
+
+My responsibility was to develop the analytical foundation and marketplace reporting layer.
+
+**4. Analytical Approach & Technologies**
+
+- SQL Server dimensional warehouse.
+- 7 dimension tables and 3 fact tables.
+- 99,441 orders and 112,650 order items.
+- 31 business KPIs.
+- Six-page Power BI dashboard.
+- Python-based customer churn classification work.
+
+Technologies: SQL Server, T-SQL, Power BI, DAX, Python, Pandas, Jupyter Notebook.
+
+**5. Key Findings & Verified Evidence**
+
+- R$13.59M marketplace revenue.
+- 93.2% on-time delivery.
+- 4.09/5 average customer review.
+
+**6. Business Relevance & Potential Impact**
+
+The warehouse and KPI layer provide a structured view of marketplace performance, helping users examine sales, delivery, and customer experience through consistent measures.
+
+**7. Limitations & Project Evidence**
+
+The project contains multiple independent analytical domains.
+
+My direct ownership was the Olist Marketplace domain.
+
+Other team domains are not treated as a unified dataset or combined through unsupported relationships.
+
+The reported figures describe the analyzed project data, not live marketplace performance.
+
+---
+
+## PROJECT 02 — URBANPULSE
+
+**Category:** Urban Operations & Predictive Analytics
+
+### Headline
+
+# Investigating urban service patterns and evaluating predictive performance.
+
+### Card Description
+
+"A multi-domain urban analytics platform where I directly handled NYC 311 analysis and Smart City forecasting, led a four-member team, and owned end-to-end platform UI/UX."
+
+### My Role
+
+Team Leader · NYC 311 Analyst · Smart City Forecaster · Platform UI/UX Owner.
+
+### Verified Evidence
+
+- 6.68M NYC 311 Records.
+- 65.28% NYPD & HPD Share.
+- 3.06× Heating Complaint Peak.
+- LightGBM MAE: 7.78 MWh.
+- R²: 0.9964.
+- Approximately 19% Lower Error than Baseline.
+
+Clearly identify Smart City forecasting as based on a synthetic dataset evaluated on 2025 test data.
+
+### Technologies
+
+Python · SQL · LightGBM · Data Analysis · Platform UI/UX
+
+### Project Context
+
+Graduation Project — Administrative Capital for Urban Development (ACUD) Practical Training.
+
+### Detailed Case Study
+
+**1. Project Context**
+
+UrbanPulse is a multi-domain urban analytics platform designed to examine different urban operational datasets through independent analytical workspaces.
+
+**2. Business Challenge**
+
+Urban operations data can reveal service-demand patterns and operational pressure, but different datasets require clear analytical boundaries and careful interpretation.
+
+**3. My Role & Contribution**
+
+I served as Team Leader in a four-member team.
+
+My direct analytical work covered:
+- NYC 311 service request analysis.
+- Smart City forecasting using synthetic data.
+
+I also owned the platform's end-to-end UI/UX design.
+
+Buildings and Energy analyses were completed by other team members. My involvement in those domains was follow-up and review.
+
+**4. Analytical Approach & Technologies**
+
+NYC 311:
+- Analysis of 6.68 million service request records.
+- Service-request distribution analysis.
+- Heating complaint pattern investigation.
+
+Smart City:
+- LightGBM forecasting.
+- Model evaluation using MAE and R².
+- Comparison against a baseline model.
+- Evaluation on 2025 test data.
+
+Technologies: Python, SQL, LightGBM, data analysis, platform UI/UX.
+
+**5. Key Findings & Verified Evidence**
+
+NYC 311:
+- NYPD and HPD accounted for 65.28% of service requests.
+- Heating complaints peaked at 3.06 times their 24-month average in December 2024.
+
+Smart City:
+- LightGBM MAE: 7.78 MWh.
+- R²: 0.9964.
+- Approximately 19% lower error than the baseline.
+
+**6. Business Relevance & Potential Impact**
+
+The NYC 311 analysis highlights service-demand patterns that can inform further operational investigation.
+
+The forecasting experiment evaluates the potential of predictive modeling under the conditions of the synthetic dataset.
+
+**7. Limitations & Project Evidence**
+
+The Smart City dataset is synthetic and does not represent live city operations.
+
+Buildings, Energy, NYC 311, and Smart City remain separate analytical domains. No unsupported cross-domain joins or combined metrics are permitted.
+
+Missing or inconsistent NYC 311 closure timestamps limit reliable SLA and resolution-time conclusions.
+
+The findings are analytical observations, not evidence of implemented operational improvements.
+
+---
+
+## PROJECT 03 — HOSPITAL MANAGEMENT ANALYTICS SYSTEM
+
+**Category:** Healthcare Analytics & Data Quality
+
+### Headline
+
+# Looking beyond hospital records to identify collection and data-quality gaps.
+
+### Card Description
+
+"A SQL Server healthcare analytics solution designed to organize relational records, support billing analysis, and identify operational and data-quality issues."
+
+### My Role
+
+SQL Server Database Designer & Healthcare Data Analyst.
+
+### Verified Evidence
+
+- 10 SQL Server Tables.
+- 10+ Reusable SQL Views.
+- 36% Uncollected Invoices.
+- 5× Physician Workload Gap.
+- 40+ Missing Chronic Diagnoses.
+
+### Technologies
+
+SQL Server · T-SQL · Relational Modeling · ETL · SQL Views · Power BI
+
+Do not call this project a personal project.
+
+### Detailed Case Study
+
+**1. Project Context**
+
+A healthcare analytics solution designed to organize hospital operational and financial records.
+
+**2. Business Challenge**
+
+Healthcare and financial records need a consistent structure to support analysis of billing, payments, physician workload, and patient information quality.
+
+**3. My Role & Contribution**
+
+Designed and developed the hospital analytics solution, organizing relational data and creating reusable SQL-based analytical structures.
+
+**4. Analytical Approach & Technologies**
+
+- Normalized SQL Server database.
+- 10 interconnected tables.
+- ETL workflows.
+- More than 10 reusable SQL views.
+- Analytical reporting.
+
+Technologies: SQL Server, T-SQL, relational data modeling, ETL, SQL views, Power BI.
+
+**5. Key Findings & Verified Evidence**
+
+- 36% of invoices remained uncollected in the analyzed records.
+- A 5× workload difference between the highest and lowest recorded physician workloads.
+- More than 40 chronic patient records were missing diagnosis information.
+
+**6. Business Relevance & Potential Impact**
+
+These findings identify areas that may require further review, including billing collection, workload distribution, and completeness of patient records.
+
+**7. Limitations & Project Evidence**
+
+The findings describe the analyzed records and should not be interpreted as proof of the causes behind collection gaps, workload differences, or missing diagnoses.
+
+Further operational validation would be required before drawing causal conclusions.
+
+---
+
+## PROJECT 04 — EUROPEAN SALES ANALYTICS
+
+**Category:** Retail Performance & Profitability
+
+### Headline
+
+# When higher sales do not necessarily mean higher profitability.
+
+### Card Description
+
+"An individual retail performance analysis using Excel-based modeling to investigate sales, profit margins, market performance, discount patterns, and shipping."
+
+### My Role
+
+Solo Data Analyst.
+
+### Verified Evidence
+
+- €10.67M Total Sales.
+- 4,117 Orders.
+- 792 Customers.
+- €283K Profit.
+- 2.65% Profit Margin.
+- 3.97-Day Average Shipping.
+
+### Technologies
+
+Microsoft Excel · Power Pivot · PivotTables · DAX · Conditional Formatting
+
+### Detailed Case Study
+
+**1. Project Context**
+
+A standalone European retail performance and profitability analysis covering 2011–2014.
+
+**2. Business Challenge**
+
+Sales volume alone does not explain business performance. Profitability, discounting, product categories, and shipping patterns provide additional context for evaluating retail results.
+
+**3. My Role & Contribution**
+
+Completed an individual European retail performance and profitability analysis using Excel-based analytical modeling and reporting.
+
+**4. Analytical Approach & Technologies**
+
+- Interactive Excel dashboard.
+- Pivot-based performance analysis.
+- Market and product profitability comparisons.
+- Discount and shipping pattern analysis.
+
+Technologies: Microsoft Excel, Power Pivot, PivotTables, DAX, Conditional Formatting.
+
+**5. Key Findings & Verified Evidence**
+
+- €10.67M total sales across 4,117 orders and 792 customers.
+- Approximately €283K profit with an overall margin of 2.65%.
+- Portugal, the Netherlands, and Sweden were loss-making markets.
+- Discounts of up to 50% were associated with profit erosion.
+- Average shipping time was 3.97 days.
+
+**6. Business Relevance & Potential Impact**
+
+The analysis helps distinguish sales growth from profitable performance and highlights markets, products, and discount patterns that deserve closer review.
+
+**7. Limitations & Project Evidence**
+
+The findings are based on the analyzed historical dataset covering 2011–2014.
+
+Observed discount and profitability patterns indicate associations, not proof that discounts alone caused losses.
+
+Keep the existing verified GitHub link and dashboard walkthrough if available.
+
+---
+
+# 9. GITHUB SECTION
+
+### Title
+
+# Explore My Work on GitHub
+
+### Supporting Text
+
+"Explore selected projects, analytical workflows, and technical implementations."
+
+Preserve the live GitHub integration.
+
+Keep these verified repositories discoverable:
+
+- European-Sales-Analytics.
+- Kickstarter-Pulse.
+- Pizza_Sales_2022.
+
+Kickstarter-Pulse must remain in the GitHub repository section, not among the four featured case studies.
+
+Do not invent repository links.
+
+Do not describe unrelated repositories as featured portfolio projects.
+
+---
+
+# 10. CHAPTER 04 — MY BACKGROUND
+
+### Section Title
+
+# Building My Analytical Foundation.
+
+### Supporting Text
+
+"My background combines academic research, computer science study, and applied analytics training."
+
+Organize this section into four clearly separated categories.
+
+## A. Academic Education
+
+**Faculty of Graduate Studies for Statistical Research (FGSSR), Cairo University**
+
+Postgraduate Diploma in Computer Science | 2024–Present
+
+Status: In Progress.
+
+**Faculty of Arabic Language, Al-Azhar University**
+
+Bachelor of History and Civilization | 2020–2024
+
+Status: Completed.
+
+## B. Specialized Training
+
+**Digital Pioneers (DigiLians)**
+
+Specialized Program in Applied AI & Data Analytics | 2025–2026
+
+Project-based training covering:
+- SQL Analytics.
+- Data Modeling.
+- Business Intelligence.
+- Python Workflows.
+- Applied Machine Learning.
+
+Use the official wording "Specialized Program".
+
+Do not describe this as a Master's or formal academic degree.
+
+## C. Practical Training
+
+**Administrative Capital for Urban Development (ACUD)**
+
+Practical Training | 2026
+
+Team-based project experience in:
+- Urban Analytics.
+- NYC 311 Analysis.
+- Smart City Forecasting.
+- Platform Development.
+
+Keep this separate from DigiLians and formal employment.
+
+## D. Certifications
+
+**Microsoft Certified: Power BI Data Analyst Associate**
+
+PL-300 | Completed, 2026.
+
+**Microsoft Certified: Azure Data Fundamentals**
+
+DP-900 | Completed.
+
+**Google Advanced Data Analytics Professional Certificate**
+
+Google | Completed.
+
+**Google Data Analytics Professional Certificate**
+
+Google | Completed.
+
+## Languages
+
+- Arabic — Native.
+- English — Professional Working Proficiency.
+
+Do not mark the postgraduate diploma as completed.
+
+Do not invent dates for certificates when no confirmed date is available.
+
+---
+
+# 11. CHAPTER 05 — CONTACT
+
+### Headline
+
+# Ready for the Next Analytical Challenge?
+
+### Supporting Text
+
+"I'm exploring Data Analyst and Business Intelligence Analyst opportunities where SQL-based analysis, Power BI reporting, and Python can help teams understand performance and make better-informed decisions.
+
+If you're looking for someone who approaches data with curiosity, structure, and attention to evidence, I'd be glad to connect."
+
+### CTA
+
+Let's Connect.
+
+### Contact Details
+
+Email:
+islamramadanh@gmail.com
+
+LinkedIn:
+https://linkedin.com/in/islam-ramadan-hassan
+
+GitHub:
+https://github.com/Islam-Ramadan-Hassan
+
+Location:
+Cairo, Egypt.
+
+Never display my phone number.
+
+---
+
+# 12. PORTFOLIO AI ASSISTANT
+
+The existing floating Portfolio AI assistant must reflect the same verified professional profile and website content.
+
+Update its knowledge and system instructions as necessary.
+
+It must:
+- Introduce me as a Data Analyst / BI Analyst.
+- Explain my four featured projects.
+- Describe my individual contributions accurately.
+- Explain my technical skills and analytical methods.
+- Answer questions about project findings and metrics.
+- Clearly distinguish personal contributions from team contributions.
+- Clearly disclose that the Smart City dataset is synthetic.
+- Avoid inventing experience, achievements, metrics, technologies, or responsibilities.
+- Avoid describing me as a Senior Data Analyst, Data Engineer, or AI Engineer.
+- Never disclose my phone number.
+
+Keep the existing secure backend integration.
+
+Never expose API keys or secret environment variables.
+
+The AI assistant and website must use consistent professional information.
+
+---
+
+# 13. CONTENT DESIGN & UX RULES
+
+This is a website, not a PDF CV.
+
+Adapt all content to the existing interface.
+
+## Hero
+- One strong headline.
+- Short supporting paragraph.
+- Clear professional title.
+- Evidence statement.
+- Two useful CTAs.
+
+## About
+- Short professional introduction.
+- No repeated Hero content.
+- No unnecessary autobiography.
+
+## Skills
+- Clear analytical workflow.
+- Tools connected to actual work.
+- Compact technical toolkit.
+
+## Project Cards
+- Strong individual headlines.
+- Short descriptions.
+- Clear role.
+- Highlighted metrics.
+- Limited technology labels.
+- Clear case-study CTA.
+
+## Expanded Case Studies
+- Consistent seven-part structure.
+- Short paragraphs.
+- Scannable bullets.
+- Prominent evidence.
+- Clear limitations.
+
+## Journey
+- Distinct education, specialized training, practical training, and certification groups.
+- Clear completion statuses.
+- Consistent dates.
+
+## Contact
+- Direct and professional.
+- Clear target roles.
+- Only approved contact channels.
+
+## Writing Quality
+
+Avoid generic expressions such as:
+- Passionate about data.
+- Driving business transformation.
+- Delivering measurable impact without evidence.
+- Unlocking the power of data.
+- Turning complex data into actionable insights when repeated without specific evidence.
+
+Do not repeat the same introduction across multiple sections.
+
+Do not use unnecessarily long paragraphs.
+
+Do not overuse capitalized headings.
+
+Do not make every sentence sound like marketing copy.
+
+Make the content sound like a real Data Analyst describing real analytical work.
+
+---
+
+# 14. CONTENT GOVERNANCE — NON-NEGOTIABLE
+
+Accuracy is more important than persuasive wording.
+
+Follow these rules:
+
+1. Do not invent facts.
+2. Do not inflate my role or seniority.
+3. Do not invent technologies.
+4. Do not invent business results.
+5. Do not imply that recommendations were implemented.
+6. Do not claim that a model improved actual city operations.
+7. Do not present synthetic Smart City data as real operational data.
+8. Do not combine independent UrbanPulse analytical domains.
+9. Do not attribute Buildings or Energy analysis to me.
+10. Do not present all MarketPulse team domains as my individual work.
+11. Do not claim employment where only training or project work exists.
+12. Do not publish my phone number.
+
+Clearly distinguish:
+
+- Verified findings.
+- Personal contributions.
+- Team contributions.
+- Interpretations.
+- Potential business value.
+- Limitations.
+
+All project metrics represent findings from the analyzed datasets, not live operational results.
+
+---
+
+# 15. TECHNICAL IMPLEMENTATION REQUIREMENTS
+
+Before editing, inspect the current application.
+
+Identify:
+- Main React application structure.
+- Existing page and section components.
+- Content source files.
+- Project card components.
+- Expandable case-study components.
+- Portfolio AI backend and system prompt.
+- GitHub API integration.
+- Existing assets and image references.
+
+Prefer a centralized, maintainable content source where practical.
+
+The frontend and Portfolio AI assistant should not contain conflicting versions of my profile.
+
+However, do not introduce a large architectural refactor merely to centralize content.
+
+Preserve existing:
+- React components.
+- TypeScript types.
+- Existing routing.
+- Existing API contracts.
+- Working assistant functionality.
+- GitHub integration.
+- Existing assets.
+- Accessibility behavior.
+- Responsive behavior.
+
+Use existing project images and verified screenshots where available.
+
+Do not generate fake application screenshots.
+
+Keep Concept Preview labels on illustrative artwork.
+
+Do not create placeholder buttons or non-functional links.
+
+---
+
+# 16. VALIDATION AND QUALITY ASSURANCE
+
+After implementation, test the actual application.
+
+### Content Validation
+- All five sections contain the approved content.
+- Exactly four featured projects appear.
+- Project order is correct.
+- All project roles are correct.
+- All metrics match the approved facts.
+- Limitations are visible.
+- Education and training categories are separate.
+- All four certifications are represented correctly.
+- No phone number is displayed.
+
+### Functional Validation
+- Navigation works.
+- Project filters work.
+- Expandable case studies work.
+- GitHub integration works.
+- Portfolio AI assistant works.
+- Contact links work.
+- Existing interactions remain functional.
+
+### Technical Validation
+- TypeScript validation passes.
+- Production build passes.
+- No unnecessary dependency changes.
+- No API keys or secrets in frontend source.
+- No broken imports.
+- No broken images.
+- No console errors introduced by the changes.
+
+### Responsive Validation
+
+Inspect:
+- Desktop.
+- Tablet.
+- Mobile.
+
+Ensure text length and metric layouts do not break the existing design.
+
+---
+
+# 17. EXECUTION WORKFLOW
+
+Work in the following order:
+
+**Step 1 — Inspect**
+
+Understand the existing application and identify all relevant content files and components.
+
+**Step 2 — Map**
+
+Map each approved content block to its existing website component.
+
+**Step 3 — Adapt**
+
+Adapt long-form content into website-friendly headlines, descriptions, metric highlights, and expandable case studies.
+
+**Step 4 — Implement**
+
+Update the existing application without redesigning it.
+
+**Step 5 — Align**
+
+Update the Portfolio AI assistant so its answers match the approved website content.
+
+**Step 6 — Validate**
+
+Run all content, technical, responsive, and functional checks.
+
+**Step 7 — Report**
+
+Provide a detailed but concise implementation report.
+
+Do not push or deploy.
+
+---
+
+# 18. FINAL DELIVERY REPORT
+
+After completing the work, provide:
+
+### A. Implementation Summary
+Explain what changed and how the content now fits the website.
+
+### B. Files Modified
+List every modified file and its purpose.
+
+### C. Content Status
+Report on:
+- Hero and About.
+- Skills and workflow.
+- Four project cards.
+- Four detailed case studies.
+- GitHub section.
+- Education and training.
+- Certifications.
+- Contact section.
+
+### D. Portfolio AI
+Confirm whether the assistant uses the updated verified profile and project facts.
+
+### E. Validation Results
+
+Use these exact statuses:
+
+- PASS.
+- FAIL.
+- NOT TESTED.
+
+Report:
+- TypeScript.
+- Production build.
+- Navigation.
+- Project interactions.
+- GitHub integration.
+- AI assistant.
+- Responsive behavior.
+- Secret scan.
+
+### F. Remaining Issues
+List anything that still requires my confirmation or additional assets.
+
+---
+
+# FINAL DIRECTIVE
+
+Do not treat this task as replacing old website paragraphs with new paragraphs.
+
+Think like a senior portfolio strategist, a recruiter, a UX writer, and an experienced React developer working together.
+
+Your objective is to make the website communicate a clear and credible professional identity within seconds, then give recruiters enough evidence to explore the depth of my analytical work.
+
+The final experience should feel:
+
+- Distinctive, not generic.
+- Professional, not overly corporate.
+- Engaging, not text-heavy.
+- Evidence-based, not exaggerated.
+- Personal, not a copied CV.
+- Recruiter-friendly, not a technical documentation page.
+
+**The story must fit the website. The website must not become a long document.**
+
+Preserve the existing design.
+
+Implement the approved content.
+
+Validate everything.
+
+Do not push or deploy.

@@ -1,6 +1,8 @@
 {
   "name": "Remix: Islam.AI - Portfolio Assistant",
-  "description": "A high-end, minimalist portfolio intelligence terminal for Islam Ramadan, featuring an AI-guided exploration of data science projects, technical skills, and professional journey.",
+  "description": "Data Analyst & BI Analyst portfolio for Islam Ramadan Hassan (SQL Server, Power BI, Python) built around the 'From Data to Decisions' five-chapter narrative and a server-side Gemini portfolio assistant.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
