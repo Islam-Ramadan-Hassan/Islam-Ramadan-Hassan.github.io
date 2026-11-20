@@ -63,7 +63,7 @@ export function HeroSection() {
       <div className="font-body space-y-6 lg:space-y-7">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-7 items-stretch">
           {/* Content Stack (second on mobile & tablet, left 7 columns on desktop) */}
-          <div className="order-2 lg:order-1 lg:col-span-7 rounded-2xl border border-[#C49A52]/22 bg-[#142B40]/45 p-6 sm:p-8 lg:p-10 xl:p-11 flex flex-col justify-between gap-7">
+          <div className="order-2 lg:order-1 lg:col-span-7 rounded-2xl border border-[#C49A52]/22 bg-[#142B40]/45 p-5 sm:p-8 lg:p-10 xl:p-11 flex flex-col justify-between gap-6 sm:gap-7">
           <div className="space-y-5 lg:space-y-6">
             {/* 1. Quiet Chapter Eyebrow */}
             <motion.div
@@ -102,7 +102,7 @@ export function HeroSection() {
                 </p>
               </motion.div>
 
-              <h1 className="hero-enter-headline font-heading text-[clamp(2.15rem,4.2vw,3.65rem)] font-bold tracking-[-0.025em] leading-[1.12] text-[#F6F1E8]">
+              <h1 className="hero-enter-headline font-heading text-[clamp(1.75rem,4.5vw,3.65rem)] font-bold tracking-[-0.025em] leading-[1.12] text-[#F6F1E8]">
                 Every number has a story.{' '}
                 <span className="hero-headline-gradient">I find what the data reveals.</span>
               </h1>

@@ -45,7 +45,7 @@ export function ContactFooter() {
           <p className="font-mono text-xs tracking-wide text-[#C49A52]">
             {STORY_CHAPTERS.chapter05.kicker}
           </p>
-          <h2 className="font-display text-3xl sm:text-5xl font-semibold tracking-tight text-[#F6F1E8] leading-[1.08]">
+          <h2 className="font-display text-[clamp(1.75rem,5vw,3rem)] font-semibold tracking-tight text-[#F6F1E8] leading-[1.08]">
             {STORY_CHAPTERS.chapter05.heading}
           </h2>
           <div className="space-y-3.5 max-w-[58ch]">

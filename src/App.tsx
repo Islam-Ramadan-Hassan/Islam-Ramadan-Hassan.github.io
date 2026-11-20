@@ -10,7 +10,7 @@ import { PortfolioAssistant } from './components/PortfolioAssistant';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#E6DDD0] text-[#101820] selection:bg-[#C49A52]/30 selection:text-[#101820]">
+    <div className="relative min-h-screen bg-[#E6DDD0] text-[#101820] selection:bg-[#C49A52]/30 selection:text-[#101820]">
       <ReadingProgressBar />
 
       <a

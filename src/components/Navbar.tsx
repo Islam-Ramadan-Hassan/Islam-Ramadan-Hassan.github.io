@@ -23,7 +23,9 @@ export function Navbar() {
   const lastMobileLinkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
-    const onScroll = () => {
+    const ids = NAV_LINKS.map((l) => l.id);
+
+    const updateActiveFromScroll = () => {
       const scrollY = window.scrollY;
       setScrolled(scrollY > 12);
 
@@ -36,38 +38,33 @@ export function Navbar() {
         window.innerHeight + scrollY >= document.documentElement.scrollHeight - 80;
       if (nearBottom) {
         setActiveSection('contact');
+        return;
+      }
+
+      // Use a viewport trigger line (32% from top) so tall sections like #projects
+      // (~8,000px) activate reliably regardless of their total height.
+      const triggerY = Math.round(window.innerHeight * 0.32);
+      let currentId = '';
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= triggerY && rect.bottom > 96) {
+          currentId = id;
+        }
+      }
+      if (currentId) {
+        setActiveSection(currentId);
       }
     };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
-  useEffect(() => {
-    const ids = NAV_LINKS.map((l) => l.id);
-    const elements = ids
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => Boolean(el));
-
-    if (elements.length === 0 || typeof IntersectionObserver === 'undefined') return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]?.target.id) {
-          setActiveSection(visible[0].target.id);
-        }
-      },
-      {
-        rootMargin: '-28% 0px -52% 0px',
-        threshold: [0.1, 0.25, 0.5],
-      }
-    );
-
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    updateActiveFromScroll();
+    window.addEventListener('scroll', updateActiveFromScroll, { passive: true });
+    window.addEventListener('resize', updateActiveFromScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', updateActiveFromScroll);
+      window.removeEventListener('resize', updateActiveFromScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -177,7 +174,7 @@ export function Navbar() {
         <div className={CONTAINER_GEOMETRY.outerGutter}>
           <div className={`${CONTAINER_GEOMETRY.maxWidth} ${CONTAINER_GEOMETRY.horizontalPadding}`}>
             <div
-              className={`${CONTAINER_GEOMETRY.innerRail} h-16 flex items-center justify-between gap-4 lg:gap-8`}
+              className={`${CONTAINER_GEOMETRY.innerRail} h-16 flex items-center justify-between gap-2 sm:gap-4 lg:gap-8`}
             >
               {/* Zone 1: Accessible Home Anchor Wrapping Eye of Horus Brand Signature (Always Visible Above Mobile Menu) */}
               <a
@@ -223,7 +220,7 @@ export function Navbar() {
               {/* Zone 2: High-Contrast Editorial Section Navigation Links */}
               <nav
                 aria-label="Primary navigation"
-                className="hidden md:flex items-center gap-6 lg:gap-7 xl:gap-8 text-[13.5px] font-medium tracking-[0.005em]"
+                className="hidden md:flex items-center gap-3.5 lg:gap-6 xl:gap-8 text-[13.5px] font-medium tracking-[0.005em]"
               >
                 {NAV_LINKS.map((link) => {
                   const isActive = activeSection === link.id;
@@ -275,12 +272,12 @@ export function Navbar() {
                 })}
               </nav>
 
-              {/* Zone 3: Primary Action (Desktop) + Accessible Mobile Menu Button */}
-              <div className="flex items-center gap-3 shrink-0">
+              {/* Zone 3: Primary Action (Desktop lg+) + Accessible Mobile Menu Button */}
+              <div className="flex items-center gap-2 sm:gap-3 shrink-0">
                 <a
                   href="#projects"
                   onClick={(e) => handleSectionSelect(e, 'projects')}
-                  className="group hidden md:inline-flex items-center justify-center gap-1.5 px-4 py-2 min-h-[40px] text-xs font-semibold tracking-[0.015em] hero-cta-primary-gradient text-[#101820] border border-[#C49A52]/40 hover:-translate-y-px active:scale-[0.985] shadow-[0_6px_18px_-8px_rgba(196,154,82,0.55)] transition-[transform,box-shadow,border-color] duration-[var(--duration-micro)] focus-visible:border-[#C49A52] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C49A52] rounded-lg whitespace-nowrap shrink-0"
+                  className="group hidden lg:inline-flex items-center justify-center gap-1.5 px-4 py-2 min-h-[40px] text-xs font-semibold tracking-[0.015em] hero-cta-primary-gradient text-[#101820] border border-[#C49A52]/40 hover:-translate-y-px active:scale-[0.985] shadow-[0_6px_18px_-8px_rgba(196,154,82,0.55)] transition-[transform,box-shadow,border-color] duration-[var(--duration-micro)] focus-visible:border-[#C49A52] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C49A52] rounded-lg whitespace-nowrap shrink-0"
                 >
                   <span>Explore Projects</span>
                   <ArrowDownRight

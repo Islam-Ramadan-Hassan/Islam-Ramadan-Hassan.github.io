@@ -129,7 +129,7 @@ export function EyeOfHorusLogo({
 
       <span className="flex flex-col leading-none">
         <span
-          className={`font-heading text-[14px] sm:text-[17px] font-bold tracking-[-0.02em] whitespace-nowrap transition-colors duration-[var(--duration-micro)] ${
+          className={`font-heading text-[13px] min-[375px]:text-[14px] sm:text-[17px] font-bold tracking-[-0.02em] whitespace-nowrap transition-colors duration-[var(--duration-micro)] ${
             isDark
               ? 'text-[#F6F1E8] group-hover/brand:text-[#D9C4A0]'
               : 'text-[#142B40] group-hover/brand:text-[#7D5B22]'

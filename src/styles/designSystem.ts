@@ -7,11 +7,11 @@
  */
 
 export const CONTAINER_GEOMETRY = {
-  outerGutter: 'px-3 sm:px-5 lg:px-8',
+  outerGutter: 'px-2.5 sm:px-5 lg:px-8',
   maxWidth: 'max-w-[1360px] mx-auto',
-  horizontalPadding: 'px-5 sm:px-10 lg:px-14 xl:px-16',
+  horizontalPadding: 'px-4 sm:px-10 lg:px-14 xl:px-16',
   innerRail: 'max-w-[1232px] mx-auto',
-  radius: 'rounded-[24px] sm:rounded-[32px]',
+  radius: 'rounded-[20px] sm:rounded-[32px]',
 } as const;
 
 export const SECTION_PADDING = {

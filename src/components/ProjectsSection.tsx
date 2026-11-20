@@ -9,9 +9,12 @@ import {
 } from '../data/portfolioData';
 import { PROJECT_PREVIEW_ASSETS } from '../data/projectAssets';
 import { INTERACTION_CLASSES, MOTION_TOKENS } from '../styles/designSystem';
+import { EuropeanSalesCard } from './EuropeanSalesCard';
 import { GithubRepos } from './GithubRepos';
-import { MarketPulseCard } from './MarketPulseCard';
+import { HospitalAnalyticsCard } from './HospitalAnalyticsCard';
+import { MarketPulseCard, type LightboxAssetPayload } from './MarketPulseCard';
 import { SectionContainer } from './SectionContainer';
+import { UrbanPulseCard } from './UrbanPulseCard';
 
 const CATEGORIES: ProjectCategory[] = [
   'All',
@@ -79,15 +82,11 @@ export function ProjectsSection() {
     title: string;
     url: string;
   } | null>(null);
-  const [activeLightbox, setActiveLightbox] = useState<{
-    title: string;
-    caption: string;
-    src: string;
-    alt: string;
-  } | null>(null);
+  const [activeLightbox, setActiveLightbox] = useState<LightboxAssetPayload | null>(null);
   const walkthroughTriggerRef = useRef<HTMLButtonElement | null>(null);
   const walkthroughCloseRef = useRef<HTMLButtonElement | null>(null);
   const lightboxTriggerRef = useRef<HTMLButtonElement | null>(null);
+  const lightboxPdfLinkRef = useRef<HTMLAnchorElement | null>(null);
   const lightboxCloseRef = useRef<HTMLButtonElement | null>(null);
 
   const closeWalkthrough = () => {
@@ -111,14 +110,25 @@ export function ProjectsSection() {
 
   useEffect(() => {
     if (!activeWalkthrough) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
     walkthroughCloseRef.current?.focus();
+
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         closeWalkthrough();
+        return;
+      }
+      if (e.key === 'Tab') {
+        e.preventDefault();
+        walkthroughCloseRef.current?.focus();
       }
     };
     window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+    };
   }, [activeWalkthrough]);
 
   useEffect(() => {
@@ -133,9 +143,23 @@ export function ProjectsSection() {
         return;
       }
       if (e.key === 'Tab') {
-        // Close button is the sole interactive control inside the screenshot lightbox
-        e.preventDefault();
-        lightboxCloseRef.current?.focus();
+        const focusables = [lightboxPdfLinkRef.current, lightboxCloseRef.current].filter(
+          (el): el is HTMLAnchorElement | HTMLButtonElement => Boolean(el)
+        );
+        if (focusables.length <= 1) {
+          e.preventDefault();
+          lightboxCloseRef.current?.focus();
+          return;
+        }
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     };
 
@@ -150,8 +174,8 @@ export function ProjectsSection() {
     <>
       <SectionContainer id="projects" surface="midnight" padding="standard" showConnector>
         {/* Section Header & Functional Segmented Filter Control */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 lg:mb-14">
-            <div className="space-y-3 max-w-2xl">
+        <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-6 xl:gap-8 mb-12 lg:mb-14">
+            <div className="space-y-3 max-w-xl">
               <p className="font-mono text-xs tracking-wide text-[#C49A52]">
                 {STORY_CHAPTERS.chapter03.kicker}
               </p>
@@ -167,7 +191,7 @@ export function ProjectsSection() {
             <div
               role="group"
               aria-label="Filter projects by domain"
-              className="flex flex-wrap items-center gap-1.5 border border-[#D9C4A0]/18 p-1.5 bg-[#142B40]/75 rounded-xl self-start lg:self-end"
+              className="flex flex-wrap xl:flex-nowrap items-center gap-2 border border-[#D9C4A0]/20 p-1.5 bg-[#142B40]/65 backdrop-blur-md rounded-xl self-start xl:self-end shrink-0 max-w-full shadow-[0_12px_28px_-18px_rgba(0,0,0,0.55)]"
             >
               {CATEGORIES.map((category) => {
                 const isActive = activeCategory === category;
@@ -177,10 +201,10 @@ export function ProjectsSection() {
                     type="button"
                     onClick={() => setActiveCategory(category)}
                     aria-pressed={isActive}
-                    className={`relative px-3.5 py-2 text-xs font-medium rounded-lg transition-colors duration-200 whitespace-nowrap min-h-[44px] active:scale-[0.985] ${
+                    className={`relative px-3.5 py-2 text-xs font-medium rounded-lg border transition-[color,background-color,border-color,transform] duration-200 whitespace-nowrap min-h-[44px] active:scale-[0.985] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C49A52] ${
                       isActive
-                        ? 'text-[#101820] font-semibold'
-                        : 'text-[#D9C4A0]/88 hover:text-[#F6F1E8]'
+                        ? 'text-[#101820] font-semibold border-transparent'
+                        : 'bg-[#101820]/35 border-[#D9C4A0]/12 text-[#D9C4A0]/90 hover:text-[#F6F1E8] hover:bg-[#19344D]/75 hover:border-[#C49A52]/40'
                     }`}
                   >
                     {isActive && (
@@ -190,7 +214,7 @@ export function ProjectsSection() {
                           duration: MOTION_TOKENS.duration.micro,
                           ease: MOTION_TOKENS.ease,
                         }}
-                        className="absolute inset-0 bg-[#C49A52] rounded-lg"
+                        className="absolute inset-0 hero-cta-primary-gradient rounded-lg shadow-[0_6px_16px_-8px_rgba(196,154,82,0.65)]"
                       />
                     )}
                     <span className="relative z-10">{category}</span>
@@ -207,7 +231,6 @@ export function ProjectsSection() {
               const isExpanded = expandedId === project.id;
 
               if (project.id === 'marketpulse') {
-                const marketpulseAsset = PROJECT_PREVIEW_ASSETS[project.id];
                 return (
                   <motion.article
                     key={project.id}
@@ -225,14 +248,94 @@ export function ProjectsSection() {
                       project={project}
                       isExpanded={isExpanded}
                       onToggleExpand={() => setExpandedId(isExpanded ? null : project.id)}
-                      onOpenLightbox={(triggerEl) => {
+                      onOpenLightbox={(triggerEl, payload) => {
                         lightboxTriggerRef.current = triggerEl;
-                        setActiveLightbox({
-                          title: `${project.title} — Olist Marketplace Dashboard`,
-                          caption: project.previewCaption,
-                          src: marketpulseAsset.src,
-                          alt: marketpulseAsset.alt,
-                        });
+                        setActiveLightbox(payload);
+                      }}
+                    />
+                  </motion.article>
+                );
+              }
+
+              if (project.id === 'urbanpulse') {
+                return (
+                  <motion.article
+                    key={project.id}
+                    layout={!prefersReducedMotion ? 'position' : false}
+                    initial={prefersReducedMotion ? false : MOTION_TOKENS.revealInitial}
+                    whileInView={MOTION_TOKENS.revealAnimate}
+                    viewport={MOTION_TOKENS.viewport}
+                    transition={{
+                      duration: prefersReducedMotion ? 0 : MOTION_TOKENS.duration.standard,
+                      ease: MOTION_TOKENS.ease,
+                    }}
+                    className="lg:col-span-2"
+                  >
+                    <UrbanPulseCard
+                      project={project}
+                      isExpanded={isExpanded}
+                      onToggleExpand={() => setExpandedId(isExpanded ? null : project.id)}
+                      onOpenLightbox={(triggerEl, payload) => {
+                        lightboxTriggerRef.current = triggerEl;
+                        setActiveLightbox(payload);
+                      }}
+                    />
+                  </motion.article>
+                );
+              }
+
+              if (project.id === 'hospital-management') {
+                return (
+                  <motion.article
+                    key={project.id}
+                    layout={!prefersReducedMotion ? 'position' : false}
+                    initial={prefersReducedMotion ? false : MOTION_TOKENS.revealInitial}
+                    whileInView={MOTION_TOKENS.revealAnimate}
+                    viewport={MOTION_TOKENS.viewport}
+                    transition={{
+                      duration: prefersReducedMotion ? 0 : MOTION_TOKENS.duration.standard,
+                      ease: MOTION_TOKENS.ease,
+                    }}
+                    className="lg:col-span-2"
+                  >
+                    <HospitalAnalyticsCard
+                      project={project}
+                      isExpanded={isExpanded}
+                      onToggleExpand={() => setExpandedId(isExpanded ? null : project.id)}
+                      onOpenLightbox={(triggerEl, payload) => {
+                        lightboxTriggerRef.current = triggerEl;
+                        setActiveLightbox(payload);
+                      }}
+                    />
+                  </motion.article>
+                );
+              }
+
+              if (project.id === 'europe-sales') {
+                return (
+                  <motion.article
+                    key={project.id}
+                    layout={!prefersReducedMotion ? 'position' : false}
+                    initial={prefersReducedMotion ? false : MOTION_TOKENS.revealInitial}
+                    whileInView={MOTION_TOKENS.revealAnimate}
+                    viewport={MOTION_TOKENS.viewport}
+                    transition={{
+                      duration: prefersReducedMotion ? 0 : MOTION_TOKENS.duration.standard,
+                      ease: MOTION_TOKENS.ease,
+                    }}
+                    className="lg:col-span-2"
+                  >
+                    <EuropeanSalesCard
+                      project={project}
+                      isExpanded={isExpanded}
+                      onToggleExpand={() => setExpandedId(isExpanded ? null : project.id)}
+                      onOpenLightbox={(triggerEl, payload) => {
+                        lightboxTriggerRef.current = triggerEl;
+                        setActiveLightbox(payload);
+                      }}
+                      onOpenWalkthrough={(triggerEl, payload) => {
+                        walkthroughTriggerRef.current = triggerEl;
+                        setActiveWalkthrough(payload);
                       }}
                     />
                   </motion.article>
@@ -703,14 +806,14 @@ export function ProjectsSection() {
               exit={prefersReducedMotion ? undefined : { opacity: 0, scale: 0.97 }}
               transition={{ duration: MOTION_TOKENS.duration.micro, ease: MOTION_TOKENS.ease }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-4xl rounded-2xl bg-[#142B40] border border-[#C49A52]/45 overflow-hidden shadow-2xl"
+              className="w-full max-w-4xl max-h-[92dvh] flex flex-col rounded-2xl bg-[#142B40] border border-[#C49A52]/45 overflow-hidden shadow-2xl"
             >
-              <div className="flex items-center justify-between px-5 sm:px-6 py-4 border-b border-[#D9C4A0]/15 bg-[#101820]">
-                <div>
+              <div className="flex items-center justify-between gap-3 px-4 sm:px-6 py-3.5 sm:py-4 border-b border-[#D9C4A0]/15 bg-[#101820] shrink-0">
+                <div className="min-w-0">
                   <p className="font-mono text-[11px] text-[#C49A52]">Dashboard Walkthrough</p>
                   <h3
                     id="walkthrough-modal-title"
-                    className="font-display text-xl font-semibold text-[#F6F1E8]"
+                    className="font-display text-lg sm:text-xl font-semibold text-[#F6F1E8] truncate"
                   >
                     {activeWalkthrough.title}
                   </h3>
@@ -720,18 +823,20 @@ export function ProjectsSection() {
                   type="button"
                   onClick={closeWalkthrough}
                   aria-label="Close walkthrough modal"
-                  className="inline-flex items-center justify-center w-11 h-11 text-[#F6F1E8] hover:text-[#C49A52] border border-[#D9C4A0]/25 hover:border-[#C49A52] active:scale-[0.97] rounded-lg transition-[border-color,color,transform] duration-200"
+                  className="inline-flex items-center justify-center w-11 h-11 shrink-0 text-[#F6F1E8] hover:text-[#C49A52] border border-[#D9C4A0]/25 hover:border-[#C49A52] active:scale-[0.97] rounded-lg transition-[border-color,color,transform] duration-200"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
-              <iframe
-                src={activeWalkthrough.url}
-                title={`${activeWalkthrough.title} Walkthrough`}
-                className="w-full aspect-video border-0 bg-[#101820]"
-                allow="autoplay; encrypted-media"
-                allowFullScreen
-              />
+              <div className="overflow-y-auto bg-[#101820]">
+                <iframe
+                  src={activeWalkthrough.url}
+                  title={`${activeWalkthrough.title} Walkthrough`}
+                  className="block w-full aspect-video max-h-[78dvh] border-0 bg-[#101820]"
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                />
+              </div>
             </motion.div>
           </motion.div>
         )}
@@ -763,38 +868,52 @@ export function ProjectsSection() {
                 ease: MOTION_TOKENS.ease,
               }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-[1460px] max-h-[94vh] flex flex-col rounded-xl bg-[#142B40] border border-[#C49A52]/40 overflow-hidden font-body"
+              className="w-full max-w-[1460px] max-h-[92dvh] flex flex-col rounded-xl bg-[#142B40] border border-[#C49A52]/40 overflow-hidden font-body"
             >
-              <div className="flex items-center justify-between gap-4 px-4 sm:px-6 py-3.5 border-b border-[#D9C4A0]/15 bg-[#101820] shrink-0">
-                <div className="min-w-0">
-                  <p className="font-heading text-[11px] font-semibold uppercase tracking-[0.14em] text-[#C49A52]">
+              <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 px-4 sm:px-6 py-3.5 border-b border-[#D9C4A0]/15 bg-[#101820] shrink-0">
+                <div className="min-w-0 flex-1">
+                  <p className="font-heading text-[10.5px] sm:text-[11px] font-semibold uppercase tracking-[0.14em] text-[#C49A52] line-clamp-2 sm:line-clamp-1">
                     {activeLightbox.caption}
                   </p>
                   <h3
                     id="screenshot-lightbox-title"
-                    className="font-heading text-base sm:text-lg font-semibold text-[#F6F1E8] truncate"
+                    className="font-heading text-sm sm:text-lg font-semibold text-[#F6F1E8] truncate"
                   >
                     {activeLightbox.title}
                   </h3>
                 </div>
-                <button
-                  ref={lightboxCloseRef}
-                  type="button"
-                  onClick={closeLightbox}
-                  aria-label="Close enlarged dashboard screenshot"
-                  className="inline-flex items-center justify-center w-11 h-11 shrink-0 text-[#F6F1E8] hover:text-[#C49A52] border border-[#D9C4A0]/25 hover:border-[#C49A52] rounded-lg transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C49A52]"
-                >
-                  <X className="w-5 h-5" aria-hidden="true" />
-                </button>
+                <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+                  {activeLightbox.pdfUrl && (
+                    <a
+                      ref={lightboxPdfLinkRef}
+                      href={activeLightbox.pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-2 min-h-[44px] text-xs font-medium text-[#D9C4A0] hover:text-[#C49A52] border border-[#D9C4A0]/25 hover:border-[#C49A52] rounded-lg transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C49A52] whitespace-nowrap"
+                    >
+                      <span>Open PDF</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+                    </a>
+                  )}
+                  <button
+                    ref={lightboxCloseRef}
+                    type="button"
+                    onClick={closeLightbox}
+                    aria-label="Close enlarged preview"
+                    className="inline-flex items-center justify-center w-11 h-11 shrink-0 text-[#F6F1E8] hover:text-[#C49A52] border border-[#D9C4A0]/25 hover:border-[#C49A52] rounded-lg transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C49A52]"
+                  >
+                    <X className="w-5 h-5" aria-hidden="true" />
+                  </button>
+                </div>
               </div>
 
-              <div className="p-2.5 sm:p-5 bg-[#070E1A] flex items-center justify-center overflow-auto">
+              <div className="p-2 sm:p-5 bg-[#070E1A] flex items-center justify-center overflow-auto">
                 <img
                   src={activeLightbox.src}
                   alt={activeLightbox.alt}
-                  width={1415}
-                  height={791}
-                  className="block max-w-full max-h-[80vh] w-auto h-auto object-contain"
+                  width={activeLightbox.width}
+                  height={activeLightbox.height}
+                  className="block max-w-full max-h-[78dvh] w-auto h-auto object-contain"
                 />
               </div>
             </motion.div>

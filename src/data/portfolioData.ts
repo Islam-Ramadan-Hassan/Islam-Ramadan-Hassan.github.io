@@ -159,9 +159,9 @@ export const STORY_CHAPTERS = {
   },
   chapter03: {
     kicker: 'Chapter 03 · Selected Projects',
-    heading: 'Four Projects. Four Different Analytical Challenges.',
+    heading: 'Four Projects. Four Analytical Stories.',
     subtitle:
-      'From marketplace performance and urban operations to healthcare data quality and retail profitability, each project demonstrates a different way of investigating data and turning findings into useful business insight.',
+      'Each project tells a distinct story—from the business question and analytical approach to the findings, practical value, and limitations.',
     transitionLabel: 'Explore the academic and training foundation behind this work →',
   },
   chapter04: {
@@ -337,7 +337,7 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
     index: '01',
     period: '2026',
     track: 'training',
-    categoryLabel: 'Practical Training · Non-Employment',
+    categoryLabel: 'Practical Training',
     statusLabel: 'Completed',
     title: 'ACUD Practical Training',
     organization: 'Administrative Capital for Urban Development (ACUD)',
@@ -353,7 +353,7 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
       'Platform Development',
     ],
     progressionNote:
-      'Practical non-employment training separate from DigiLians and formal employment, extending my SQL and Python work into multi-domain analytics platform delivery.',
+      'Practical training separate from DigiLians, extending my SQL and Python work into multi-domain analytics platform delivery.',
     relatedProject: {
       title: 'UrbanPulse',
       subtitle: 'Graduation Project · Urban Operations & Predictive Analytics',
@@ -466,8 +466,8 @@ export const FEATURED_PROJECTS: FeaturedProject[] = [
     id: 'marketpulse',
     index: '01',
     title: 'MarketPulse',
-    headline: 'Understanding marketplace performance at scale.',
-    subtitle: 'E-Commerce & Marketplace Analytics',
+    headline: 'From scattered marketplace data to a clearer picture of business performance.',
+    subtitle: 'Multi-Domain E-Commerce Intelligence Platform',
     categoryLabel: 'E-Commerce & Marketplace Analytics',
     category: 'E-Commerce & Retail',
     projectContextLabel:
@@ -475,7 +475,7 @@ export const FEATURED_PROJECTS: FeaturedProject[] = [
     theme: 'dark',
     role: 'Team Leader & Olist Marketplace Domain Owner',
     description:
-      'A multi-domain e-commerce analytics project where I led team coordination and owned the Olist Marketplace analytical domain, building a structured SQL Server warehouse and a six-page Power BI dashboard.',
+      'As Team Leader, I led a five-member team in developing MarketPulse, a business intelligence platform built around four independent e-commerce analytical domains. I was directly responsible for the Olist Marketplace domain, where I worked on organizing the data and turning it into a consistent view of marketplace performance.',
     kpiHighlights: [
       '99,441 Orders · 112,650 Items',
       '31 Business KPIs',
@@ -485,23 +485,22 @@ export const FEATURED_PROJECTS: FeaturedProject[] = [
     technologies: ['SQL Server', 'T-SQL', 'Power BI', 'DAX', 'Python', 'Pandas'],
     caseStudy: {
       context:
-        'Graduation Capstone Project for the Digital Pioneers (DigiLians) Applied AI & Data Analytics Specialized Program. MarketPulse is a collaborative multi-domain e-commerce analytics initiative designed to examine marketplace performance, customer behavior, marketing effectiveness, and operational patterns.',
+        'MarketPulse was our graduation capstone for the Digital Pioneers (DigiLians) Applied AI & Data Analytics Specialized Program.\n\nThe project explored different aspects of e-commerce, from marketplace performance and marketing effectiveness to purchasing behavior and customer reviews. Each domain had its own dataset and analytical workflow, allowing us to investigate its business questions independently.',
       businessChallenge:
-        'Marketplace operations generate large volumes of order, customer, seller, product, and delivery data. Evaluating performance requires structured data models and consistent business measures.',
+        'For the Olist Marketplace, understanding performance meant looking beyond sales figures alone.\n\nOrders, customers, sellers, products, payments, and deliveries were stored across separate data tables. Looking at each source in isolation made it difficult to build a consistent picture of how the marketplace was performing.\n\nThe challenge was to bring these records into a reliable analytical structure and connect commercial performance with delivery outcomes and customer feedback.',
       roleAndContribution:
-        'Led a five-member team and owned the Olist Marketplace analytical domain covering sales, customers, sellers, products, and delivery. Responsible for developing the analytical foundation and marketplace reporting layer, while teammates owned the remaining project domains.',
+        'I led the five-member team and took direct ownership of the Olist Marketplace domain.\n\nMy work covered the analytical process from structuring the marketplace data and defining its performance measures to developing the Power BI dashboard. I also worked on customer churn classification using Python.\n\nThe other three domains were handled independently by their respective team members.',
       approachAndTechnologies:
-        'Built a SQL Server dimensional warehouse with 7 dimension tables and 3 fact tables covering 99,441 orders and 112,650 order items, defined 31 business KPIs, developed a six-page Power BI dashboard, and contributed Python-based customer churn classification work. Technologies: SQL Server, T-SQL, Power BI, DAX, Python, Pandas, Jupyter Notebook.',
+        'I organized the Olist data into a SQL Server dimensional model, creating a foundation for consistent reporting across the marketplace.\n\nOn top of this structure, I developed reusable performance measures and a six-page Power BI dashboard. The dashboard brought together different views of the business, helping users explore sales, product categories, delivery performance, and customer feedback.\n\nThe underlying model covered 99,441 orders and 112,650 order items, supported by seven dimension tables and three fact tables.',
       verifiedFindings: [
-        'Structured 99,441 orders and 112,650 order items into 7 dimension tables, 3 fact tables, and 31 business KPIs.',
-        'R$13.59M recorded marketplace revenue across the analyzed Olist dataset.',
-        '93.2% on-time delivery performance across fulfilled marketplace orders.',
-        '4.09/5 average customer review score.',
+        'R$13.59M in revenue across the analyzed Olist dataset, showing the commercial scale of the marketplace.',
+        '93.2% on-time delivery rate, offering an indication of delivery reliability.',
+        '4.09/5 average review score, adding the customer perspective to the performance picture.',
       ],
       businessRelevance:
-        'The warehouse and KPI layer provide a structured view of marketplace performance, helping users examine sales, delivery, and customer experience through consistent measures.',
+        'MarketPulse turns separate marketplace records into a more coherent reporting experience.\n\nInstead of relying on disconnected spreadsheets or comparing figures from different reports, decision-makers can explore key performance indicators through a consistent analytical view.\n\nThis makes it easier to identify performance patterns, examine areas that need attention, and understand how different aspects of marketplace operations relate to one another.',
       limitationsAndEvidence:
-        'The project contains multiple independent analytical domains. My direct ownership was the Olist Marketplace domain, and other team domains are not treated as a unified dataset or combined through unsupported relationships. The reported figures describe the analyzed project data, not live marketplace performance. Visual preview shows Page 1 (Executive Overview) of the Olist Marketplace Power BI dashboard.',
+        'MarketPulse covers four independent analytical domains. My direct analytical ownership was the Olist Marketplace domain; the other domains retained their own datasets and workflows.\n\nThe findings presented here describe the analyzed historical Olist data. They should not be interpreted as live marketplace performance or as evidence of causal relationships.\n\nThe project demonstrates an analytical reporting solution, not a live commercial marketplace system.',
     },
     isConceptPreview: false,
     previewCaption: 'Olist Marketplace Dashboard — Page 1: Executive Overview (Power BI)',
@@ -510,16 +509,15 @@ export const FEATURED_PROJECTS: FeaturedProject[] = [
     id: 'urbanpulse',
     index: '02',
     title: 'UrbanPulse',
-    headline: 'Investigating urban service patterns and evaluating predictive performance.',
-    subtitle: 'Urban Operations & Predictive Analytics',
+    headline: 'Different urban datasets. One governed analytical experience.',
+    subtitle: 'Intelligent Analytics for Smarter Urban Operations',
     categoryLabel: 'Urban Operations & Predictive Analytics',
     category: 'Urban Operations',
-    projectContextLabel:
-      'Graduation Project — Administrative Capital for Urban Development (ACUD) Practical Training',
+    projectContextLabel: 'ACUD Practical Training · Graduation Project · 2026',
     theme: 'light',
-    role: 'Team Leader · NYC 311 Analyst · Smart City Forecaster · Platform UI/UX Owner',
+    role: 'Team Leader · Platform UI/UX Owner · NYC 311 Analyst · Smart City Forecaster',
     description:
-      'A multi-domain urban analytics platform where I directly handled NYC 311 analysis and Smart City forecasting (synthetic dataset), led a four-member team, and owned end-to-end platform UI/UX.',
+      "UrbanPulse was developed as our graduation project during the ACUD Practical Training program in 2026.\n\nI served as Team Leader of a four-member team and owned the platform's end-to-end UI/UX design. My direct analytical work focused on NYC 311 service requests and Smart City forecasting, while the Buildings and Energy analyses remained team-owned.\n\nThe project brought these different areas into a multi-workspace analytical experience, with clear boundaries between independent datasets, carefully governed integration, and a separate synthetic forecasting environment.",
     kpiHighlights: [
       '6.68M NYC 311 Records',
       '65.28% NYPD & HPD Share',
@@ -528,69 +526,69 @@ export const FEATURED_PROJECTS: FeaturedProject[] = [
     ],
     technologies: ['Python', 'SQL', 'LightGBM', 'Data Analysis', 'Platform UI/UX'],
     domainGovernanceNote:
-      'Domain & Ownership Boundary: Smart City forecasting uses a synthetic dataset evaluated on 2025 test data—not live city operations. Buildings, Energy, NYC 311, and Smart City remain separate analytical domains with no unsupported cross-domain joins. Buildings and Energy analyses were completed by other team members (follow-up and review only).',
+      'Domain & Ownership Boundary: Buildings Performance, Energy Intelligence, and NYC 311 Operations are independent analytical domains. Buildings & Energy is a dedicated team-owned integration workspace targeting property_id + report_year, requiring annual aggregation, key validity, and cardinality checks. Smart City is an isolated synthetic Kaggle digital twin sandbox (2025 test data)—never live city operations and never merged with other domains.',
     caseStudy: {
       context:
-        'Graduation Project for the Administrative Capital for Urban Development (ACUD) Practical Training. UrbanPulse is a multi-domain urban analytics platform designed to examine different urban operational datasets through independent analytical workspaces.',
+        'UrbanPulse was created to explore how different urban datasets can support a clearer understanding of city operations.\n\nThe project covered building performance, energy intelligence, public service requests, and a separate Smart City forecasting sandbox.\n\nEach area had its own data structure and analytical purpose. Rather than treating them as parts of one unified dataset, we organized them into dedicated workspaces with clearly defined responsibilities and boundaries.',
       businessChallenge:
-        'Urban operations data can reveal service-demand patterns and operational pressure, but different datasets require clear analytical boundaries and careful interpretation.',
+        'The main challenge was not simply bringing more data into one platform. It was making sure that every analytical view remained trustworthy.\n\nBuildings, Energy, and NYC 311 describe different aspects of urban operations, but that does not automatically make their records compatible.\n\nConnecting datasets without checking their level of detail, keys, and relationships can produce misleading results. At the same time, the Smart City forecasting dataset was synthetic and needed to remain separate from the historical urban records.\n\nUrbanPulse therefore needed a structure that made information accessible without sacrificing analytical integrity.',
       roleAndContribution:
-        "Served as Team Leader in a four-member team. My direct analytical work covered NYC 311 service request analysis and Smart City forecasting using synthetic data, and I owned the platform's end-to-end UI/UX design. Buildings and Energy analyses were completed by other team members; my involvement in those domains was follow-up and review.",
+        "I led a four-member team and took end-to-end ownership of the platform's UI/UX design, including how users navigate between workspaces and understand the available analytical views.\n\nMy direct analytical responsibilities covered NYC 311 Operations (analyzing historical service request records for agency distribution and seasonal patterns) and Smart City Forecasting (developing and evaluating a LightGBM forecasting model using a synthetic Kaggle digital twin dataset).\n\nBuildings Performance and Energy Intelligence were analyzed by teammates. The Buildings & Energy integration workspace was also team-owned, with my involvement limited to leadership, follow-up, and review.",
       approachAndTechnologies:
-        'NYC 311: analyzed 6.68 million service request records across agency distribution and heating complaint patterns. Smart City: trained a LightGBM forecasting model evaluated using MAE and R², compared against a baseline model on 2025 test data. Technologies: Python, SQL, LightGBM, Data Analysis, Platform UI/UX.',
+        'UrbanPulse was organized around separate workspaces rather than one automatically merged urban dataset.\n\nFor NYC 311, I examined 6.68 million historical service request records to understand how requests were distributed across agencies and how certain complaint types changed over time.\n\nFor the Smart City sandbox, I worked with synthetic traffic and related environmental data to develop a LightGBM forecasting model and evaluate its performance against a baseline.\n\nThe platform also included a Buildings & Energy integration workspace with a defined validation boundary: annual aggregation, valid property and reporting-year keys, and cardinality checks before integration could be trusted.\n\nThis structure allowed the platform to present different analytical perspectives while keeping unsupported relationships and conclusions out of the reporting experience.',
       verifiedFindings: [
-        'NYC 311 (Analytical Finding): NYPD and HPD accounted for 65.28% of service requests across 6.68M analyzed records.',
-        'NYC 311 (Analytical Finding): Heating complaints peaked at 3.06 times their 24-month average in December 2024.',
-        'Smart City (Analytical Finding — Synthetic Dataset, 2025 Test Data): LightGBM achieved MAE: 7.78 MWh and R²: 0.9964—approximately 19% lower error than the baseline.',
+        'NYC 311 (Historical Service Records): 6.68 million service requests analyzed; 65.28% combined NYPD and HPD share; 3.06× seasonal heating peak vs. 24-month average in December 2024.',
+        'Smart City (Synthetic Forecasting Sandbox): 7.78 MWh MAE on the 2025 test split, 0.9964 R² on the synthetic dataset, and approximately 19% lower error compared with the baseline.',
       ],
       businessRelevance:
-        'The NYC 311 analysis highlights service-demand patterns that can inform further operational investigation. The forecasting experiment evaluates the potential of predictive modeling under the conditions of the synthetic dataset.',
+        "UrbanPulse demonstrates that a useful urban analytics platform is not defined by how many datasets it combines, but by how responsibly it handles them.\n\nThe NYC 311 analysis helps reveal where public service demand concentrates and when seasonal patterns become more pronounced.\n\nThe platform's workspace structure makes these findings easier to explore while keeping unrelated datasets separate. The synthetic forecasting experiment also provides a controlled environment for evaluating a predictive approach without presenting simulated results as real city outcomes.\n\nTogether, these elements show how clear analytical boundaries and accessible reporting can support more informed exploration of urban data.",
       limitationsAndEvidence:
-        'The Smart City dataset is synthetic and does not represent live city operations. Buildings, Energy, NYC 311, and Smart City remain separate analytical domains with no unsupported cross-domain joins or combined metrics. Missing or inconsistent NYC 311 closure timestamps limit reliable SLA and resolution-time conclusions. The findings are analytical observations, not evidence of implemented operational improvements. Visual preview is a Concept Preview illustration.',
+        "UrbanPulse does not treat all its datasets as one unified source.\n\nBuildings Performance, Energy Intelligence, and NYC 311 remain independent analytical domains. No unsupported cross-domain joins or filtering are used.\n\nThe Buildings & Energy workspace targets integration at the property and reporting-year level. This requires annual aggregation, valid keys, and cardinality checks before the resulting data can be considered reliable. The presence of a relationship does not establish causation.\n\nThe Smart City forecasting experiment uses a synthetic Kaggle digital twin dataset. It is isolated from NYC 311, Buildings, and Energy and does not represent live city operations.\n\nNYC 311 service-level and resolution-time conclusions also remain limited because closure timestamps are missing or inconsistent.\n\nThese boundaries are part of the project's analytical design, not details to hide.",
     },
-    isConceptPreview: true,
-    previewCaption: 'Concept Preview — Independent analytical domains (Buildings, Energy, NYC 311; Smart City kept separate)',
+    isConceptPreview: false,
+    previewCaption:
+      'Executive Overview · Actual application interface showing separated domain figures (Buildings, Energy, and NYC 311)',
   },
   {
     id: 'hospital-management',
     index: '03',
     title: 'Hospital Management Analytics System',
-    headline: 'Looking beyond hospital records to identify collection and data-quality gaps.',
+    headline: 'Making hospital records easier to organize, examine, and act on.',
     subtitle: 'Healthcare Analytics & Data Quality',
     categoryLabel: 'Healthcare Analytics & Data Quality',
     category: 'Healthcare & Data Quality',
     theme: 'dark',
     role: 'SQL Server Database Designer & Healthcare Data Analyst',
     description:
-      'A SQL Server healthcare analytics solution designed to organize relational records, support billing analysis, and identify operational and data-quality issues.',
+      'This project focused on building a practical analytics solution that organizes hospital data and makes important patterns easier to identify. Working with eight months of billing and payment records, I developed the database structure, data preparation workflows, reusable SQL views, and Power BI reporting layer.',
     kpiHighlights: [
-      '10 SQL Tables · 10+ Views',
-      '36% Uncollected Invoices',
-      '5× Physician Workload Gap',
-      '40+ Missing Chronic Diagnoses',
+      '10 Related SQL Tables · 10+ Reusable SQL Views',
+      '36% Uncollected Invoices (8-Month Billing Data)',
+      '5× Physician Workload Difference',
+      '40+ Chronic Patient Records Missing Diagnosis Information',
     ],
-    technologies: ['SQL Server', 'T-SQL', 'Relational Modeling', 'ETL', 'SQL Views', 'Power BI'],
+    technologies: ['SQL Server', 'T-SQL', 'Power BI', 'Data Modeling', 'ETL'],
     caseStudy: {
       context:
-        'A healthcare analytics solution designed to organize hospital operational and financial records.',
+        'Hospital operations generate different types of information, from billing and payments to physician activity and patient records.\n\nWhen these records are difficult to navigate or examine consistently, important issues can remain hidden. Financial follow-up becomes harder, workload differences are less visible, and missing information in patient records can go unnoticed.\n\nThe project aimed to create a structured analytical foundation for examining these areas through SQL Server and Power BI.',
       businessChallenge:
-        'Healthcare and financial records need a consistent structure to support analysis of billing, payments, physician workload, and patient information quality.',
+        'The challenge was to turn related but differently structured hospital records into data that could support meaningful analysis.\n\nThe solution needed to organize the underlying information, prepare it for reporting, and make it possible to examine financial performance, physician workloads, and patient-record completeness.\n\nThis required more than building charts. It required a reliable database structure and reusable queries that could support consistent analysis.',
       roleAndContribution:
-        'Designed and developed the hospital analytics solution, organizing relational data and creating reusable SQL-based analytical structures.',
+        'I built the normalized SQL Server database, developed the ETL preparation workflows, created reusable SQL views, and built the Power BI reporting layer.\n\nThe work connected the data preparation process with the final analytical experience, providing a structured way to examine billing, workload, and record-quality patterns.',
       approachAndTechnologies:
-        'Built a normalized SQL Server database with 10 interconnected tables, implemented ETL workflows, authored more than 10 reusable SQL views, and supported analytical reporting. Technologies: SQL Server, T-SQL, Relational Data Modeling, ETL, SQL Views, Power BI.',
+        'I organized the hospital data into a normalized database containing 10 related tables.\n\nI then developed ETL workflows to prepare and transform the records, followed by more than 10 reusable SQL views to support the analysis.\n\nPower BI was used to present the resulting information in a reporting experience focused on financial and operational questions. The billing and payment analysis covered an eight-month period.\n\nThis structure made it possible to examine different aspects of hospital operations using a more consistent foundation.',
       verifiedFindings: [
-        '36% of invoices remained uncollected in the analyzed records.',
-        'A 5× workload difference between the highest and lowest recorded physician workloads.',
-        'More than 40 chronic patient records were missing diagnosis information.',
+        '36% of invoices were uncollected across the analyzed eight-month billing and payment records, highlighting an area for financial follow-up.',
+        'A 5× difference in recorded physician workload between the highest and lowest workloads, pointing to a potential need for further workload review.',
+        'More than 40 chronic patient records were missing diagnosis information, revealing a gap in record completeness.',
       ],
       businessRelevance:
-        'These findings identify areas that may require further review, including billing collection, workload distribution, and completeness of patient records.',
+        'The value of this solution is not simply presenting hospital figures in a dashboard. It is making specific areas easier to examine.\n\nThe uncollected invoices point to a need for closer financial follow-up. The workload difference provides a reason to review how physician activity is distributed. Missing diagnosis information highlights records that may require documentation checks.\n\nBy organizing the data and presenting these findings together, the solution gives users a clearer starting point for further investigation and operational review.',
       limitationsAndEvidence:
-        'The findings describe the analyzed records and should not be interpreted as proof of the causes behind collection gaps, workload differences, or missing diagnoses. Further operational validation would be required before drawing causal conclusions. Visual preview is a Concept Preview illustration.',
+        'The analysis covered eight months of billing and payment data, alongside the related records used for workload and data-quality checks.\n\nThe reported findings describe patterns observed in the analyzed records. They do not independently establish why invoices remained uncollected, what caused workload differences, or why diagnosis information was missing.\n\nThe project identifies areas for review; determining their underlying causes would require additional investigation and context.',
     },
-    isConceptPreview: true,
-    previewCaption: 'Concept Preview — Original 10-table relational & ETL visual illustration',
+    isConceptPreview: false,
+    previewCaption: 'Hospital Management Analytics System — Billing, Claims, Payments & Revenue Reporting Visual',
   },
   {
     id: 'europe-sales',
@@ -600,40 +598,42 @@ export const FEATURED_PROJECTS: FeaturedProject[] = [
     subtitle: 'Retail Performance & Profitability',
     categoryLabel: 'Retail Performance & Profitability',
     category: 'E-Commerce & Retail',
+    projectContextLabel: '2011–2014',
     theme: 'light',
-    role: 'Solo Data Analyst',
+    role: 'Data Analyst',
     description:
-      'An individual retail performance analysis using Excel-based modeling to investigate sales, profit margins, market performance, discount patterns, and shipping.',
+      'This individual project examined European retail performance between 2011 and 2014. Using an interactive Excel dashboard, I explored how revenue translated into profit across countries and products, while examining discount patterns and shipping performance to understand what the headline sales figures alone could not reveal.',
     kpiHighlights: [
       '€10.67M Total Sales',
       '4,117 Orders · 792 Customers',
-      '€283K Profit · 2.65% Margin',
+      '~€283K Profit · 2.65% Margin',
       '3.97-Day Average Shipping',
     ],
     technologies: ['Microsoft Excel', 'Power Pivot', 'PivotTables', 'DAX', 'Conditional Formatting'],
     caseStudy: {
       context:
-        'A standalone European retail performance and profitability analysis covering 2011–2014.',
+        'The analysis covered 4,117 retail orders from 792 customers across European markets between 2011 and 2014.\n\nAlthough total sales provided a strong view of commercial activity, revenue alone did not explain how much profit the business actually retained or which markets contributed positively to its financial performance.',
       businessChallenge:
-        'Sales volume alone does not explain business performance. Profitability, discounting, product categories, and shipping patterns provide additional context for evaluating retail results.',
+        'The central question was not simply where the business sold more, but where it remained profitable.\n\nUnderstanding that difference required looking beyond total sales to compare country-level profitability, examine product performance, explore discount patterns, and consider shipping behavior.',
       roleAndContribution:
-        'Completed an individual European retail performance and profitability analysis using Excel-based analytical modeling and reporting.',
+        'As the sole Data Analyst, I handled the project end to end, from organizing the analytical model and defining DAX measures to building an interactive Microsoft Excel dashboard.',
       approachAndTechnologies:
-        'Built an interactive Excel dashboard with pivot-based performance analysis, market and product profitability comparisons, and discount and shipping pattern analysis. Technologies: Microsoft Excel, Power Pivot, PivotTables, DAX, Conditional Formatting.',
+        'I used Excel and Power Pivot to organize the data for analysis, with PivotTables and DAX measures supporting comparisons across markets, products, and time periods.\n\nThe dashboard brought together annual sales and profitability, country-level comparisons, monthly trends, and interactive filters. This made it possible to move from an overall performance view to more focused questions about individual markets, categories, customer segments, and shipping methods.',
       verifiedFindings: [
-        '€10.67M total sales across 4,117 orders and 792 customers.',
-        'Approximately €283K profit with an overall margin of 2.65%.',
-        'Portugal, the Netherlands, and Sweden were loss-making markets.',
-        'Discounts of up to 50% were associated with profit erosion.',
-        'Average shipping time was 3.97 days.',
+        '€10.67M in total sales across the analyzed European retail orders.',
+        'Approximately €283K in profit, representing an overall profit margin of 2.65%.',
+        'Portugal, the Netherlands, and Sweden recorded overall losses despite being part of a business generating substantial total sales.',
+        'Discounts of up to 50% were associated with profit erosion in the analyzed dataset.',
+        'Average recorded shipping time was 3.97 days.',
       ],
       businessRelevance:
-        'The analysis helps distinguish sales growth from profitable performance and highlights markets, products, and discount patterns that deserve closer review.',
+        'The analysis shifts attention from sales volume to the quality of that revenue.\n\nIdentifying loss-making markets gives commercial teams a starting point for reviewing market performance. The observed discount pattern also highlights an area worth investigating further when evaluating pricing and promotional decisions.\n\nThe dashboard makes these comparisons easier to explore, allowing users to move between the overall picture and specific market, product, and time-period views.',
       limitationsAndEvidence:
-        'The findings are based on the analyzed historical dataset covering 2011–2014. Observed discount and profitability patterns indicate associations, not proof that discounts alone caused losses. Supported by the verified European-Sales-Analytics GitHub repository and dashboard walkthrough.',
+        'This analysis is based on a historical European retail dataset covering 2011–2014. The findings describe patterns within that period and should not be interpreted as a representation of current market performance.\n\nThe relationship between discounts and profit erosion is an observed association, not proof that discounts alone caused the losses. The analysis also identifies loss-making markets but does not establish the underlying reasons behind their results.\n\nProject Evidence: Interactive Excel dashboard, dashboard walkthrough, and public GitHub repository.',
     },
     isConceptPreview: false,
-    previewCaption: 'Editorial Visual · Verified GitHub repository and dashboard video walkthrough available',
+    previewCaption:
+      'Actual Excel Dashboard (Report 1) — Annual Sales & Profitability Growth, European Country Maps, Seasonality & Interactive Slicers',
     githubUrl: 'https://github.com/Islam-Ramadan-Hassan/European-Sales-Analytics',
     walkthroughUrl: 'https://drive.google.com/file/d/10lU1HE4wVV_CiGhR8Cbrzi_4302T3AIQ/preview',
     walkthroughLabel: 'Watch Dashboard Walkthrough',

@@ -30,3 +30,43 @@ export const PROJECT_PREVIEW_ASSETS: Record<
     cropClassName: 'scale-[1.12]',
   },
 };
+
+export const MARKETPULSE_INFOGRAPHIC_ASSET = {
+  src: './assets/marketpulse-infographic.png',
+  pdfSrc: './assets/MarketPulse-infographic.pdf',
+  width: 2880,
+  height: 1620,
+  title: 'MarketPulse — Project Overview Infographic',
+  caption: 'MarketPulse Infographic — System Overview, Four Independent Domains, Team & Technology Stack',
+  alt: 'MarketPulse project overview infographic showing the system architecture, four independent e-commerce analytical domains (Olist Marketplace, Olist Marketing Funnel, Instacart, and Amazon Reviews), project team led by Islam Ramadan Hassan, business value, and technology stack',
+} as const;
+
+export const URBANPULSE_OVERVIEW_ASSET = {
+  src: './assets/urbanpulse-executive-overview.webp',
+  width: 2048,
+  height: 1006,
+  title: 'UrbanPulse — Executive Overview Dashboard',
+  caption: 'Executive Overview',
+  alt: 'UrbanPulse Executive Overview Dashboard',
+} as const;
+
+export const HOSPITAL_MANAGEMENT_ASSET = {
+  src: './assets/hospital-management-overview.webp',
+  originalSrc: './assets/hospital-management-overview.jpg',
+  width: 2048,
+  height: 1364,
+  title: 'Hospital Management Analytics System — Billing & Operations Overview',
+  caption: 'Hospital Management Analytics System — Billing, Claims, Payments & Revenue Reporting Visual',
+  alt: 'Hospital Management Analytics System visual showing hospital billing workflow, revenue dashboard, receivables summary, and reporting stages',
+} as const;
+
+export const EUROPE_SALES_DASHBOARD_ASSET = {
+  src: './assets/europe-sales-dashboard.webp',
+  originalSrc: './assets/europe-sales-dashboard.jpg',
+  width: 2048,
+  height: 860,
+  title: 'European Sales Analytics — Interactive Excel Dashboard (Report 1)',
+  caption:
+    'Actual Excel Dashboard (Report 1) — Annual Sales & Profitability Growth, European Country Maps, Seasonality & Interactive Slicers',
+  alt: 'Actual Microsoft Excel dashboard screenshot for European Sales Analytics showing Annual Sales and Profitability Growth from 2011 to 2014, European Profitability and Sales by Country maps, Monthly Revenue and Profit Seasonality chart, and interactive Country, Year, Category, Segment, and Ship Mode slicers',
+} as const;

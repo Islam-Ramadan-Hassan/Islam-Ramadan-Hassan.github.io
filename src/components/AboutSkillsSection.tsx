@@ -654,7 +654,7 @@ export function SkillsSection() {
         {/* A. Analytical Workflow — Connected Vertical Editorial Process Ledger & D3 Diagram Toggle */}
         <div
           ref={ledgerRef}
-          className="mt-8 sm:mt-10 lg:mt-12 rounded-2xl bg-[#F8F4EC] border border-[#142B40]/10 px-5 sm:px-8 xl:px-10 pb-1 sm:pb-2 overflow-x-clip"
+          className="relative mt-8 sm:mt-10 lg:mt-12 rounded-2xl bg-[#F8F4EC] border border-[#142B40]/10 px-5 sm:px-8 xl:px-10 pb-1 sm:pb-2 overflow-x-clip"
         >
           {/* Editorial Stage Anchor Index, Reading Position Indicator & View Mode Toggle */}
           <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2.5 py-3.5 sm:py-4 border-b border-[#142B40]/10">
@@ -731,7 +731,7 @@ export function SkillsSection() {
                   type="button"
                   aria-pressed={workflowView === 'editorial'}
                   onClick={() => handleWorkflowViewChange('editorial')}
-                  className={`inline-flex items-center gap-1.5 min-h-[36px] px-2.5 rounded-md font-heading text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C49A52] ${
+                  className={`inline-flex items-center gap-1.5 min-h-[44px] px-3 rounded-md font-heading text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C49A52] ${
                     workflowView === 'editorial'
                       ? 'bg-[#F8F4EC] text-[#142B40] shadow-[0_1px_2px_rgba(20,43,64,0.08)]'
                       : 'text-[#4D5C6B] hover:text-[#142B40]'
@@ -744,7 +744,7 @@ export function SkillsSection() {
                   type="button"
                   aria-pressed={workflowView === 'diagram'}
                   onClick={() => handleWorkflowViewChange('diagram')}
-                  className={`inline-flex items-center gap-1.5 min-h-[36px] px-2.5 rounded-md font-heading text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C49A52] ${
+                  className={`inline-flex items-center gap-1.5 min-h-[44px] px-3 rounded-md font-heading text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C49A52] ${
                     workflowView === 'diagram'
                       ? 'bg-[#F8F4EC] text-[#142B40] shadow-[0_1px_2px_rgba(20,43,64,0.08)]'
                       : 'text-[#4D5C6B] hover:text-[#142B40]'

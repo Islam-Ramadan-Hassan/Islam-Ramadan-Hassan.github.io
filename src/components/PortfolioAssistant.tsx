@@ -215,7 +215,7 @@ export function PortfolioAssistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={prefersReducedMotion ? undefined : { opacity: 0, y: 10, scale: 0.98 }}
             transition={{ duration: MOTION_TOKENS.duration.micro, ease: MOTION_TOKENS.ease }}
-            className="mb-3 w-[calc(100vw-2rem)] sm:w-[390px] max-h-[min(560px,calc(100vh-6.5rem))] rounded-2xl bg-[#101820] text-[#F6F1E8] border border-[#C49A52]/40 shadow-[0_24px_60px_-16px_rgba(0,0,0,0.65)] flex flex-col overflow-hidden"
+            className="mb-3 w-[calc(100vw-2rem)] max-w-[390px] max-h-[min(560px,calc(100dvh-6.5rem))] rounded-2xl bg-[#101820] text-[#F6F1E8] border border-[#C49A52]/40 shadow-[0_24px_60px_-16px_rgba(0,0,0,0.65)] flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="px-5 py-3.5 bg-[#142B40] border-b border-[#D9C4A0]/15 flex items-center justify-between gap-3">

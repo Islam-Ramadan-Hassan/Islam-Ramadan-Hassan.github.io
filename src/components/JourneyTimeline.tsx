@@ -85,7 +85,7 @@ export function JourneyTimeline() {
         <div
           role="group"
           aria-label="Filter career journey milestones"
-          className="inline-flex items-center gap-1 p-1 rounded-xl bg-[#EFE8DC]/85 border border-[#142B40]/10"
+          className="flex flex-wrap items-center gap-1 p-1 rounded-xl bg-[#EFE8DC]/85 border border-[#142B40]/10 max-w-full"
         >
           {TRACK_FILTERS.map((filter) => {
             const isActive = activeTrack === filter.id;
@@ -96,7 +96,7 @@ export function JourneyTimeline() {
                 type="button"
                 aria-pressed={isActive}
                 onClick={() => handleTrackChange(filter.id)}
-                className={`inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 min-h-[40px] rounded-lg text-xs font-medium tracking-[-0.005em] whitespace-nowrap shrink-0 transition-[background-color,color,box-shadow] duration-[var(--duration-micro)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C49A52] ${
+                className={`inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 min-h-[44px] rounded-lg text-xs font-medium tracking-[-0.005em] whitespace-nowrap shrink-0 transition-[background-color,color,box-shadow] duration-[var(--duration-micro)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C49A52] ${
                   isActive
                     ? 'bg-[#FFFFFF] text-[#142B40] shadow-[0_2px_8px_-4px_rgba(20,43,64,0.22)] font-semibold'
                     : 'text-[#4D5C6B] hover:text-[#142B40]'
